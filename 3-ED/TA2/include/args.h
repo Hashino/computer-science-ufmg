@@ -1,4 +1,3 @@
-
 #define ALGINSERTION 1
 #define ALGSELECTION 2
 #define ALGQSORT 3

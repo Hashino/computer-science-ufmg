@@ -52,48 +52,41 @@ int main(int argc, char **argv) {
 
   retp = clock_gettime(CLOCK_MONOTONIC, &inittp);
 
-  alg_t algvet[] = {
-      {ALGINSERTION, "i"}, {ALGSELECTION, "s"}, {ALGQSORT, "q"},
-      {ALGQSORT3, "q3"},   {ALGQSORTINS, "qi"}, {ALGQSORT3INS, "q3i"},
-      {ALGSHELLSORT, "h"}, {ALGRECSEL, "rs"},   {0, 0}};
-
   // execute algorithm
   switch (opt.alg) {
   case ALGINSERTION:
-    insertionSort(vet, opt.size - 1, &s);
+    insertionSort(vet, opt.size, &s);
     break;
   case ALGSELECTION:
-    selectionSort(vet, opt.size - 1, &s);
-    break;
-  case ALGQSORT:
-    quickSort(vet, opt.size - 1, &s);
-    break;
-  case ALGQSORT3:
-    quickSort3(vet, opt.size - 1, &s);
-    break;
-  case ALGQSORTINS:
-    quickSortIns(vet, opt.size - 1, &s);
-    break;
-  case ALGQSORT3INS:
-    quickSort3Ins(vet, opt.size - 1, &s);
+    selectionSort(vet, opt.size, &s);
     break;
   case ALGSHELLSORT:
     shellSort(vet, opt.size, &s);
     break;
+  case ALGQSORT:
+    quickSort(vet, 0, opt.size - 1, &s);
+    break;
+  case ALGQSORT3:
+    quickSort3(vet, 0, opt.size - 1, &s);
+    break;
+  case ALGQSORTINS:
+    quickSortIns(vet, 0, opt.size - 1, &s);
+    break;
+  case ALGQSORT3INS:
+    // quickSort3Ins(vet, 0, opt.size - 1, &s);
+    break;
   case ALGRECSEL:
-    recursiveSelectionSort(vet, 0, opt.size - 1, &s);
+    recursiveSelectionSort(vet, 0, opt.size, &s);
     break;
   }
   retp = clock_gettime(CLOCK_MONOTONIC, &endtp);
   clkDiff(inittp, endtp, &restp);
 
-  // if (opt.size<100) printVector(vet, opt.size);
-
   // print stats
   sprintf(pref, "alg %s seed %d size %d time %ld.%.9ld", num2name(opt.alg),
           opt.seed, opt.size, restp.tv_sec, restp.tv_nsec);
 
-  printsortperf(&s, buf, pref);
+  printsortperf(&s, buf, pref, opt);
   printf("%s\n", buf);
 
   exit(0);

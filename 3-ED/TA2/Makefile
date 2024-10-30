@@ -9,7 +9,7 @@ INCLUDE := -I.
 LIBPATH :=
 LIBS :=
 
-FLAGS := 
+FLAGS := -g
 CCFLAGS := $(FLAGS)
 CXXFLAGS := $(FLAGS)
 
@@ -26,9 +26,7 @@ all: $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 
 run: all
-	./bin/pa1.out -z 9 -s 27 -a s
-	./bin/pa1.out -z 81 -s 17 -a s
-	./bin/pa1.out -z 448 -s 15 -a s
+	./bin/$(TARGET) -z 81 -s 17 -a q3i
 
 clean:
 	rm -rf obj/*
