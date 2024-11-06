@@ -1,0 +1,9 @@
+ao analisar o programa com valgrind, identificamos que o programa não libera
+todos os blocos de memoria que aloca.
+
+correção aplicada adicionando uma liberação de memoria para cada alocação.
+
+NOTA: dado que o programa não tem entrada nem saida, uma correção satisfatoria
+seria apagar todo o código dentro do bloco main alem do 'return 0'. dessa forma
+o programa não faria nenhuma operação de memoria invalida e teria o mesmo
+comportamento do programa original.

@@ -1,0 +1,10 @@
+usando a ferramenta valgrind identificamos que o programa faz uma escrita
+invalida. além disso o própio gcc notifica, ao tentar compilar o programa, que
+na linha 8:
+  strcpy(msg, "Holberton");
+o programa tenta escrever 10 bytes em uma variavel que só teve 8 alocados. o que
+também resulta em uma leitura incorreta.
+
+além disso o programa não libera a memoria que aloca.
+
+correções aplicadas.

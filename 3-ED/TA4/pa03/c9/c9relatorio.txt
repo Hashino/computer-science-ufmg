@@ -1,0 +1,14 @@
+usando a ferramenta valgrind identificamos que o programa faz uma escrita
+invalida e não libera todas as variaveis que aloca.
+
+na função f:
+  void f(void) {
+    int *x = malloc(10 * sizeof(int));
+    x[10] = 0;
+  }
+
+o programa tenta acessar o indice 10 sendo que a variavel foi alocada apenas com
+10 espaços, sendo que C faz indexação com inicio 0. além disso o programa não
+libera a memoria alocada depois de sua utilização.
+
+correções aplicadas.

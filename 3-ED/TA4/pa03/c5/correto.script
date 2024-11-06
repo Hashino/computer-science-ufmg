@@ -1,0 +1,18 @@
+Script started on 2024-11-06 17:02:57-03:00 [COMMAND="valgrind --leak-check=full ./c5correto" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="122" LINES="27"]
+==151576== Memcheck, a memory error detector
+==151576== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==151576== Using Valgrind-3.23.0 and LibVEX; rerun with -h for copyright info
+==151576== Command: ./c5correto
+==151576== 
+intArray[897]: 897
+==151576== 
+==151576== HEAP SUMMARY:
+==151576==     in use at exit: 0 bytes in 0 blocks
+==151576==   total heap usage: 2 allocs, 2 frees, 5,024 bytes allocated
+==151576== 
+==151576== All heap blocks were freed -- no leaks are possible
+==151576== 
+==151576== For lists of detected and suppressed errors, rerun with: -s
+==151576== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+Script done on 2024-11-06 17:02:57-03:00 [COMMAND_EXIT_CODE="0"]

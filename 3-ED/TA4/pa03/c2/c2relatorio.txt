@@ -1,0 +1,12 @@
+conforme apontado por valgrind, o programa faz um acesso de memoria invalido por
+acessar um endereço não inicializado. após analise de código foi identificado que:
+
+na linha 10:
+  for (i = 0; i < 10; i++){
+    printf("%d ", a[i]);
+  }
+
+o programa acessa a[9] na ultima execução do laço, que não é um endereço
+válido, já que, C faz alocações com inicio no indice 0.
+
+código corrigido de acordo com erro identificado.

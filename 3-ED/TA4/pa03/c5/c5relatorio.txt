@@ -1,0 +1,9 @@
+conforme apontado por valgrind, o programa não libera todos os endereços de
+memoria alocados. após analise de código foi identificado que:
+
+na linha 9:
+  int *intArray = malloc(sizeof(int) * ARR_SIZE);
+
+o programa aloca um bloco de memoria a variavel porém nunca libera o bloco.
+
+os erros foram corrigidos liberando corretamente a memoria alocada.

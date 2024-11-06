@@ -1,0 +1,9 @@
+analisando o programa com valgrind vemos que o programa não faz nenhuma operação
+de memoria invalida.
+
+o programa inicializa uma variavel e aumenta seu valor em 1, utilizando a função
+auxiliar 'inc', 5 vezes. após isso retorna o número de parametros que o programa
+recebeu. não fica claro se isso é o comportamento esperado ou não.
+
+analisa inconclusiva. necessário esclarecimento do programador original sobre o
+proposito da aplicação.

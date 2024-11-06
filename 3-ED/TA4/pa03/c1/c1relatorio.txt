@@ -1,0 +1,12 @@
+conforme apontado por valgrind, o programa faz uma escrita de memoria invalida.
+após analise de código foi identificado que:
+
+na linha 8:
+  for (i = 0; i < 11; i++){
+    a[i] = i;
+  }
+
+o programa acessa a[10] na ultima execução do laço, que não é um endereço
+válido, já que, C faz alocações com inicio no indice 0.
+
+código corrigido de acordo com erro identificado.

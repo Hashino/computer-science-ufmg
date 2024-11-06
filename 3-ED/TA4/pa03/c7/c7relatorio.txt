@@ -1,0 +1,9 @@
+usando as ferramentas valgrind e gdb foi possivel diagnosticar que:
+
+na linha 10:
+  *(alphabet + 26) = '\0'; // null-terminate the string?
+
+o programa tenta escrever no indice 26 da string, porém isso gera uma escrita
+invalida já que a string tem apenas 26 indices, começando em 0.
+
+a correção foi feita aumentando o tamanho da stringe para 27.

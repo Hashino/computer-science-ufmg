@@ -1,0 +1,10 @@
+usando a ferramenta valgrind diagnosticamos que o programa faz um acesso
+indevido ao tentar copiar os dados da variavel.
+
+nas linhas 6 e 7:
+  char *destination = calloc(27, sizeof(char));
+  char *source = malloc(26 * sizeof(char));
+
+é possivel ver que o programa cria variaveis de tamanhos diferentes.
+
+o programa foi corrigido tornando as variaveis do mesmo tamanho.

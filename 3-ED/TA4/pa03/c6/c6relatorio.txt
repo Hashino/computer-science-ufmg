@@ -1,0 +1,10 @@
+conforme apontado por valgrind, o programa não libera todos os endereços de
+memoria alocados. após analise de código foi identificado que:
+
+na linha 12:
+  dPtr = realloc(dPtr, 15 * sizeof(int32_t)); // doesn't update array->data
+
+o programa não atualiza a propriedade 'data' de 'array'.
+
+
+os erros foram corrigidos modificando corretamente a propriedade.

@@ -1,0 +1,18 @@
+analisando o programa com valgrind vemos que o programa faz uma divisão por
+zero.
+
+adicionamos então um bloco de checagem a função 'actual_calc' para checar e
+informar o usuario do erro de forma apropriada.
+
+int actual_calc(int a, int b) {
+  if (b == 0) {
+    fprintf(stderr, "%s", "division by zero\n");
+    return 1;
+  }
+  return a / b;
+}
+
+mais uma vez, é dificil analisar qual a intenção do programa para a correção. os
+valores da divisão estão inbutidos no código. então é razoavel aferir que a
+intenção do programador era calcular uma divisão por zero. e o único resultado
+razoavel dessa operação é retornar um erro.

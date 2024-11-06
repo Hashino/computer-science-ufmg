@@ -1,0 +1,23 @@
+Script started on 2024-11-06 17:50:49-03:00 [COMMAND="valgrind --leak-check=full ./c8" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="122" LINES="27"]
+==301183== Memcheck, a memory error detector
+==301183== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==301183== Using Valgrind-3.23.0 and LibVEX; rerun with -h for copyright info
+==301183== Command: ./c8
+==301183== 
+==301183== Invalid read of size 1
+==301183==    at 0x10919E: main (c8.c:9)
+==301183==  Address 0x4a710ba is 0 bytes after a block of size 26 alloc'd
+==301183==    at 0x48447A8: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==301183==    by 0x10917D: main (c8.c:6)
+==301183== 
+==301183== 
+==301183== HEAP SUMMARY:
+==301183==     in use at exit: 0 bytes in 0 blocks
+==301183==   total heap usage: 2 allocs, 2 frees, 53 bytes allocated
+==301183== 
+==301183== All heap blocks were freed -- no leaks are possible
+==301183== 
+==301183== For lists of detected and suppressed errors, rerun with: -s
+==301183== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+Script done on 2024-11-06 17:50:50-03:00 [COMMAND_EXIT_CODE="0"]

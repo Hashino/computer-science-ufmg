@@ -1,0 +1,22 @@
+Script started on 2024-11-04 17:00:00-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="139" LINES="31"]
+c=c3correto; gcc -g -o ${c} ${c}.c; valgrind --leak-check=full ./${c}
+exit
+iamravara@grande:~/Documentos/ED/pa03/c3$ c=c3correto; gcc -g -o ${c} ${c}.c; valgrind --leak-check=full ./${c}
+==113175== Memcheck, a memory error detector
+==113175== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==113175== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==113175== Command: ./c3correto
+==113175== 
+==113175== 
+==113175== HEAP SUMMARY:
+==113175==     in use at exit: 0 bytes in 0 blocks
+==113175==   total heap usage: 10 allocs, 10 frees, 4,000 bytes allocated
+==113175== 
+==113175== All heap blocks were freed -- no leaks are possible
+==113175== 
+==113175== For lists of detected and suppressed errors, rerun with: -s
+==113175== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+iamravara@grande:~/Documentos/ED/pa03/c3$ exit
+exit
+
+Script done on 2024-11-04 17:00:01-03:00 [COMMAND_EXIT_CODE="0"]

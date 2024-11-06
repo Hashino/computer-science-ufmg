@@ -1,0 +1,55 @@
+Script started on 2024-11-06 18:24:16-03:00 [COMMAND="valgrind --leak-check=full ./c11" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="122" LINES="27"]
+==448764== Memcheck, a memory error detector
+==448764== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==448764== Using Valgrind-3.23.0 and LibVEX; rerun with -h for copyright info
+==448764== Command: ./c11
+==448764== 
+==448764== Invalid write of size 2
+==448764==    at 0x109180: main (c11.c:8)
+==448764==  Address 0x4a71048 is 0 bytes after a block of size 8 alloc'd
+==448764==    at 0x48447A8: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==448764==    by 0x10916A: main (c11.c:7)
+==448764== 
+==448764== Invalid read of size 1
+==448764==    at 0x484DA74: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==448764==    by 0x48E1236: __printf_buffer (vfprintf-process-arg.c:435)
+==448764==    by 0x48E1FE3: __vfprintf_internal (vfprintf-internal.c:1544)
+==448764==    by 0x48D5C72: printf (printf.c:33)
+==448764==    by 0x1091AE: main (c11.c:10)
+==448764==  Address 0x4a71048 is 0 bytes after a block of size 8 alloc'd
+==448764==    at 0x48447A8: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==448764==    by 0x10916A: main (c11.c:7)
+==448764== 
+==448764== Invalid read of size 1
+==448764==    at 0x4852430: memmove (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==448764==    by 0x48D65F8: memcpy (string_fortified.h:29)
+==448764==    by 0x48D65F8: __printf_buffer_write (Xprintf_buffer_write.c:39)
+==448764==    by 0x48DF658: __printf_buffer (vfprintf-process-arg.c:501)
+==448764==    by 0x48E1FE3: __vfprintf_internal (vfprintf-internal.c:1544)
+==448764==    by 0x48D5C72: printf (printf.c:33)
+==448764==    by 0x1091AE: main (c11.c:10)
+==448764==  Address 0x4a71048 is 0 bytes after a block of size 8 alloc'd
+==448764==    at 0x48447A8: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==448764==    by 0x10916A: main (c11.c:7)
+==448764== 
+448764, Rolberton
+==448764== 
+==448764== HEAP SUMMARY:
+==448764==     in use at exit: 8 bytes in 1 blocks
+==448764==   total heap usage: 2 allocs, 1 frees, 1,032 bytes allocated
+==448764== 
+==448764== 8 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==448764==    at 0x48447A8: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==448764==    by 0x10916A: main (c11.c:7)
+==448764== 
+==448764== LEAK SUMMARY:
+==448764==    definitely lost: 8 bytes in 1 blocks
+==448764==    indirectly lost: 0 bytes in 0 blocks
+==448764==      possibly lost: 0 bytes in 0 blocks
+==448764==    still reachable: 0 bytes in 0 blocks
+==448764==         suppressed: 0 bytes in 0 blocks
+==448764== 
+==448764== For lists of detected and suppressed errors, rerun with: -s
+==448764== ERROR SUMMARY: 6 errors from 4 contexts (suppressed: 0 from 0)
+
+Script done on 2024-11-06 18:24:17-03:00 [COMMAND_EXIT_CODE="0"]

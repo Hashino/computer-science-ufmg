@@ -1,4 +1,3 @@
-
 .DEFAULT_GOAL := all
 
 TARGET := pa1.out

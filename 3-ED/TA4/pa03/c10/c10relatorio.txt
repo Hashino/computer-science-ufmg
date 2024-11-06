@@ -1,0 +1,21 @@
+ao analisar o codigo não ficou claro seu proposito então não foi possivel
+diagnosticar o que seria um "comportamento indesejado".
+
+o loop:
+  while (1) {
+    p = malloc(128);
+    printf("%ld\n", (long)p);
+  }
+
+faz operações sem sentido semantico na linguagem C. justamente por isso foi
+dificil identificar qual era seu comportamento esperado para uma correção.
+
+por ter um loop infinito o analisar com valgrind seria impossivel. então
+deliberei por modificar o loop infinito por um for de 1 a 10 afim apenas de ser
+possivel aferir que não faz operações de memória invalidas com valgrind.
+
+adicionei um free em cada execução do loop para que não ocorre um overflow de
+memória.
+
+programa não corrigido por precisar de esclarecimentos do desenvolvedor original
+sobre seu proposito.

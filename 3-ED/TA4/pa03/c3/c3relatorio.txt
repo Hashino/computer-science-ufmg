@@ -1,0 +1,17 @@
+conforme apontado por valgrind, o programa faz 10 alocações porém apenas uma
+liberação de memória.
+após analise de código foi identificado que:
+
+na linha 8:
+  for (i = 0; i < 10; i++) {
+    a = malloc(sizeof(int) * 100);
+  }
+  free(a);
+
+da segunda execução do laço em diante o programa aloca um espaço de memória para
+100 inteiros e substitui o valor de 'a' com o endereço sem liberar o bloco de
+memoria para o qual 'a' apontava anteriormente. dessa forma, apenas o último
+bloco de memoria alocado é liberado, vazando a memória dos outros 9.
+
+código corrigido de acordo com erro identificado, atribuindo uma liberação de
+memoria para cada alocação.

@@ -1,0 +1,31 @@
+similarmente a c10, não ficou claro o objetivo da aplicação.
+
+  int x;
+  if(x == 0) {
+      printf("X is zero"); 
+  }
+
+como o inteiro x é criado sem uma atribuição de valor, seu valor será qualquer
+valor que estava no bloco de memoria que tiver sido alocado a ele pelo
+compilador. sendo assim imprevisivel seu valor.
+
+se o objetivo do programa fosse exemplificar o comportamento de variaveis com
+valor não inicialiado, o código poderia ser alterado para:
+
+  int x;
+  if (x == 0) {
+    printf("X is zero");
+  } else {
+    printf("%d\n", x);
+  }
+
+mostrando assim que 'x' tera um valor não deterministico durante a execução do
+programa.
+
+porém se a intenção do programa fosse ter um bloco de código com uma chance
+extremamente baixa de ser executado, nenhuma correção seria necessária.
+
+
+usando o valgrind para analisar o algoritimo, vemos que a comparação de um valor
+não incializado configura um comportamento não bem definido. usando isso como
+base para a correção, inicializamos 'x' com o valor 0.

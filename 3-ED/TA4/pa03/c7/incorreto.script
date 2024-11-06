@@ -1,0 +1,57 @@
+Script started on 2024-11-06 17:34:14-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="122" LINES="27"]
+[?2004h]0;~/D/c/3/T/p/c7[30m(B[m[32m~/Documents/computer-science-ufmg/3-ED/TA4/pa03/c7 [1m[34m(main[31m [34m)(B[m(B[m  [K[114C[1m[90m17:34:14(B[m[114C[62Cg[114C[1m[90m17:34:14(B[m[114C[63C[91mg[30m(B[m[114C[1m[90m17:34:14(B[m[114C[63C[90mdb c7[30m(B[m[114C[1m[90m17:34:14(B[m[114C[63C[91mc[30m(B[m[K[114C[1m[90m17:34:14(B[m[114C[64C[90mc -o c7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[64C[91mc[90m -o c7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[65C[34mgcc[90m -o c7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[65C[34m [90m-o c7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[66C [90m-o c7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[66C-[90mo c7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[67C[36m-[90mo c7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[67C[36mr[30m(B[m[K[114C[1m[90m17:34:14(B[m[114C[68C[90mange [30m(B[m[114C[1m[90m17:34:14(B[m[114C[68C[36m [30m(B[m[K[114C[1m[90m17:34:14(B[m[114C[69C [114C[1m[90m17:34:14(B[m[114C[69C[K[114C[1m[90m17:34:14(B[m[114C[68C[K[114C[1m[90m17:34:14(B[m[114C[67C[36m0[30m(B[m[114C[1m[90m17:34:14(B[m[114C[68C[36m [30m(B[m[114C[1m[90m17:34:14(B[m[114C[69C [114C[1m[90m17:34:14(B[m[114C[69C[K[114C[1m[90m17:34:14(B[m[114C[68C[K[114C[1m[90m17:34:14(B[m[114C[67C[36mo[30m(B[m[114C[1m[90m17:34:14(B[m[114C[68C[90m c7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[68C[36m [90mc7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[69C [90mc7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[69Cc[90m7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[70C[36m[4mc[90m[24m7 c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[70C[36m[4m7[90m[24m c7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[71C[36m[4m [90m[24mc7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[72C [90mc7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[72Cc[90m7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[73C[36m[4mc[90m[24m7.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[73C[36m[4m7[90m[24m.c -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[74C[36m[4m.[90m[24mc -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[75C[36m[4mc[90m[24m -g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[76C[36m[4m [90m[24m-g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[77C [90m-g[30m(B[m[114C[1m[90m17:34:14(B[m[114C[77C-[90mg[30m(B[m[114C[1m[90m17:34:14(B[m[114C[78C[36m-[90mg[30m(B[m[114C[1m[90m17:34:14(B[m[114C[78C[36mg[30m(B[m[114C[1m[90m17:34:14(B[m[114C[79C[114C[1m[90m17:34:14(B[m[114C[79C[114C[1m[90m17:34:14(B[m[114C[79C
+[30m(B[m[?2004l]0;gcc -o c7 c7.c -g ~/D/c/3/T/p/c7[30m(B[m[2m⏎(B[m                                                                                                                         ⏎ [K[?2004h]0;~/D/c/3/T/p/c7[30m(B[m[32m~/Documents/computer-science-ufmg/3-ED/TA4/pa03/c7 [1m[34m(main[31m [34m)(B[m(B[m  [K[114C[1m[90m17:34:31(B[m[114C[62Cg[114C[1m[90m17:34:31(B[m[114C[63C[90mcc -o c7 c7.c -g[30m(B[m[114C[1m[90m17:34:31(B[m[114C[63C[91mg[90mcc -o c7 c7.c -g[30m(B[m[114C[1m[90m17:34:31(B[m[114C[63C[91md[30m(B[m[K[114C[1m[90m17:34:31(B[m[114C[64C[90mb c7[30m(B[m[114C[1m[90m17:34:31(B[m[114C[64C[91mb[90m c7[30m(B[m[114C[1m[90m17:34:31(B[m[114C[65C[34mgdb[90m c7[30m(B[m[114C[1m[90m17:34:31(B[m[114C[65C[34m [90mc7[30m(B[m[114C[1m[90m17:34:31(B[m[114C[66C [90mc7[30m(B[m[114C[1m[90m17:34:31(B[m[114C[66Cc[90m7[30m(B[m[114C[1m[90m17:34:31(B[m[114C[67C[36m[4mc[90m[24m7[30m(B[m[114C[1m[90m17:34:31(B[m[114C[67C[36m[4m7[30m(B[m[114C[1m[90m17:34:31(B[m[114C[68C[114C[1m[90m17:34:31(B[m[114C[68C[114C[1m[90m17:34:31(B[m[114C[68C
+[30m(B[m[?2004l]0;gdb c7 ~/D/c/3/T/p/c7[30m(B[m[35;1mGNU gdb (GDB) 15.2[m
+Copyright (C) 2024 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <[32mhttp://gnu.org/licenses/gpl.html[m>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-pc-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+[32m<https://www.gnu.org/software/gdb/bugs/>[m.
+Find the GDB manual and other documentation resources online at:
+    <[32mhttp://www.gnu.org/software/gdb/documentation/[m>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from [32mc7[m...
+[?2004h(gdb) bra[Keak 10
+[?2004lBreakpoint 1 at [34m0x1190[m: file [32mc7.c[m, line 10.
+[?2004h(gdb) run
+[?2004lStarting program: [32m/home/hashino/Documents/computer-science-ufmg/3-ED/TA4/pa03/c7/c7[m 
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <[32mhttps://debuginfod.archlinux.org[m>
+[?2004hEnable debuginfod for this session? (y or [n]) y
+[?2004lDebuginfod has been enabled.
+To make this setting permanent, add 'set debuginfod enabled on' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/usr/lib/libthread_db.so.1[m".
+
+Breakpoint 1, [33mmain[m () at [32mc7.c[m:10
+10	  [31m*([malphabet [31m+[m [35m26[m[31m)[m [31m=[m [31m'[m[35m\0[m[31m'[m[31m;[m [36m// null-terminate the string?[m
+[?2004h[?2004l[?2004h(gdb) displat[Ky alphabet
+[?2004l1: alphabet = [34m0x5555555592a0[m "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+[?2004h(gdb) next
+[?2004l12	  [01mfree[m[31m([malphabet[31m);[m
+1: alphabet = [34m0x5555555592a0[m "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+[?2004h[?2004l[?2004h(gdb) next
+[?2004l13	  [01;34mreturn[m [35m0[m[31m;[m
+1: alphabet = [34m0x5555555592a0[m "YUUU\005"
+[?2004h[?2004l[?2004h(gdb) next
+[?2004l14	[31m}[m
+1: alphabet = [34m0x5555555592a0[m "YUUU\005"
+[?2004h[?2004l[?2004h(gdb) next
+[?2004l[33m__libc_start_call_main[m ([36mmain=main@entry[m=0x555555555149 <main>, [36margc=argc@entry[m=1, [36margv=argv@entry[m=0x7fffffffe638)
+    at [32m../sysdeps/nptl/libc_start_call_main.h[m:74
+74	  [01mexit[m [31m([mresult[31m);[m
+[?2004h[?2004l[?2004h(gdb) next
+[?2004l[Inferior 1 (process 252561) exited normally]
+[?2004h[?2004l[?2004h(gdb) next
+[?2004lThe program is not being run.
+[?2004h(gdb) quit
+[?2004l[2m⏎(B[m                                                                                                                         ⏎ [K[?2004h]0;~/D/c/3/T/p/c7[30m(B[m[32m~/Documents/computer-science-ufmg/3-ED/TA4/pa03/c7 [1m[34m(main[31m [34m)(B[m(B[m  [K[105C[34mtook 29s (B[m[1m[90m17:35:08(B[m[105C[62Ce[105C[34mtook 29s (B[m[1m[90m17:35:08(B[m[105C[63C[90mxit[30m(B[m[105C[34mtook 29s (B[m[1m[90m17:35:08(B[m[105C[63C[91me[90mxit[30m(B[m[105C[34mtook 29s (B[m[1m[90m17:35:08(B[m[105C[63C[91mx[90mit[30m(B[m[105C[34mtook 29s (B[m[1m[90m17:35:08(B[m[105C[64C[91mi[90mt[30m(B[m[105C[34mtook 29s (B[m[1m[90m17:35:08(B[m[105C[65C[91mt[30m(B[m[105C[34mtook 29s (B[m[1m[90m17:35:08(B[m[105C[66C[105C[34mtook 29s (B[m[1m[90m17:35:08(B[m[105C[66C[34mexit[30m(B[m[105C[34mtook 29s (B[m[1m[90m17:35:08(B[m[105C[66C[105C[34mtook 29s (B[m[1m[90m17:35:08(B[m[105C[66C
+[30m(B[m[?2004l]0;exit ~/D/c/3/T/p/c7[30m(B[m[30m(B[m[?2004l
+Script done on 2024-11-06 17:35:10-03:00 [COMMAND_EXIT_CODE="0"]

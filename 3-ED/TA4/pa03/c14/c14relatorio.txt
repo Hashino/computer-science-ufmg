@@ -1,0 +1,7 @@
+analisando o programa com valgrind identificamos que o programa utiliza
+variaveis com valores não inicializados resultando em comportamento indefinido.
+
+corrigimos o programa inicializando os valores das variaveis em sua criação.
+
+NOTA: 'fact' precisa ter seu valor inicializado em 1. caso inicializado com 0, o
+algoritimo sempre resultara em 0.

@@ -1,0 +1,26 @@
+conforme apontado por valgrind, o programa faz uso de valores de memória não
+inicilizados. após analise de código foi identificado que:
+
+na linha 11:
+  struct Matrix * rotation3D;
+
+o programa não incializa corretamente a variavel por não alocar memória para a
+matrix antes de atribuir valores a ela.
+
+nas linhas 10 e 18:
+  car * text;
+  ...
+  free(text);
+
+a variavel é criada e nunca utilizada, o programa tenta liberar suas memoria sem
+nunca ter alocado nenhuma memoria ao ponteiro.
+
+e na linha 21:
+  free(rotation3D->data);
+
+o programa libera memoria incorretamente, já que, por se tratar de um vetor de
+vetores, cada entrada de 'rotation3D->data' precisa ter sua memoria liberda
+individualmente.
+
+os erros foram corrigidos removendo a variavel não utilizada e liberando
+corretamente a memoria do vetor.

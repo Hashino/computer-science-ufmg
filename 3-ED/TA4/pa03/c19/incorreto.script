@@ -1,0 +1,188 @@
+Script started on 2024-11-06 19:13:50-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="122" LINES="27"]
+[?2004h]0;~/D/c/3/T/p/c19[30m(B[m[32m~/Documents/computer-science-ufmg/3-ED/TA4/pa03/c19 [1m[34m(main[31m [34m)(B[m(B[m  [K[114C[1m[90m19:13:50(B[m[114C[63Cg[114C[1m[90m19:13:50(B[m[114C[64C[91mg[30m(B[m[114C[1m[90m19:13:50(B[m[114C[64C[90mcc -g -o c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[64C[91mc[90mc -g -o c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[65C[91mc[90m -g -o c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[66C[34mgcc[90m -g -o c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[66C[34m [90m-g -o c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[67C [90m-g -o c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[67C-[90mg -o c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[68C[36m-[90mg -o c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[68C[36mg[90m -o c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[69C[36m [90m-o c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[70C [90m-o c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[70C-[90mo c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[71C[36m-[90mo c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[71C[36mo[90m c19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[72C[36m [90mc19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[73C [90mc19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[73Cc[90m19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[74C[36m[4mc[90m[24m19correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[74C[36m[4m1[90m[24m9correto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[75C[36m[4m9[90m[24mcorreto c19correto.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[76C[36m[4m [30m(B[m[K[114C[1m[90m19:13:50(B[m[114C[77C[90mc19.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[77C [90mc19.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[77Cc[90m19.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[78C[36m[4mc[90m[24m19.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[78C[36m[4m1[90m[24m9.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[79C[36m[4m9[90m[24m.c[30m(B[m[114C[1m[90m19:13:50(B[m[114C[80C[36m[4m.[90m[24mc[30m(B[m[114C[1m[90m19:13:50(B[m[114C[81C[36m[4mc[30m(B[m[114C[1m[90m19:13:50(B[m[114C[82C[114C[1m[90m19:13:50(B[m[114C[82C[114C[1m[90m19:13:50(B[m[114C[82C
+[30m(B[m[?2004l]0;gcc -g -o c19 c19.c ~/D/c/3/T/p/c19[30m(B[m[2m⏎(B[m                                                                                                                         ⏎ [K[?2004h]0;~/D/c/3/T/p/c19[30m(B[m[32m~/Documents/computer-science-ufmg/3-ED/TA4/pa03/c19 [1m[34m(main[31m [34m)(B[m(B[m  [K[114C[1m[90m19:13:58(B[m[114C[63Cg[114C[1m[90m19:13:58(B[m[114C[64C[91mg[30m(B[m[114C[1m[90m19:13:58(B[m[114C[64C[90mcc -g -o c19 c19.c[30m(B[m[114C[1m[90m19:13:58(B[m[114C[64C[91md[30m(B[m[K[114C[1m[90m19:13:58(B[m[114C[65C[90mdccontrol[30m(B[m[114C[1m[90m19:13:58(B[m[114C[65C[91mb[30m(B[m[K[114C[1m[90m19:13:58(B[m[114C[66C[34mgdb[30m(B[m[114C[1m[90m19:13:58(B[m[114C[66C[114C[1m[90m19:13:58(B[m[114C[66C[34m [30m(B[m[114C[1m[90m19:13:58(B[m[114C[67C [114C[1m[90m19:13:58(B[m[114C[67Cc[114C[1m[90m19:13:58(B[m[114C[68C[36m[4mc[30m(B[m[114C[1m[90m19:13:58(B[m[114C[68C[90m19 [30m(B[m[114C[1m[90m19:13:58(B[m[114C[68C[36m[4m1[90m[24m9 [30m(B[m[114C[1m[90m19:13:58(B[m[114C[69C[36m[4m9[90m[24m [30m(B[m[114C[1m[90m19:13:58(B[m[114C[70C[K[114C[1m[90m19:13:58(B[m[114C[70C
+[30m(B[m[?2004l]0;gdb c19 ~/D/c/3/T/p/c19[30m(B[m[35;1mGNU gdb (GDB) 15.2[m
+Copyright (C) 2024 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <[32mhttp://gnu.org/licenses/gpl.html[m>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-pc-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+[32m<https://www.gnu.org/software/gdb/bugs/>[m.
+Find the GDB manual and other documentation resources online at:
+    <[32mhttp://www.gnu.org/software/gdb/documentation/[m>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from [32mc19[m...
+[?2004h(gdb) break main
+[?2004lBreakpoint 1 at [34m0x1268[m: file [32mc19.c[m, line 28.
+[?2004h(gdb) next
+[?2004lThe program is not being run.
+[?2004h(gdb) rim[K[K[Knr[K[Kbreak printSSu[K[Kum
+[?2004lBreakpoint 2 at [34m0x11bf[m: file [32mc19.c[m, line 16.
+[?2004h(gdb) break sum_to_n
+[?2004lBreakpoint 3 at [34m0x1190[m: file [32mc19.c[m, line 9.
+[?2004h(gdb) ri[Kun
+[?2004lStarting program: [32m/home/hashino/Documents/computer-science-ufmg/3-ED/TA4/pa03/c19/c19[m 
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <[32mhttps://debuginfod.archlinux.org[m>
+[?2004hEnable debuginfod for this session? (y or [n]) y
+[?2004lDebuginfod has been enabled.
+To make this setting permanent, add 'set debuginfod enabled on' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/usr/lib/libthread_db.so.1[m".
+
+Breakpoint 1, [33mmain[m () at [32mc19.c[m:28
+28	    [01mprintSum[m[31m();[m
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l
+Breakpoint 2, [33mprintSum[m () at [32mc19.c[m:16
+16	[31m{[m
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l18	    [01mprintf[m[31m([m[31m"enter a number:[m[35m\n[m[31m"[m[31m);[m
+[?2004h[?2004l[?2004h(gdb) n
+[?2004lenter a number:
+19	    [01mfgets[m[31m([mline[31m,[m [35m10[m[31m,[m stdin[31m);[m
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l10
+21	        [01mstrtok[m[31m([mline[31m,[m [31m"[m[35m\n[m[31m"[m[31m);[m 
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l22	    [01msprintf[m[31m([mbuf[31m,[m[31m"sum=%d"[m[31m,[m[01msum_to_n[m[31m([m[01matoi[m[31m([mline[31m)));[m
+[?2004h[?2004l[?2004h(gdb) display line
+[?2004l1: line = "10\000\000\000\000\000\000\000"
+[?2004h(gdb) n
+[?2004l
+Breakpoint 3, [33msum_to_n[m ([36mnum[m=10) at [32mc19.c[m:9
+9	    [32mint[m i[31m,[msum[31m=[m[35m0[m[31m;[m
+[?2004h[?2004l[?2004h(gdb) displayu[K num
+[?2004l2: num = 10
+[?2004h(gdb) n
+[?2004l10	    [01;34mfor[m[31m([mi[31m=[m[35m1[m[31m;[mi[31m<=[mnum[31m;[mi[31m++)[m
+2: num = 10
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l11	        sum[31m+=[mi[31m;[m
+2: num = 10
+[?2004h[?2004l[?2004h(gdb) display sum
+[?2004l3: sum = 0
+[?2004h(gdb) n
+[?2004l10	    [01;34mfor[m[31m([mi[31m=[m[35m1[m[31m;[mi[31m<=[mnum[31m;[mi[31m++)[m
+2: num = 10
+3: sum = 1
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l11	        sum[31m+=[mi[31m;[m
+2: num = 10
+3: sum = 1
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l10	    [01;34mfor[m[31m([mi[31m=[m[35m1[m[31m;[mi[31m<=[mnum[31m;[mi[31m++)[m
+2: num = 10
+3: sum = 3
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l11	        sum[31m+=[mi[31m;[m
+2: num = 10
+3: sum = 3
+[?2004h[?2004l[?2004h(gdb) display i
+[?2004l4: i = 3
+[?2004h(gdb) n
+[?2004l10	    [01;34mfor[m[31m([mi[31m=[m[35m1[m[31m;[mi[31m<=[mnum[31m;[mi[31m++)[m
+2: num = 10
+3: sum = 6
+4: i = 3
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l11	        sum[31m+=[mi[31m;[m
+2: num = 10
+3: sum = 6
+4: i = 4
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l10	    [01;34mfor[m[31m([mi[31m=[m[35m1[m[31m;[mi[31m<=[mnum[31m;[mi[31m++)[m
+2: num = 10
+3: sum = 10
+4: i = 4
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l11	        sum[31m+=[mi[31m;[m
+2: num = 10
+3: sum = 10
+4: i = 5
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l10	    [01;34mfor[m[31m([mi[31m=[m[35m1[m[31m;[mi[31m<=[mnum[31m;[mi[31m++)[m
+2: num = 10
+3: sum = 15
+4: i = 5
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l11	        sum[31m+=[mi[31m;[m
+2: num = 10
+3: sum = 15
+4: i = 6
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l10	    [01;34mfor[m[31m([mi[31m=[m[35m1[m[31m;[mi[31m<=[mnum[31m;[mi[31m++)[m
+2: num = 10
+3: sum = 21
+4: i = 6
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l11	        sum[31m+=[mi[31m;[m
+2: num = 10
+3: sum = 21
+4: i = 7
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l10	    [01;34mfor[m[31m([mi[31m=[m[35m1[m[31m;[mi[31m<=[mnum[31m;[mi[31m++)[m
+2: num = 10
+3: sum = 28
+4: i = 7
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l11	        sum[31m+=[mi[31m;[m
+2: num = 10
+3: sum = 28
+4: i = 8
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l10	    [01;34mfor[m[31m([mi[31m=[m[35m1[m[31m;[mi[31m<=[mnum[31m;[mi[31m++)[m
+2: num = 10
+3: sum = 36
+4: i = 8
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l11	        sum[31m+=[mi[31m;[m
+2: num = 10
+3: sum = 36
+4: i = 9
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l10	    [01;34mfor[m[31m([mi[31m=[m[35m1[m[31m;[mi[31m<=[mnum[31m;[mi[31m++)[m
+2: num = 10
+3: sum = 45
+4: i = 9
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l11	        sum[31m+=[mi[31m;[m
+2: num = 10
+3: sum = 45
+4: i = 10
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l10	    [01;34mfor[m[31m([mi[31m=[m[35m1[m[31m;[mi[31m<=[mnum[31m;[mi[31m++)[m
+2: num = 10
+3: sum = 55
+4: i = 10
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l12	    [01;34mreturn[m sum[31m;[m
+2: num = 10
+3: sum = 55
+4: i = 11
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l13	[31m}[m
+2: num = 10
+3: sum = 55
+4: i = 11
+[?2004h[?2004l[?2004h(gdb) n
+[?2004l
+Program received signal SIGSEGV, Segmentation fault.
+Downloading 27.27 K source file [32m/usr/src/debug/glibc/glibc/string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S[m
+[#######################################################################################################] 100% (27.27 K)                                                                                                                          [33m__memcpy_avx_unaligned_erms[m () at [32m../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S[m:333
+333		movl	[31m%[m[32mecx[m[31m,[m [31m-[m[35m4[m[31m(%[mrdi[31m,[m [31m%[mrdx[31m)[m
+[?2004h[?2004l[?2004h(gdb) quit
+[?2004l[?2004hA debugging session is active.
+
+	Inferior 1 [process 714938] will be killed.
+
+Quit anyway? (y or n) y
+[?2004l[2m⏎(B[m                                                                                                                         ⏎ [K[?2004h]0;~/D/c/3/T/p/c19[30m(B[m[32m~/Documents/computer-science-ufmg/3-ED/TA4/pa03/c19 [1m[34m(main[31m [34m)(B[m(B[m  [K[102C[34mtook 2m 30s (B[m[1m[90m19:16:33(B[m[102C[63Ce[102C[34mtook 2m 30s (B[m[1m[90m19:16:33(B[m[102C[64C[90mxit[30m(B[m[102C[34mtook 2m 30s (B[m[1m[90m19:16:33(B[m[102C[64C[91me[90mxit[30m(B[m[102C[34mtook 2m 30s (B[m[1m[90m19:16:33(B[m[102C[64C[91mx[90mit[30m(B[m[102C[34mtook 2m 30s (B[m[1m[90m19:16:33(B[m[102C[65C[91mi[90mt[30m(B[m[102C[34mtook 2m 30s (B[m[1m[90m19:16:33(B[m[102C[66C[91mt[30m(B[m[102C[34mtook 2m 30s (B[m[1m[90m19:16:33(B[m[102C[67C[102C[34mtook 2m 30s (B[m[1m[90m19:16:33(B[m[102C[67C[34mexit[30m(B[m[102C[34mtook 2m 30s (B[m[1m[90m19:16:33(B[m[102C[67C[102C[34mtook 2m 30s (B[m[1m[90m19:16:33(B[m[102C[67C
+[30m(B[m[?2004l]0;exit ~/D/c/3/T/p/c19[30m(B[m[30m(B[m[?2004l
+Script done on 2024-11-06 19:16:34-03:00 [COMMAND_EXIT_CODE="0"]

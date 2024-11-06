@@ -1,0 +1,9 @@
+ao tentarmos executar o programa vimos que o programa é interrompido por um
+SIGSEV. ao depurarmos o programa com o gdb identificamos que o erro ocorre ao
+tentar executar a linha 20:
+  sprintf(buf, "sum=%d", sum_to_n(atoi(line)));
+
+fazendo uma analise do código, identificamos que o erro ocorre por tentar
+atribuir o valor do resultado a variavel 'buf' sem alocar memoria a mesma.
+
+programa corrigido fazendo uma alocação correta a variavel 'buf'.
