@@ -1,0 +1,9 @@
+Quão bem o programa se comporta em termos de memória?
+muito bem. a taxa de 'miss' no cache é bem baixa.
+
+Quais estruturas de dados devem serem caracterizadas para melhor entendimento?
+a struct 'mat_tipo'
+
+Quais segmentos de código devem instrumentados para suportar a caracterização?
+todos os segmentos de código que fazem leitura e escrita da estrutura de dados
+'mat_tipo'

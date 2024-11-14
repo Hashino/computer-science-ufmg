@@ -1,0 +1,194 @@
+--------------------------------------------------------------------------------
+-- Metadata
+--------------------------------------------------------------------------------
+Invocation:       /bin/cg_annotate res/cachegrind.out
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         33554432 B, 64 B, direct-mapped
+Command:          bin/matop -t -x 500 -y 500
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Threshold:        0.1%
+Annotation:       on
+
+--------------------------------------------------------------------------------
+-- Summary
+--------------------------------------------------------------------------------
+Ir_________________ I1mr__________ ILmr__________ Dr_________________ D1mr____________ DLmr__________ Dw________________ D1mw____________ DLmw___________ 
+
+49,793,207 (100.0%) 1,291 (100.0%) 1,262 (100.0%) 15,491,814 (100.0%) 134,795 (100.0%) 1,267 (100.0%) 4,031,685 (100.0%) 111,944 (100.0%) 80,385 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+-- File:function summary
+--------------------------------------------------------------------------------
+  Ir_______________________ I1mr___________ ILmr___________ Dr______________________ D1mr__________________ DLmr__________ Dw______________________ D1mw__________________ DLmw_________________  file:function
+
+< 32,364,220 (65.0%, 65.0%) 25 (1.9%, 1.9%) 25 (2.0%, 2.0%) 9,949,457 (64.2%, 64.2%) 133,067 (98.7%, 98.7%) 2 (0.2%, 0.2%) 1,516,077 (37.6%, 37.6%) 111,503 (99.6%, 99.6%) 80,001 (99.5%, 99.5%)  /home/hashino/Documents/cs-ufmg/3-ED/TA5/obj/../src/mat.c:
+  16,223,040 (32.6%)        14 (1.1%)       14 (1.1%)       4,743,523 (30.6%)        133,066 (98.7%)        1 (0.1%)         374,757  (9.3%)              0                     0                   transpoeMatriz
+  10,885,611 (21.9%)         1 (0.1%)        1 (0.1%)       3,202,403 (20.7%)              0                0                640,803 (15.9%)         80,001 (71.5%)        80,000 (99.5%)           inicializaMatrizNula
+   5,255,517 (10.6%)         3 (0.2%)        3 (0.2%)       2,003,506 (12.9%)              1  (0.0%)        1 (0.1%)         500,504 (12.4%)         31,501 (28.1%)             0                   inicializaMatrizAleatoria
+
+<  8,000,000 (16.1%, 81.1%)  3 (0.2%, 2.2%)  3 (0.2%, 2.2%) 2,000,000 (12.9%, 77.1%)       1  (0.0%, 98.7%) 1 (0.1%, 0.2%) 1,250,000 (31.0%, 68.6%)       1  (0.0%, 99.6%)      0  (0.0%, 99.5%)  /usr/src/debug/glibc/glibc/stdlib/erand48_r.c:erand48_r
+
+<  5,000,003 (10.0%, 91.1%)  3 (0.2%, 2.4%)  3 (0.2%, 2.5%) 1,749,998 (11.3%, 88.4%)       1  (0.0%, 98.7%) 0 (0.0%, 0.2%)   500,002 (12.4%, 81.0%)       0  (0.0%, 99.6%)      0  (0.0%, 99.5%)  /usr/src/debug/glibc/glibc/stdlib/drand48-iter.c:__drand48_iterate
+
+<  4,000,000  (8.0%, 99.1%)  1 (0.1%, 2.5%)  1 (0.1%, 2.5%) 1,500,000  (9.7%, 98.1%)       0  (0.0%, 98.7%) 0 (0.0%, 0.2%)   750,000 (18.6%, 99.6%)       0  (0.0%, 99.6%)      0  (0.0%, 99.5%)  /usr/src/debug/glibc/glibc/stdlib/drand48.c:drand48
+
+<    250,236  (0.5%, 99.6%) 28 (2.2%, 4.6%) 27 (2.1%, 4.7%)   250,075  (1.6%, 99.7%)      13  (0.0%, 98.7%) 0 (0.0%, 0.2%)        34  (0.0%, 99.6%)       1  (0.0%, 99.6%)      1  (0.0%, 99.5%)  ???:
+     250,182  (0.5%)        23 (1.8%)       22 (1.7%)         250,057  (1.6%)             12  (0.0%)        0                     21  (0.0%)              1  (0.0%)             1  (0.0%)           ???
+
+--------------------------------------------------------------------------------
+-- Function:file summary
+--------------------------------------------------------------------------------
+  Ir_______________________ I1mr___________ ILmr___________ Dr______________________ D1mr__________________ DLmr__________ Dw______________________ D1mw_________________ DLmw_________________  function:file
+
+> 16,223,040 (32.6%, 32.6%) 14 (1.1%, 1.1%) 14 (1.1%, 1.1%) 4,743,523 (30.6%, 30.6%) 133,066 (98.7%, 98.7%) 1 (0.1%, 0.1%)   374,757  (9.3%,  9.3%)      0  (0.0%,  0.0%)      0  (0.0%,  0.0%)  transpoeMatriz:/home/hashino/Documents/cs-ufmg/3-ED/TA5/obj/../src/mat.c
+
+> 10,885,611 (21.9%, 54.4%)  1 (0.1%, 1.2%)  1 (0.1%, 1.2%) 3,202,403 (20.7%, 51.3%)       0  (0.0%, 98.7%) 0 (0.0%, 0.1%)   640,803 (15.9%, 25.2%) 80,001 (71.5%, 71.5%) 80,000 (99.5%, 99.5%)  inicializaMatrizNula:/home/hashino/Documents/cs-ufmg/3-ED/TA5/obj/../src/mat.c
+
+>  8,000,000 (16.1%, 70.5%)  3 (0.2%, 1.4%)  3 (0.2%, 1.4%) 2,000,000 (12.9%, 64.2%)       1  (0.0%, 98.7%) 1 (0.1%, 0.2%) 1,250,000 (31.0%, 56.2%)      1  (0.0%, 71.5%)      0  (0.0%, 99.5%)  erand48_r:/usr/src/debug/glibc/glibc/stdlib/erand48_r.c
+
+>  5,255,517 (10.6%, 81.1%)  3 (0.2%, 1.6%)  3 (0.2%, 1.7%) 2,003,506 (12.9%, 77.1%)       1  (0.0%, 98.7%) 1 (0.1%, 0.2%)   500,504 (12.4%, 68.6%) 31,501 (28.1%, 99.6%)      0  (0.0%, 99.5%)  inicializaMatrizAleatoria:/home/hashino/Documents/cs-ufmg/3-ED/TA5/obj/../src/mat.c
+
+>  5,000,003 (10.0%, 91.1%)  3 (0.2%, 1.9%)  3 (0.2%, 1.9%) 1,749,998 (11.3%, 88.4%)       1  (0.0%, 98.7%) 0 (0.0%, 0.2%)   500,002 (12.4%, 81.0%)      0  (0.0%, 99.6%)      0  (0.0%, 99.5%)  __drand48_iterate:/usr/src/debug/glibc/glibc/stdlib/drand48-iter.c
+
+>  4,000,000  (8.0%, 99.1%)  1 (0.1%, 1.9%)  1 (0.1%, 2.0%) 1,500,000  (9.7%, 98.1%)       0  (0.0%, 98.7%) 0 (0.0%, 0.2%)   750,000 (18.6%, 99.6%)      0  (0.0%, 99.6%)      0  (0.0%, 99.5%)  drand48:/usr/src/debug/glibc/glibc/stdlib/drand48.c
+
+>    250,182  (0.5%, 99.6%) 23 (1.8%, 3.7%) 22 (1.7%, 3.7%)   250,057  (1.6%, 99.7%)      12  (0.0%, 98.7%) 0 (0.0%, 0.2%)        21  (0.0%, 99.6%)      1  (0.0%, 99.6%)      1  (0.0%, 99.5%)  ???:???
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /home/hashino/Documents/cs-ufmg/3-ED/TA5/obj/../src/mat.c
+--------------------------------------------------------------------------------
+Ir________________ I1mr____ ILmr____ Dr_______________ D1mr___________ DLmr____ Dw_____________ D1mw__________ DLmw__________ 
+
+-- line 18 ----------------------------------------
+         .         .        .                .               .         .              .              .              .          #define INITRANDOMRANGE 10
+         .         .        .                .               .         .              .              .              .          // Macro que realiza swap sem variavel auxiliar
+         .         .        .                .               .         .              .              .              .          #define ELEMSWAP(x, y) (x += y, y = x - y, x -= y)
+         .         .        .                .               .         .              .              .              .          
+         .         .        .                .               .         .              .              .              .          void criaMatriz(mat_tipo *mat, int tx, int ty, int id)
+         .         .        .                .               .         .              .              .              .          // Descricao: cria matriz com dimensoes tx X ty
+         .         .        .                .               .         .              .              .              .          // Entrada: mat, tx, ty, id
+         .         .        .                .               .         .              .              .              .          // Saida: mat
+         7  (0.0%) 0        0                0               0         0              5  (0.0%)      0              0          {
+         .         .        .                .               .         .              .              .              .            // verifica se os valores de tx e ty são validos
+         2  (0.0%) 0        0                1  (0.0%)       0         0              0              0              0            erroAssert(tx > 0, "Dimensao nula");
+         2  (0.0%) 1 (0.1%) 1 (0.1%)         1  (0.0%)       0         0              0              0              0            erroAssert(ty > 0, "Dimensao nula");
+         2  (0.0%) 1 (0.1%) 1 (0.1%)         1  (0.0%)       0         0              0              0              0            erroAssert(tx <= MAXTAM, "Dimensao maior que permitido");
+         2  (0.0%) 1 (0.1%) 1 (0.1%)         1  (0.0%)       0         0              0              0              0            erroAssert(ty <= MAXTAM, "Dimensao maior que permitido");
+         .         .        .                .               .         .              .              .              .          
+         .         .        .                .               .         .              .              .              .            // inicializa as dimensoes da matriz
+         3  (0.0%) 2 (0.2%) 2 (0.2%)         2  (0.0%)       0         0              1  (0.0%)      1  (0.0%)      1  (0.0%)    mat->tamx = tx;
+         3  (0.0%) 0        0                2  (0.0%)       0         0              1  (0.0%)      0              0            mat->tamy = ty;
+         .         .        .                .               .         .              .              .              .            // inicializa o identificador da matriz, para rastreamento
+         3  (0.0%) 0        0                2  (0.0%)       0         0              1  (0.0%)      0              0            mat->id = id;
+         3  (0.0%) 0        0                2  (0.0%)       0         0              0              0              0          }
+         .         .        .                .               .         .              .              .              .          
+         .         .        .                .               .         .              .              .              .          void inicializaMatrizNula(mat_tipo *mat)
+         .         .        .                .               .         .              .              .              .          // Descricao: inicializa mat com valores nulos
+         .         .        .                .               .         .              .              .              .          // Entrada: mat
+         .         .        .                .               .         .              .              .              .          // Saida: mat
+         3  (0.0%) 0        0                0               0         0              2  (0.0%)      0              0          {
+         .         .        .                .               .         .              .              .              .            int i, j;
+         .         .        .                .               .         .              .              .              .            // inicializa todos os elementos da matriz com 0, por seguranca
+     2,404  (0.0%) 1 (0.1%) 1 (0.1%)     1,601  (0.0%)       0         0              1  (0.0%)      0              0            for (i = 0; i < MAXTAM; i++) {
+ 1,923,200  (3.9%) 0        0        1,280,800  (8.3%)       0         0            800  (0.0%)      0              0              for (j = 0; j < MAXTAM; j++) {
+ 8,960,000 (18.0%) 0        0        1,920,000 (12.4%)       0         0        640,000 (15.9%) 80,001 (71.5%) 80,000 (99.5%)        mat->m[i][j] = 0;
+         .         .        .                .               .         .              .              .              .              }
+         .         .        .                .               .         .              .              .              .            }
+         4  (0.0%) 0        0                2  (0.0%)       0         0              0              0              0          }
+         .         .        .                .               .         .              .              .              .          
+         .         .        .                .               .         .              .              .              .          void inicializaMatrizAleatoria(mat_tipo *mat)
+         .         .        .                .               .         .              .              .              .          // Descricao: inicializa mat com valores aleatorios
+         .         .        .                .               .         .              .              .              .          // Entrada: mat
+         .         .        .                .               .         .              .              .              .          // Saida: mat
+         4  (0.0%) 1 (0.1%) 1 (0.1%)         0               0         0              2  (0.0%)      0              0          {
+         .         .        .                .               .         .              .              .              .            int i, j;
+         .         .        .                .               .         .              .              .              .            // inicializa a matriz com valores nulos, por seguranca
+         3  (0.0%) 0        0                1  (0.0%)       0         0              1  (0.0%)      0              0            inicializaMatrizNula(mat);
+         .         .        .                .               .         .              .              .              .            // inicializa a parte alocada da matriz com valores aleatorios
+     2,506  (0.0%) 1 (0.1%) 1 (0.1%)     2,003  (0.0%)       0         0              1  (0.0%)      1  (0.0%)      0            for (i = 0; i < mat->tamx; i++) {
+ 1,253,000  (2.5%) 1 (0.1%) 1 (0.1%) 1,001,500  (6.5%)       0         0            500  (0.0%)      0              0              for (j = 0; j < mat->tamy; j++) {
+ 4,000,000  (8.0%) 0        0        1,000,000  (6.5%)       1  (0.0%) 1 (0.1%) 500,000 (12.4%) 31,500 (28.1%)      0                mat->m[i][j] = drand48() * INITRANDOMRANGE;
+         .         .        .                .               .         .              .              .              .              }
+         .         .        .                .               .         .              .              .              .            }
+         4  (0.0%) 0        0                2  (0.0%)       0         0              0              0              0          }
+         .         .        .                .               .         .              .              .              .          
+         .         .        .                .               .         .              .              .              .          double acessaMatriz(mat_tipo *mat)
+         .         .        .                .               .         .              .              .              .          // Descricao: acessa mat para fins de registro de acesso
+         .         .        .                .               .         .              .              .              .          // Entrada: mat
+         .         .        .                .               .         .              .              .              .          // Saida: mat
+         .         .        .                .               .         .              .              .              .          {
+         .         .        .                .               .         .              .              .              .            int i, j;
+         .         .        .                .               .         .              .              .              .            double aux, s = 0.0;
+-- line 76 ----------------------------------------
+-- line 222 ----------------------------------------
+         .         .        .                .               .         .              .              .              .              }
+         .         .        .                .               .         .              .              .              .            }
+         .         .        .                .               .         .              .              .              .          }
+         .         .        .                .               .         .              .              .              .          
+         .         .        .                .               .         .              .              .              .          void transpoeMatriz(mat_tipo *a)
+         .         .        .                .               .         .              .              .              .          // Descricao: transpoe a matriz a
+         .         .        .                .               .         .              .              .              .          // Entrada: a
+         .         .        .                .               .         .              .              .              .          // Saida: a
+         4  (0.0%) 1 (0.1%) 1 (0.1%)         0               0         0              2  (0.0%)      0              0          {
+         .         .        .                .               .         .              .              .              .            int i, j, dim;
+         .         .        .                .               .         .              .              .              .          
+         .         .        .                .               .         .              .              .              .            // determina a maior dimensao entre tamx e tamy
+         7  (0.0%) 0        0                4  (0.0%)       0         0              1  (0.0%)      0              0            dim = (a->tamx > a->tamy ? a->tamx : a->tamy);
+         .         .        .                .               .         .              .              .              .          
+         .         .        .                .               .         .              .              .              .            // faz a transposicao como se a matriz fosse quadrada
+     2,005  (0.0%) 2 (0.2%) 2 (0.2%)     1,502  (0.0%)       0         0              1  (0.0%)      0              0            for (i = 0; i < dim; i++) {
+   502,500  (1.0%) 0        0          375,750  (2.4%)       0         0            500  (0.0%)      0              0              for (j = i + 1; j < dim; j++) {
+14,970,000 (30.1%) 7 (0.5%) 7 (0.6%) 4,116,750 (26.6%) 133,064 (98.7%) 0        374,250  (9.3%)      0              0                ELEMSWAP((a->m[i][j]), (a->m[j][i]));
+   374,250  (0.8%) 0        0          124,750  (0.8%)       1  (0.0%) 1 (0.1%)       0              0              0                LEMEMLOG((long int)(&(a->m[i][j])), sizeof(double), a->id);
+   374,250  (0.8%) 2 (0.2%) 2 (0.2%)   124,750  (0.8%)       0         0              0              0              0                ESCREVEMEMLOG((long int)(&(a->m[i][j])), sizeof(double), a->id);
+         .         .        .                .               .         .              .              .              .              }
+         .         .        .                .               .         .              .              .              .            }
+         .         .        .                .               .         .              .              .              .            // inverte as dimensoes da matriz transposta
+        21  (0.0%) 2 (0.2%) 2 (0.2%)        15  (0.0%)       1  (0.0%) 0              3  (0.0%)      0              0            ELEMSWAP(a->tamx, a->tamy);
+         3  (0.0%) 0        0                2  (0.0%)       0         0              0              0              0          }
+         .         .        .                .               .         .              .              .              .          
+         .         .        .                .               .         .              .              .              .          void destroiMatriz(mat_tipo *a)
+         .         .        .                .               .         .              .              .              .          // Descricao: destroi a matriz a, que se torna inacessível
+         .         .        .                .               .         .              .              .              .          // Entrada: a
+         .         .        .                .               .         .              .              .              .          // Saida: a
+         4  (0.0%) 0        0                0               0         0              2  (0.0%)      0              0          {
+         .         .        .                .               .         .              .              .              .            // apenas um aviso se a matriz for destruida mais de uma vez
+         8  (0.0%) 0        0                4  (0.0%)       0         0              0              0              0            avisoAssert(((a->tamx > 0) && (a->tamy > 0)), "Matriz já foi destruida");
+         .         .        .                .               .         .              .              .              .          
+         .         .        .                .               .         .              .              .              .            // torna as dimensoes invalidas
+        10  (0.0%) 2 (0.2%) 2 (0.2%)         7  (0.0%)       0         0              3  (0.0%)      0              0            a->id = a->tamx = a->tamy = -1;
+         3  (0.0%) 0        0                2  (0.0%)       0         0              0              0              0          }
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /usr/src/debug/glibc/glibc/stdlib/drand48-iter.c
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- /usr/src/debug/glibc/glibc/stdlib/drand48-iter.c
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /usr/src/debug/glibc/glibc/stdlib/drand48.c
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- /usr/src/debug/glibc/glibc/stdlib/drand48.c
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /usr/src/debug/glibc/glibc/stdlib/erand48_r.c
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- /usr/src/debug/glibc/glibc/stdlib/erand48_r.c
+
+--------------------------------------------------------------------------------
+-- Annotation summary
+--------------------------------------------------------------------------------
+Ir________________ I1mr_________ ILmr_________ Dr_______________ D1mr___________ DLmr_________ Dw_______________ D1mw___________ DLmw__________ 
+
+32,364,220 (65.0%)    25  (1.9%)    25  (2.0%) 9,949,457 (64.2%) 133,067 (98.7%)     2  (0.2%) 1,516,077 (37.6%) 111,503 (99.6%) 80,001 (99.5%)    annotated: files known & above threshold & readable, line numbers known
+         0             0             0                 0               0             0                 0               0              0            annotated: files known & above threshold & readable, line numbers unknown
+         0             0             0                 0               0             0                 0               0              0          unannotated: files known & above threshold & two or more non-identical
+17,000,003 (34.1%)     7  (0.5%)     7  (0.6%) 5,249,998 (33.9%)       2  (0.0%)     1  (0.1%) 2,500,002 (62.0%)       1  (0.0%)      0          unannotated: files known & above threshold & unreadable 
+   178,748  (0.4%) 1,231 (95.4%) 1,203 (95.3%)    42,284  (0.3%)   1,713  (1.3%) 1,264 (99.8%)    15,572  (0.4%)     439  (0.4%)    383  (0.5%)  unannotated: files known & below threshold
+   250,236  (0.5%)    28  (2.2%)    27  (2.1%)   250,075  (1.6%)      13  (0.0%)     0                34  (0.0%)       1  (0.0%)      1  (0.0%)  unannotated: files unknown
+
