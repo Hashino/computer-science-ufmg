@@ -4,9 +4,9 @@ Profile data file 'res/callgrind.out' (creator: callgrind-3.24.0)
 I1 cache: 32768 B, 64 B, 8-way associative
 D1 cache: 32768 B, 64 B, 8-way associative
 LL cache: 33554432 B, 64 B, direct-mapped
-Timerange: Basic block 0 - 19253425
+Timerange: Basic block 0 - 9110725
 Trigger: Program termination
-Profiled target:  bin/matop -s -x 800 -y 800 (PID 3090026, part 1)
+Profiled target:  bin/matop -s -x 500 -y 500 (PID 3535526, part 1)
 Events recorded:  Ir Dr Dw I1mr D1mr D1mw ILmr DLmr DLmw
 Events shown:     Ir Dr Dw I1mr D1mr D1mw ILmr DLmr DLmw
 Event sort order: Ir Dr Dw I1mr D1mr D1mw ILmr DLmr DLmw
@@ -16,145 +16,145 @@ User annotated:
 Auto-annotation:  on
 
 --------------------------------------------------------------------------------
-Ir                   Dr                  Dw                  I1mr           D1mr             D1mw             ILmr           DLmr           DLmw             
+Ir                   Dr                  Dw                  I1mr           D1mr            D1mw             ILmr           DLmr           DLmw             
 --------------------------------------------------------------------------------
-193,507,535 (100.0%) 58,301,860 (100.0%) 23,068,323 (100.0%) 1,279 (100.0%) 161,517 (100.0%) 560,666 (100.0%) 1,250 (100.0%) 1,100 (100.0%) 240,491 (100.0%)  PROGRAM TOTALS
+102,237,635 (100.0%) 29,046,460 (100.0%) 12,146,523 (100.0%) 1,279 (100.0%) 64,518 (100.0%) 415,672 (100.0%) 1,250 (100.0%) 1,100 (100.0%) 240,490 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
-Ir                  Dr                  Dw                 I1mr        D1mr             D1mw             ILmr        DLmr         DLmw              file:function
+Ir                  Dr                  Dw                 I1mr        D1mr            D1mw             ILmr        DLmr         DLmw              file:function
 --------------------------------------------------------------------------------
-43,542,444 (22.50%) 10,246,412 (17.57%) 5,126,412 (22.22%)  1 ( 0.08%)       0          320,001 (57.08%)  1 ( 0.08%)   0          239,888 (99.75%)  obj/../src/mat.c:inicializaMatrizNula [/home/hashino/Documents/cs-ufmg/3-ED/TA5/bin/matop]
-40,960,000 (21.17%) 10,240,000 (17.56%) 6,400,000 (27.74%)  3 ( 0.23%)       2 ( 0.00%)       2 ( 0.00%)  3 ( 0.24%)   2 ( 0.18%)       .           /usr/src/debug/glibc/glibc/stdlib/erand48_r.c:erand48_r [/usr/lib/libc.so.6]
-34,568,840 (17.86%) 10,884,821 (18.67%) 1,281,607 ( 5.56%) 10 ( 0.78%) 160,004 (99.06%)  80,003 (14.27%) 10 ( 0.80%)   1 ( 0.09%)       .           obj/../src/mat.c:somaMatrizes [/home/hashino/Documents/cs-ufmg/3-ED/TA5/bin/matop]
-28,177,638 (14.56%) 10,249,614 (17.58%) 3,843,210 (16.66%)  3 ( 0.23%)       5 ( 0.00%) 160,002 (28.54%)  3 ( 0.24%)   1 ( 0.09%)       1 ( 0.00%)  obj/../src/mat.c:inicializaMatrizAleatoria [/home/hashino/Documents/cs-ufmg/3-ED/TA5/bin/matop]
-25,600,003 (13.23%)  8,959,998 (15.37%) 2,560,002 (11.10%)  3 ( 0.23%)       2 ( 0.00%)       0           3 ( 0.24%)   .                .           /usr/src/debug/glibc/glibc/stdlib/drand48-iter.c:__drand48_iterate [/usr/lib/libc.so.6]
-20,480,000 (10.58%)  7,680,000 (13.17%) 3,840,000 (16.65%)  1 ( 0.08%)       1 ( 0.00%)       0           1 ( 0.08%)   .                .           /usr/src/debug/glibc/glibc/stdlib/drand48.c:drand48 [/usr/lib/libc.so.6]
+43,542,444 (42.59%) 10,246,412 (35.28%) 5,126,412 (42.20%)  1 ( 0.08%)      0          320,001 (76.98%)  1 ( 0.08%)   0          239,888 (99.75%)  obj/../src/mat.c:inicializaMatrizNula [/home/hashino/Documents/cs-ufmg/3-ED/TA5/bin/matop]
+16,000,000 (15.65%)  4,000,000 (13.77%) 2,500,000 (20.58%)  3 ( 0.23%)      2 ( 0.00%)       2 ( 0.00%)  3 ( 0.24%)   2 ( 0.18%)       .           /usr/src/debug/glibc/glibc/stdlib/erand48_r.c:erand48_r [/usr/lib/libc.so.6]
+13,505,540 (13.21%)  4,253,021 (14.64%)   501,007 ( 4.12%) 10 ( 0.78%) 63,003 (97.65%)  32,002 ( 7.70%) 10 ( 0.80%)   1 ( 0.09%)       .           obj/../src/mat.c:somaMatrizes [/home/hashino/Documents/cs-ufmg/3-ED/TA5/bin/matop]
+11,011,038 (10.77%)  4,006,014 (13.79%) 1,502,010 (12.37%)  3 ( 0.23%)      5 ( 0.01%)  63,002 (15.16%)  3 ( 0.24%)   1 ( 0.09%)       .           obj/../src/mat.c:inicializaMatrizAleatoria [/home/hashino/Documents/cs-ufmg/3-ED/TA5/bin/matop]
+10,000,003 ( 9.78%)  3,499,998 (12.05%) 1,000,002 ( 8.23%)  3 ( 0.23%)      2 ( 0.00%)       0           3 ( 0.24%)   .                .           /usr/src/debug/glibc/glibc/stdlib/drand48-iter.c:__drand48_iterate [/usr/lib/libc.so.6]
+ 8,000,000 ( 7.82%)  3,000,000 (10.33%) 1,500,000 (12.35%)  1 ( 0.08%)      1 ( 0.00%)       0           1 ( 0.08%)   .                .           /usr/src/debug/glibc/glibc/stdlib/drand48.c:drand48 [/usr/lib/libc.so.6]
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: obj/../src/mat.c
 --------------------------------------------------------------------------------
-Ir                  Dr                 Dw                 I1mr       D1mr             D1mw             ILmr       DLmr       DLmw             
+Ir                  Dr                 Dw                 I1mr       D1mr            D1mw             ILmr       DLmr       DLmw             
 
 -- line 18 ----------------------------------------
-         .                  .                  .          .                .                .          .          .                .           #define INITRANDOMRANGE 10
-         .                  .                  .          .                .                .          .          .                .           // Macro que realiza swap sem variavel auxiliar
-         .                  .                  .          .                .                .          .          .                .           #define ELEMSWAP(x, y) (x += y, y = x - y, x -= y)
-         .                  .                  .          .                .                .          .          .                .           
-         .                  .                  .          .                .                .          .          .                .           void criaMatriz(mat_tipo *mat, int tx, int ty, int id)
-         .                  .                  .          .                .                .          .          .                .           // Descricao: cria matriz com dimensoes tx X ty
-         .                  .                  .          .                .                .          .          .                .           // Entrada: mat, tx, ty, id
-         .                  .                  .          .                .                .          .          .                .           // Saida: mat
-        28 ( 0.00%)         0                 20 ( 0.00%) .                .                .          .          .                .           {
-         .                  .                  .          .                .                .          .          .                .             // verifica se os valores de tx e ty são validos
-         8 ( 0.00%)         4 ( 0.00%)         .          .                .                .          .          .                .             erroAssert(tx > 0, "Dimensao nula");
-         8 ( 0.00%)         4 ( 0.00%)         0          1 ( 0.08%)       0                0          1 ( 0.08%) .                .             erroAssert(ty > 0, "Dimensao nula");
-         8 ( 0.00%)         4 ( 0.00%)         0          1 ( 0.08%)       0                0          1 ( 0.08%) .                .             erroAssert(tx <= MAXTAM, "Dimensao maior que permitido");
-         8 ( 0.00%)         4 ( 0.00%)         0          1 ( 0.08%)       0                0          1 ( 0.08%) .                .             erroAssert(ty <= MAXTAM, "Dimensao maior que permitido");
-         .                  .                  .          .                .                .          .          .                .           
-         .                  .                  .          .                .                .          .          .                .             // inicializa as dimensoes da matriz
-        12 ( 0.00%)         8 ( 0.00%)         4 ( 0.00%) 2 ( 0.16%)       0                3 ( 0.00%) 2 ( 0.16%) 0                2 ( 0.00%)    mat->tamx = tx;
-        12 ( 0.00%)         8 ( 0.00%)         4 ( 0.00%) .                .                .          .          .                .             mat->tamy = ty;
-         .                  .                  .          .                .                .          .          .                .             // inicializa o identificador da matriz, para rastreamento
-        12 ( 0.00%)         8 ( 0.00%)         4 ( 0.00%) .                .                .          .          .                .             mat->id = id;
-        12 ( 0.00%)         8 ( 0.00%)         .          .                .                .          .          .                .           }
-         .                  .                  .          .                .                .          .          .                .           
-         .                  .                  .          .                .                .          .          .                .           void inicializaMatrizNula(mat_tipo *mat)
-         .                  .                  .          .                .                .          .          .                .           // Descricao: inicializa mat com valores nulos
-         .                  .                  .          .                .                .          .          .                .           // Entrada: mat
-         .                  .                  .          .                .                .          .          .                .           // Saida: mat
-        12 ( 0.00%)         0                  8 ( 0.00%) .                .                .          .          .                .           {
-         .                  .                  .          .                .                .          .          .                .             int i, j;
-         .                  .                  .          .                .                .          .          .                .             // inicializa todos os elementos da matriz com 0, por seguranca
-     9,616 ( 0.00%)     3,204 ( 0.01%)     3,204 ( 0.01%) 1 ( 0.08%)       0                0          1 ( 0.08%) .                .             for (i = 0; i < MAXTAM; i++) {
- 7,692,800 ( 3.98%) 2,563,200 ( 4.40%) 2,563,200 (11.11%) .                .                .          .          .                .               for (j = 0; j < MAXTAM; j++) {
-35,840,000 (18.52%) 7,680,000 (13.17%) 2,560,000 (11.10%) 0                0          320,001 (57.08%) 0          0          239,888 (99.75%)        mat->m[i][j] = 0;
-         .                  .                  .          .                .                .          .          .                .               }
-         .                  .                  .          .                .                .          .          .                .             }
-        16 ( 0.00%)         8 ( 0.00%)         .          .                .                .          .          .                .           }
-         .                  .                  .          .                .                .          .          .                .           
-         .                  .                  .          .                .                .          .          .                .           void inicializaMatrizAleatoria(mat_tipo *mat)
-         .                  .                  .          .                .                .          .          .                .           // Descricao: inicializa mat com valores aleatorios
-         .                  .                  .          .                .                .          .          .                .           // Entrada: mat
-         .                  .                  .          .                .                .          .          .                .           // Saida: mat
-         8 ( 0.00%)         0                  4 ( 0.00%) 1 ( 0.08%)       0                0          1 ( 0.08%) .                .           {
-         .                  .                  .          .                .                .          .          .                .             int i, j;
-         .                  .                  .          .                .                .          .          .                .             // inicializa a matriz com valores nulos, por seguranca
-         6 ( 0.00%)         2 ( 0.00%)         2 ( 0.00%) .                .                .          .          .                .             inicializaMatrizNula(mat);
-21,771,222 (11.25%) 5,123,206 ( 8.79%) 2,563,206 (11.11%) 1 ( 0.08%)       0          160,001 (28.54%) 1 ( 0.08%) 0          159,999 (66.53%)  => obj/../src/mat.c:inicializaMatrizNula (2x)
-         .                  .                  .          .                .                .          .          .                .             // inicializa a parte alocada da matriz com valores aleatorios
-     8,012 ( 0.00%)     4,806 ( 0.01%)     1,602 ( 0.01%) 1 ( 0.08%)       0                2 ( 0.00%) 1 ( 0.08%) .                .             for (i = 0; i < mat->tamx; i++) {
- 6,409,600 ( 3.31%) 3,844,800 ( 6.59%) 1,281,600 ( 5.56%) 1 ( 0.08%)       0                0          1 ( 0.08%) .                .               for (j = 0; j < mat->tamy; j++) {
-21,760,004 (11.25%) 6,400,002 (10.98%) 2,560,002 (11.10%) 0                5 ( 0.00%) 160,000 (28.54%) 0          1 ( 0.09%)       1 ( 0.00%)        mat->m[i][j] = drand48() * INITRANDOMRANGE;
-87,040,003 (44.98%) 26,879,998 (46.10%) 12,800,002 (55.49%) 7 ( 0.55%)       5 ( 0.00%)       2 ( 0.00%) 7 ( 0.56%) 2 ( 0.18%)       .           => /usr/src/debug/glibc/glibc/stdlib/drand48.c:drand48 (1,280,000x)
-       690 ( 0.00%)       244 ( 0.00%)       128 ( 0.00%) 0               53 ( 0.03%)      24 ( 0.00%) 0          5 ( 0.45%)       .           => /usr/src/debug/glibc/glibc/elf/../sysdeps/x86_64/dl-trampoline.h:_dl_runtime_resolve_xsave (1x)
-         .                  .                  .          .                .                .          .          .                .               }
-         .                  .                  .          .                .                .          .          .                .             }
-         8 ( 0.00%)         4 ( 0.00%)         .          .                .                .          .          .                .           }
-         .                  .                  .          .                .                .          .          .                .           
-         .                  .                  .          .                .                .          .          .                .           double acessaMatriz(mat_tipo *mat)
-         .                  .                  .          .                .                .          .          .                .           // Descricao: acessa mat para fins de registro de acesso
-         .                  .                  .          .                .                .          .          .                .           // Entrada: mat
-         .                  .                  .          .                .                .          .          .                .           // Saida: mat
-         .                  .                  .          .                .                .          .          .                .           {
-         .                  .                  .          .                .                .          .          .                .             int i, j;
-         .                  .                  .          .                .                .          .          .                .             double aux, s = 0.0;
+         .                  .                  .          .               .                .          .          .                .           #define INITRANDOMRANGE 10
+         .                  .                  .          .               .                .          .          .                .           // Macro que realiza swap sem variavel auxiliar
+         .                  .                  .          .               .                .          .          .                .           #define ELEMSWAP(x, y) (x += y, y = x - y, x -= y)
+         .                  .                  .          .               .                .          .          .                .           
+         .                  .                  .          .               .                .          .          .                .           void criaMatriz(mat_tipo *mat, int tx, int ty, int id)
+         .                  .                  .          .               .                .          .          .                .           // Descricao: cria matriz com dimensoes tx X ty
+         .                  .                  .          .               .                .          .          .                .           // Entrada: mat, tx, ty, id
+         .                  .                  .          .               .                .          .          .                .           // Saida: mat
+        28 ( 0.00%)         0                 20 ( 0.00%) .               .                .          .          .                .           {
+         .                  .                  .          .               .                .          .          .                .             // verifica se os valores de tx e ty são validos
+         8 ( 0.00%)         4 ( 0.00%)         .          .               .                .          .          .                .             erroAssert(tx > 0, "Dimensao nula");
+         8 ( 0.00%)         4 ( 0.00%)         0          1 ( 0.08%)      0                0          1 ( 0.08%) .                .             erroAssert(ty > 0, "Dimensao nula");
+         8 ( 0.00%)         4 ( 0.00%)         0          1 ( 0.08%)      0                0          1 ( 0.08%) .                .             erroAssert(tx <= MAXTAM, "Dimensao maior que permitido");
+         8 ( 0.00%)         4 ( 0.00%)         0          1 ( 0.08%)      0                0          1 ( 0.08%) .                .             erroAssert(ty <= MAXTAM, "Dimensao maior que permitido");
+         .                  .                  .          .               .                .          .          .                .           
+         .                  .                  .          .               .                .          .          .                .             // inicializa as dimensoes da matriz
+        12 ( 0.00%)         8 ( 0.00%)         4 ( 0.00%) 2 ( 0.16%)      0                3 ( 0.00%) 2 ( 0.16%) 0                2 ( 0.00%)    mat->tamx = tx;
+        12 ( 0.00%)         8 ( 0.00%)         4 ( 0.00%) .               .                .          .          .                .             mat->tamy = ty;
+         .                  .                  .          .               .                .          .          .                .             // inicializa o identificador da matriz, para rastreamento
+        12 ( 0.00%)         8 ( 0.00%)         4 ( 0.00%) .               .                .          .          .                .             mat->id = id;
+        12 ( 0.00%)         8 ( 0.00%)         .          .               .                .          .          .                .           }
+         .                  .                  .          .               .                .          .          .                .           
+         .                  .                  .          .               .                .          .          .                .           void inicializaMatrizNula(mat_tipo *mat)
+         .                  .                  .          .               .                .          .          .                .           // Descricao: inicializa mat com valores nulos
+         .                  .                  .          .               .                .          .          .                .           // Entrada: mat
+         .                  .                  .          .               .                .          .          .                .           // Saida: mat
+        12 ( 0.00%)         0                  8 ( 0.00%) .               .                .          .          .                .           {
+         .                  .                  .          .               .                .          .          .                .             int i, j;
+         .                  .                  .          .               .                .          .          .                .             // inicializa todos os elementos da matriz com 0, por seguranca
+     9,616 ( 0.01%)     3,204 ( 0.01%)     3,204 ( 0.03%) 1 ( 0.08%)      0                0          1 ( 0.08%) .                .             for (i = 0; i < MAXTAM; i++) {
+ 7,692,800 ( 7.52%) 2,563,200 ( 8.82%) 2,563,200 (21.10%) .               .                .          .          .                .               for (j = 0; j < MAXTAM; j++) {
+35,840,000 (35.06%) 7,680,000 (26.44%) 2,560,000 (21.08%) 0               0          320,001 (76.98%) 0          0          239,888 (99.75%)        mat->m[i][j] = 0;
+         .                  .                  .          .               .                .          .          .                .               }
+         .                  .                  .          .               .                .          .          .                .             }
+        16 ( 0.00%)         8 ( 0.00%)         .          .               .                .          .          .                .           }
+         .                  .                  .          .               .                .          .          .                .           
+         .                  .                  .          .               .                .          .          .                .           void inicializaMatrizAleatoria(mat_tipo *mat)
+         .                  .                  .          .               .                .          .          .                .           // Descricao: inicializa mat com valores aleatorios
+         .                  .                  .          .               .                .          .          .                .           // Entrada: mat
+         .                  .                  .          .               .                .          .          .                .           // Saida: mat
+         8 ( 0.00%)         0                  4 ( 0.00%) 1 ( 0.08%)      0                0          1 ( 0.08%) .                .           {
+         .                  .                  .          .               .                .          .          .                .             int i, j;
+         .                  .                  .          .               .                .          .          .                .             // inicializa a matriz com valores nulos, por seguranca
+         6 ( 0.00%)         2 ( 0.00%)         2 ( 0.00%) .               .                .          .          .                .             inicializaMatrizNula(mat);
+21,771,222 (21.29%) 5,123,206 (17.64%) 2,563,206 (21.10%) 1 ( 0.08%)      0          160,001 (38.49%) 1 ( 0.08%) 0          159,999 (66.53%)  => obj/../src/mat.c:inicializaMatrizNula (2x)
+         .                  .                  .          .               .                .          .          .                .             // inicializa a parte alocada da matriz com valores aleatorios
+     5,012 ( 0.00%)     3,006 ( 0.01%)     1,002 ( 0.01%) 1 ( 0.08%)      0                2 ( 0.00%) 1 ( 0.08%) .                .             for (i = 0; i < mat->tamx; i++) {
+ 2,506,000 ( 2.45%) 1,503,000 ( 5.17%)   501,000 ( 4.12%) 1 ( 0.08%)      0                0          1 ( 0.08%) .                .               for (j = 0; j < mat->tamy; j++) {
+ 8,500,004 ( 8.31%) 2,500,002 ( 8.61%) 1,000,002 ( 8.23%) 0               5 ( 0.01%)  63,000 (15.16%) 0          1 ( 0.09%)       .                 mat->m[i][j] = drand48() * INITRANDOMRANGE;
+34,000,003 (33.26%) 10,499,998 (36.15%) 5,000,002 (41.16%) 7 ( 0.55%)      5 ( 0.01%)       2 ( 0.00%) 7 ( 0.56%) 2 ( 0.18%)       .           => /usr/src/debug/glibc/glibc/stdlib/drand48.c:drand48 (500,000x)
+       690 ( 0.00%)       244 ( 0.00%)       128 ( 0.00%) 0              53 ( 0.08%)      24 ( 0.01%) 0          5 ( 0.45%)       .           => /usr/src/debug/glibc/glibc/elf/../sysdeps/x86_64/dl-trampoline.h:_dl_runtime_resolve_xsave (1x)
+         .                  .                  .          .               .                .          .          .                .               }
+         .                  .                  .          .               .                .          .          .                .             }
+         8 ( 0.00%)         4 ( 0.00%)         .          .               .                .          .          .                .           }
+         .                  .                  .          .               .                .          .          .                .           
+         .                  .                  .          .               .                .          .          .                .           double acessaMatriz(mat_tipo *mat)
+         .                  .                  .          .               .                .          .          .                .           // Descricao: acessa mat para fins de registro de acesso
+         .                  .                  .          .               .                .          .          .                .           // Entrada: mat
+         .                  .                  .          .               .                .          .          .                .           // Saida: mat
+         .                  .                  .          .               .                .          .          .                .           {
+         .                  .                  .          .               .                .          .          .                .             int i, j;
+         .                  .                  .          .               .                .          .          .                .             double aux, s = 0.0;
 -- line 76 ----------------------------------------
 -- line 173 ----------------------------------------
-         .                  .                  .          .                .                .          .          .                .               }
-         .                  .                  .          .                .                .          .          .                .             }
-         .                  .                  .          .                .                .          .          .                .           }
-         .                  .                  .          .                .                .          .          .                .           
-         .                  .                  .          .                .                .          .          .                .           void somaMatrizes(mat_tipo *a, mat_tipo *b, mat_tipo *c)
-         .                  .                  .          .                .                .          .          .                .           // Descricao: soma as matrizes a e b e armazena o resultado em c
-         .                  .                  .          .                .                .          .          .                .           // Entrada: a, b
-         .                  .                  .          .                .                .          .          .                .           // Saida: c
-         6 ( 0.00%)         0                  4 ( 0.00%) 1 ( 0.08%)       0                1 ( 0.00%) 1 ( 0.08%) .                .           {
-         .                  .                  .          .                .                .          .          .                .             int i, j;
-         .                  .                  .          .                .                .          .          .                .             // verifica se as dimensoes das matrizes a e b sao as mesmas
-         6 ( 0.00%)         4 ( 0.00%)         0          0                2 ( 0.00%)       .          .          .                .             erroAssert(a->tamx == b->tamx, "Dimensoes incompativeis");
-         6 ( 0.00%)         4 ( 0.00%)         0          2 ( 0.16%)       0                0          2 ( 0.16%) .                .             erroAssert(a->tamy == b->tamy, "Dimensoes incompativeis");
-         .                  .                  .          .                .                .          .          .                .           
-         .                  .                  .          .                .                .          .          .                .             // inicializa a matriz c garantindo a compatibilidade das dimensoes
-         9 ( 0.00%)         7 ( 0.00%)         1 ( 0.00%) 1 ( 0.08%)       0                0          1 ( 0.08%) .                .             criaMatriz(c, a->tamx, a->tamy, c->id);
-        27 ( 0.00%)        12 ( 0.00%)         8 ( 0.00%) .                .                .          .          .                .           => obj/../src/mat.c:criaMatriz (1x)
-         3 ( 0.00%)         1 ( 0.00%)         1 ( 0.00%) .                .                .          .          .                .             inicializaMatrizNula(c);
-10,885,611 ( 5.63%) 2,561,603 ( 4.39%) 1,281,603 ( 5.56%) 0                0           80,000 (14.27%) .          .                .           => obj/../src/mat.c:inicializaMatrizNula (1x)
-         .                  .                  .          .                .                .          .          .                .           
-         .                  .                  .          .                .                .          .          .                .             // faz a soma elemento a elemento
-     4,006 ( 0.00%)     2,403 ( 0.00%)       801 ( 0.00%) 2 ( 0.16%)       1 ( 0.00%)       1 ( 0.00%) 2 ( 0.16%) .                .             for (i = 0; i < a->tamx; i++) {
- 3,204,800 ( 1.66%) 1,922,400 ( 3.30%)   640,800 ( 2.78%) .                .                .          .          .                .               for (j = 0; j < a->tamy; j++) {
-25,600,000 (13.23%) 7,040,000 (12.08%)   640,000 ( 2.77%) 2 ( 0.16%) 160,000 (99.06%)  80,001 (14.27%) 2 ( 0.16%) .                .                 c->m[i][j] = a->m[i][j] + b->m[i][j];
- 1,920,000 ( 0.99%)   640,000 ( 1.10%)         0          0                1 ( 0.00%)       0          0          1 ( 0.09%)       .                 LEMEMLOG((long int)(&(a->m[i][j])), sizeof(double), a->id);
- 1,920,000 ( 0.99%)   640,000 ( 1.10%)         0          1 ( 0.08%)       0                0          1 ( 0.08%) .                .                 LEMEMLOG((long int)(&(b->m[i][j])), sizeof(double), b->id);
- 1,920,000 ( 0.99%)   640,000 ( 1.10%)         0          1 ( 0.08%)       0                0          1 ( 0.08%) .                .                 ESCREVEMEMLOG((long int)(&(c->m[i][j])), sizeof(double), c->id);
-         .                  .                  .          .                .                .          .          .                .               }
-         .                  .                  .          .                .                .          .          .                .             }
-         4 ( 0.00%)         2 ( 0.00%)         .          .                .                .          .          .                .           }
-         .                  .                  .          .                .                .          .          .                .           
-         .                  .                  .          .                .                .          .          .                .           void multiplicaMatrizes(mat_tipo *a, mat_tipo *b, mat_tipo *c)
-         .                  .                  .          .                .                .          .          .                .           // Descricao: multiplica as matrizes a e b e armazena o resultado em c
-         .                  .                  .          .                .                .          .          .                .           // Entrada: a,b
-         .                  .                  .          .                .                .          .          .                .           // Saida: c
-         .                  .                  .          .                .                .          .          .                .           {
-         .                  .                  .          .                .                .          .          .                .             int i, j, k;
-         .                  .                  .          .                .                .          .          .                .             // verifica a compatibilidade das dimensoes
+         .                  .                  .          .               .                .          .          .                .               }
+         .                  .                  .          .               .                .          .          .                .             }
+         .                  .                  .          .               .                .          .          .                .           }
+         .                  .                  .          .               .                .          .          .                .           
+         .                  .                  .          .               .                .          .          .                .           void somaMatrizes(mat_tipo *a, mat_tipo *b, mat_tipo *c)
+         .                  .                  .          .               .                .          .          .                .           // Descricao: soma as matrizes a e b e armazena o resultado em c
+         .                  .                  .          .               .                .          .          .                .           // Entrada: a, b
+         .                  .                  .          .               .                .          .          .                .           // Saida: c
+         6 ( 0.00%)         0                  4 ( 0.00%) 1 ( 0.08%)      0                1 ( 0.00%) 1 ( 0.08%) .                .           {
+         .                  .                  .          .               .                .          .          .                .             int i, j;
+         .                  .                  .          .               .                .          .          .                .             // verifica se as dimensoes das matrizes a e b sao as mesmas
+         6 ( 0.00%)         4 ( 0.00%)         0          0               2 ( 0.00%)       .          .          .                .             erroAssert(a->tamx == b->tamx, "Dimensoes incompativeis");
+         6 ( 0.00%)         4 ( 0.00%)         0          2 ( 0.16%)      0                0          2 ( 0.16%) .                .             erroAssert(a->tamy == b->tamy, "Dimensoes incompativeis");
+         .                  .                  .          .               .                .          .          .                .           
+         .                  .                  .          .               .                .          .          .                .             // inicializa a matriz c garantindo a compatibilidade das dimensoes
+         9 ( 0.00%)         7 ( 0.00%)         1 ( 0.00%) 1 ( 0.08%)      0                0          1 ( 0.08%) .                .             criaMatriz(c, a->tamx, a->tamy, c->id);
+        27 ( 0.00%)        12 ( 0.00%)         8 ( 0.00%) .               .                .          .          .                .           => obj/../src/mat.c:criaMatriz (1x)
+         3 ( 0.00%)         1 ( 0.00%)         1 ( 0.00%) .               .                .          .          .                .             inicializaMatrizNula(c);
+10,885,611 (10.65%) 2,561,603 ( 8.82%) 1,281,603 (10.55%) 0               0           80,000 (19.25%) .          .                .           => obj/../src/mat.c:inicializaMatrizNula (1x)
+         .                  .                  .          .               .                .          .          .                .           
+         .                  .                  .          .               .                .          .          .                .             // faz a soma elemento a elemento
+     2,506 ( 0.00%)     1,503 ( 0.01%)       501 ( 0.00%) 2 ( 0.16%)      1 ( 0.00%)       1 ( 0.00%) 2 ( 0.16%) .                .             for (i = 0; i < a->tamx; i++) {
+ 1,253,000 ( 1.23%)   751,500 ( 2.59%)   250,500 ( 2.06%) .               .                .          .          .                .               for (j = 0; j < a->tamy; j++) {
+10,000,000 ( 9.78%) 2,750,000 ( 9.47%)   250,000 ( 2.06%) 2 ( 0.16%) 62,999 (97.65%)  32,000 ( 7.70%) 2 ( 0.16%) .                .                 c->m[i][j] = a->m[i][j] + b->m[i][j];
+   750,000 ( 0.73%)   250,000 ( 0.86%)         0          0               1 ( 0.00%)       0          0          1 ( 0.09%)       .                 LEMEMLOG((long int)(&(a->m[i][j])), sizeof(double), a->id);
+   750,000 ( 0.73%)   250,000 ( 0.86%)         0          1 ( 0.08%)      0                0          1 ( 0.08%) .                .                 LEMEMLOG((long int)(&(b->m[i][j])), sizeof(double), b->id);
+   750,000 ( 0.73%)   250,000 ( 0.86%)         0          1 ( 0.08%)      0                0          1 ( 0.08%) .                .                 ESCREVEMEMLOG((long int)(&(c->m[i][j])), sizeof(double), c->id);
+         .                  .                  .          .               .                .          .          .                .               }
+         .                  .                  .          .               .                .          .          .                .             }
+         4 ( 0.00%)         2 ( 0.00%)         .          .               .                .          .          .                .           }
+         .                  .                  .          .               .                .          .          .                .           
+         .                  .                  .          .               .                .          .          .                .           void multiplicaMatrizes(mat_tipo *a, mat_tipo *b, mat_tipo *c)
+         .                  .                  .          .               .                .          .          .                .           // Descricao: multiplica as matrizes a e b e armazena o resultado em c
+         .                  .                  .          .               .                .          .          .                .           // Entrada: a,b
+         .                  .                  .          .               .                .          .          .                .           // Saida: c
+         .                  .                  .          .               .                .          .          .                .           {
+         .                  .                  .          .               .                .          .          .                .             int i, j, k;
+         .                  .                  .          .               .                .          .          .                .             // verifica a compatibilidade das dimensoes
 -- line 208 ----------------------------------------
 -- line 244 ----------------------------------------
-         .                  .                  .          .                .                .          .          .                .             // inverte as dimensoes da matriz transposta
-         .                  .                  .          .                .                .          .          .                .             ELEMSWAP(a->tamx, a->tamy);
-         .                  .                  .          .                .                .          .          .                .           }
-         .                  .                  .          .                .                .          .          .                .           
-         .                  .                  .          .                .                .          .          .                .           void destroiMatriz(mat_tipo *a)
-         .                  .                  .          .                .                .          .          .                .           // Descricao: destroi a matriz a, que se torna inacessível
-         .                  .                  .          .                .                .          .          .                .           // Entrada: a
-         .                  .                  .          .                .                .          .          .                .           // Saida: a
-        12 ( 0.00%)         0                  6 ( 0.00%) 1 ( 0.08%)       0                0          1 ( 0.08%) .                .           {
-         .                  .                  .          .                .                .          .          .                .             // apenas um aviso se a matriz for destruida mais de uma vez
-        24 ( 0.00%)        12 ( 0.00%)         .          .                .                .          .          .                .             avisoAssert(((a->tamx > 0) && (a->tamy > 0)), "Matriz já foi destruida");
-         .                  .                  .          .                .                .          .          .                .           
-         .                  .                  .          .                .                .          .          .                .             // torna as dimensoes invalidas
-        30 ( 0.00%)        21 ( 0.00%)         9 ( 0.00%) 2 ( 0.16%)       0                0          2 ( 0.16%) .                .             a->id = a->tamx = a->tamy = -1;
-         9 ( 0.00%)         6 ( 0.00%)         .          .                .                .          .          .                .           }
+         .                  .                  .          .               .                .          .          .                .             // inverte as dimensoes da matriz transposta
+         .                  .                  .          .               .                .          .          .                .             ELEMSWAP(a->tamx, a->tamy);
+         .                  .                  .          .               .                .          .          .                .           }
+         .                  .                  .          .               .                .          .          .                .           
+         .                  .                  .          .               .                .          .          .                .           void destroiMatriz(mat_tipo *a)
+         .                  .                  .          .               .                .          .          .                .           // Descricao: destroi a matriz a, que se torna inacessível
+         .                  .                  .          .               .                .          .          .                .           // Entrada: a
+         .                  .                  .          .               .                .          .          .                .           // Saida: a
+        12 ( 0.00%)         0                  6 ( 0.00%) 1 ( 0.08%)      0                0          1 ( 0.08%) .                .           {
+         .                  .                  .          .               .                .          .          .                .             // apenas um aviso se a matriz for destruida mais de uma vez
+        24 ( 0.00%)        12 ( 0.00%)         0          0               2 ( 0.00%)       .          .          .                .             avisoAssert(((a->tamx > 0) && (a->tamy > 0)), "Matriz já foi destruida");
+         .                  .                  .          .               .                .          .          .                .           
+         .                  .                  .          .               .                .          .          .                .             // torna as dimensoes invalidas
+        30 ( 0.00%)        21 ( 0.00%)         9 ( 0.00%) 2 ( 0.16%)      0                0          2 ( 0.16%) .                .             a->id = a->tamx = a->tamy = -1;
+         9 ( 0.00%)         6 ( 0.00%)         .          .               .                .          .          .                .           }
 
 --------------------------------------------------------------------------------
 The following files chosen for auto-annotation could not be found:
@@ -164,7 +164,7 @@ The following files chosen for auto-annotation could not be found:
   /usr/src/debug/glibc/glibc/stdlib/erand48_r.c
 
 --------------------------------------------------------------------------------
-Ir                   Dr                  Dw                  I1mr        D1mr             D1mw             ILmr        DLmr       DLmw             
+Ir                  Dr                  Dw                 I1mr        D1mr            D1mw             ILmr        DLmr       DLmw             
 --------------------------------------------------------------------------------
-106,289,105 (54.93%) 31,380,934 (53.82%) 10,251,276 (44.44%) 22 ( 1.72%) 160,009 (99.07%) 560,009 (99.88%) 22 ( 1.76%) 2 ( 0.18%) 239,891 (99.75%)  events annotated
+68,059,205 (66.57%) 18,505,534 (63.71%) 7,129,476 (58.70%) 22 ( 1.72%) 63,010 (97.66%) 415,008 (99.84%) 22 ( 1.76%) 2 ( 0.18%) 239,890 (99.75%)  events annotated
 

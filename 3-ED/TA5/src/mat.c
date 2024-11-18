@@ -215,9 +215,6 @@ void multiplicaMatrizes(mat_tipo *a, mat_tipo *b, mat_tipo *c)
     for (j = 0; j < c->tamy; j++) {
       for (k = 0; k < a->tamy; k++) {
         c->m[i][j] += a->m[i][k] * b->m[k][j];
-        LEMEMLOG((long int)(&(a->m[i][k])), sizeof(double), a->id);
-        LEMEMLOG((long int)(&(b->m[k][j])), sizeof(double), b->id);
-        ESCREVEMEMLOG((long int)(&(c->m[i][j])), sizeof(double), c->id);
       }
     }
   }
