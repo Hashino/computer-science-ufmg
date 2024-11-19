@@ -1,4 +1,5 @@
 #include "../include/tests.h"
+
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -36,19 +37,19 @@ void testBucketSort() {
   Cadastro data[7] = UNORDERED_DATA;
   bool res = false;
 
-  bucketSort(makeORDER(data, nome), makeBUCKET_STR(), ltSTR);
+  bucketSort(makeORDER(data, nome), makePREFIXES_STR_ASC(), ltSTR);
   res = eqCAD_ARR(data, ORDERED_NOME_ASC, 7);
   printResult("bucketSort\t\tby Name\tAscending", res);
 
-  bucketSort(makeORDER(data, nome), makeBUCKET_STR(), gtSTR);
+  bucketSort(makeORDER(data, nome), makePREFIXES_STR_ASC(), gtSTR);
   res = eqCAD_ARR(data, ORDERED_NOME_DES, 7);
   printResult("bucketSort\t\tby Name\tDescending", res);
 
-  bucketSort(makeORDER(data, cpf), makeBUCKET_INT(), ltINT);
+  bucketSort(makeORDER(data, cpf), makePREFIXES_INT_ASC(), ltINT);
   res = eqCAD_ARR(data, ORDERED_CPF_ASC, 7);
   printResult("bucketSort\t\tby CPF\tAscending", res);
 
-  bucketSort(makeORDER(data, cpf), makeBUCKET_INT(), gtINT);
+  bucketSort(makeORDER(data, cpf), makePREFIXES_INT_ASC(), gtINT);
   res = eqCAD_ARR(data, ORDERED_CPF_DES, 7);
   printResult("bucketSort\t\tby CPF\tDescending", res);
 }
@@ -74,23 +75,44 @@ void testQuickSort() {
   printResult("quickSort\t\tby CPF\tDescending", res);
 }
 
+void testQuickSortInd() {
+  Cadastro data[7] = UNORDERED_DATA;
+  bool res = false;
+
+  quickSortInd(makeORDER(data, nome), ltSTR);
+  res = eqCAD_ARR(data, ORDERED_NOME_ASC, 7);
+  printResult("quickSortInd\tby Name\tAscending", res);
+
+  quickSortInd(makeORDER(data, nome), gtSTR);
+  res = eqCAD_ARR(data, ORDERED_NOME_DES, 7);
+  printResult("quickSortInd\tby Name\tDescending", res);
+
+  quickSortInd(makeORDER(data, cpf), ltINT);
+  res = eqCAD_ARR(data, ORDERED_CPF_ASC, 7);
+  printResult("quickSortInd\tby CPF\tAscending", res);
+
+  quickSortInd(makeORDER(data, cpf), gtINT);
+  res = eqCAD_ARR(data, ORDERED_CPF_DES, 7);
+  printResult("quickSortInd\tby CPF\tDescending", res);
+}
+
 void testRadixSort() {
   Cadastro data[7] = UNORDERED_DATA;
   bool res = false;
 
-  radixSort(makeORDER(data, nome), makeBUCKET_STR());
+  radixSort(makeORDER(data, nome), 's', true);
   res = eqCAD_ARR(data, ORDERED_NOME_ASC, 7);
   printResult("radixSort\t\tby Name\tAscending", res);
 
-  radixSort(makeORDER(data, nome), makeBUCKET_STR());
+  radixSort(makeORDER(data, nome), 's', false);
   res = eqCAD_ARR(data, ORDERED_NOME_DES, 7);
   printResult("radixSort\t\tby Name\tDescending", res);
 
-  radixSort(makeORDER(data, cpf), makeBUCKET_INT());
+  radixSort(makeORDER(data, cpf), 'i', true);
   res = eqCAD_ARR(data, ORDERED_CPF_ASC, 7);
   printResult("radixSort\t\tby CPF\tAscending", res);
 
-  radixSort(makeORDER(data, cpf), makeBUCKET_INT());
+  radixSort(makeORDER(data, cpf), 'i', false);
   res = eqCAD_ARR(data, ORDERED_CPF_DES, 7);
   printResult("radixSort\t\tby CPF\tDescending", res);
 }
@@ -104,6 +126,8 @@ void runTests() {
   testBucketSort();
   fprintf(stdout, "\n");
   testQuickSort();
+  fprintf(stdout, "\n");
+  testQuickSortInd();
   fprintf(stdout, "\n");
   testRadixSort();
   fprintf(stdout, "-------------------------------------------\n");

@@ -43,13 +43,16 @@ void exemploCadastro() {
   // selectionSort(makeORDER(cad, nome), ltSTR);
 
   // fprintf(stdout, "\nBUCKET SORT BY cpf DESCENDING\n");
-  // bucketSort(makeORDER(cad, cpf), makeBUCKET_INT(), gtINT);
+  // bucketSort(makeORDER(cad, cpf), makePREFIXES_INT_ASC(), gtINT);
 
   // fprintf(stdout, "\nQUICK SORT BY name ASCENDING\n");
   // quickSort(makeORDER(cad, nome), ltSTR);
 
-  // fprintf(stdout, "\nRADIX SORT BY cpf ASCENDING\n");
-  // radixSort(makeORDER(cad, cpf), ltBIN);
+  fprintf(stdout, "\nQUICK SORT IND BY name ASCENDING\n");
+  quickSortInd(makeORDER(cad, nome), ltSTR);
+
+  // fprintf(stdout, "\nRADIX SORT BY nome ASCENDING\n");
+  // radixSort(makeORDER(cad, nome), 's', true);
 
   for (int i = 0; i < 7; i++) {
     fprintf(stdout, "%s\n", toString(cad[i]));

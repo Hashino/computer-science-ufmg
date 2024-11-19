@@ -3,7 +3,6 @@
 #include "../include/tests.h"
 
 int main(void) {
-
   // exemploCadastro();
 
   runTests();

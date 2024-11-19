@@ -39,8 +39,8 @@
 #include <stddef.h>
 
 /**
- * @typedef Order
- * @brief holds needed data needed for agnostically order data.
+ * @typedef OrderStruct
+ * @brief holds needed data needed to agnostically order data.
  * should be built with makeORDER macro for ease of use
  */
 typedef struct Order {
@@ -55,17 +55,6 @@ typedef struct Order {
   int data_len;        // number of entries in array
 } OrderStruct;
 
-#define INT_BUCKETS (void *)(int[10]){0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-#define INT_B_N_ENTRIES 10
-#define INT_B_ENTRY_SIZE sizeof(int)
-
-#define STR_BUCKETS                                                            \
-  " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"         \
-  "`abcdefghijklmnopqrstuvwxyz{|}~"
-#define STR_B_N_ENTRIES 128
-#define STR_B_ENTRY_SIZE sizeof(char)
-
-#pragma region macros
 // creates ordering structure with just a static array and the name of the value
 // to sort by
 #define makeORDER(entries, value)                                              \
@@ -86,35 +75,68 @@ typedef struct Order {
     .data_len = sizeof(entries[0]) * entry_size / sizeof(entries[0]),          \
   }
 
-#define makeBUCKET_INT()                                                       \
-  eqINT, prefixINT, INT_BUCKETS, INT_B_N_ENTRIES, INT_B_ENTRY_SIZE
-#define makeBUCKET_STR()                                                       \
-  eqSTR, prefixSTR, STR_BUCKETS, STR_B_N_ENTRIES, STR_B_ENTRY_SIZE
-#pragma endregion
+#define INT_PREFIXES_ASC (void *)(int[10]){0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+#define INT_PREFIXES_DES (void *)(int[10]){9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
+#define INT_P_N_ENTRIES 10
+#define INT_P_ENTRY_SIZE sizeof(int)
 
-#pragma region macros
+#define makePREFIXES_INT_ASC()                                                 \
+  eqINT, prefixINT, INT_PREFIXES_ASC, INT_P_N_ENTRIES, INT_P_ENTRY_SIZE
+#define makePREFIXES_INT_DES()                                                 \
+  eqINT, prefixINT, INT_PREFIXES_DES, INT_P_N_ENTRIES, INT_P_ENTRY_SIZE
+
+#define STR_PREFIXES_ASC                                                       \
+  " !\"#$%&'()*+,-./"                                                          \
+  "0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`"                         \
+  "abcdefghijklmnopqrstuvwxyz{|}~"
+#define STR_PREFIXES_DES                                                       \
+  "~}|{zyxwvutsrqponmlkjihgfedcba`_^]\\[ZYXWVUTSRQPONMLKJIHGFEDCBA@?>=<;:"     \
+  "9876543210/.-,+*)('&%$#\"!"
+#define STR_B_N_ENTRIES 128
+#define STR_B_ENTRY_SIZE sizeof(char)
+
+#define makePREFIXES_STR_ASC()                                                 \
+  eqSTR, prefixSTR, STR_PREFIXES_ASC, STR_B_N_ENTRIES, STR_B_ENTRY_SIZE
+#define makePREFIXES_STR_DES()                                                 \
+  eqSTR, prefixSTR, STR_PREFIXES_DES, STR_B_N_ENTRIES, STR_B_ENTRY_SIZE
+
 typedef bool (*cmpFn)(void *, void *);
-typedef double (*tonumFn)(void *, int);
 typedef void (*prefixFn)(void *, void *);
 
+/// nth functions
+void *nthKEY(OrderStruct order, int n);
+void *nthENTRY(OrderStruct order, int n) ;
+void swap(OrderStruct order, int dest, int source);
+void swap_ind(OrderStruct order, int dest, int source);
+
+/** @brief returns true if any1 == any2 by memcmp */
 bool eqANY(void *any1, void *any2, int byte_size);
 
+/** @brief returns true if int1 == int2 */
 bool eqINT(void *int1, void *int2);
+/** @brief returns true if int1 > int2 */
 bool gtINT(void *int1, void *int2);
+/** @brief returns true if int1 < int2 */
 bool ltINT(void *int1, void *int2);
 
-bool eqSTR(void *int1, void *int2);
-bool gtSTR(void *int1, void *int2);
-bool ltSTR(void *int1, void *int2);
+/** @brief returns true if str1 == str2 (by strcmp) */
+bool eqSTR(void *str1, void *str2);
+/** @brief returns true if str1 > str2 (by strlen) */
+bool gtSTR(void *str1, void *str2);
+/** @brief returns true if str1 < str2 (by strlen) */
+bool ltSTR(void *str1, void *str2);
 
+/** @brief uses memcmp to compare string */
 bool ltBIN_STR(void *bin1, void *bin2);
+/** @brief uses memcmp to compare string */
 bool gtBIN_STR(void *bin1, void *bin2);
-bool ltBIN_INT(void *bin1, void *bin2);
-bool gtBIN_INT(void *bin1, void *bin2);
 
+/** @brief returns the biggest (by cmp) key */
 void *getMax(OrderStruct order, cmpFn cmp);
 
+/** @brief res = first char of string */
 void prefixSTR(void *bucket, void *res);
+/** @brief res = first digit of integer */
 void prefixINT(void *bucket, void *res);
 
 /**
@@ -135,11 +157,13 @@ void selectionSort(OrderStruct order, cmpFn cmp);
  */
 void quickSort(OrderStruct order, cmpFn cmp);
 
+void quickSortInd(OrderStruct order, cmpFn cmp);
+
 /**
  *  @brief orders by bucket sort algorithm with selection sort for sorting
  *  buckets.
  *  recommended to use makeORDER and makeBUCKET_TYPE for building function call:
- *  > bucketSort(makeORDER(pairs, key), makeBUCKET_INT(), ltINT);
+ *  > bucketSort(makeORDER(pairs, key), makePREFIXES_INT_ASC(), ltINT);
  *
  *  @param order use macro makeORDER for building
  *  @param eq function to compare data inside order.data (with key offset)
@@ -153,8 +177,14 @@ void quickSort(OrderStruct order, cmpFn cmp);
 void bucketSort(OrderStruct order, cmpFn eq, prefixFn prfx, void *b_prefixes,
                 int n_prefixes, int prefix_size, cmpFn cmp);
 
-void radixSort(OrderStruct order, cmpFn eq, prefixFn prfx, void *b_prefixes,
-               int n_prefixes, int prefix_size);
-#pragma endregion
-
+/**
+ * @brief orders by radix sort algorithm. because radix is a specialized
+ * algorithm, using it is different from other sorting algorithms in library
+ * > radixSort(makeORDER(pairs, key), 'i', true);
+ *
+ * @param order use macro makeORDER for building
+ * @param type 's'|'i' for string (char*) and integer, respectively
+ * @param asc if true, orders ascending, if false, descending
+ */
+void radixSort(OrderStruct order, char type, bool asc);
 #endif
