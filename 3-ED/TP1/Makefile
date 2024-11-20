@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := all
 
-TARGET := bin
+TARGET := order
 
 SRC := src
 BIN := bin
@@ -18,7 +18,8 @@ SOURCES := $(wildcard $(SRC)/*.c)
 OBJECTS := $(patsubst $(SRC)%,$(OBJ)%, $(patsubst %.c,%.o,$(SOURCES)))
 
 INCLUDE := -I.
-FLAGS := -g -lm -Wall
+FLAGS := -g -lm 
+# -Wall
 # -fsso-struct=big-endian
 
 CC := gcc
@@ -26,15 +27,15 @@ CC := gcc
 ### TARGETS ###
 
 run: all
-	@$(EXE)
+	@$(EXE) -f /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/test.xcsv -d
 
-valgrind: all
-	valgrind --leak-check=full $(EXE)
+tests: all
+	valgrind --leak-check=full $(EXE) -d -f /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/test.xcsv
 
 ### general targets
 
 all: $(OBJECTS)
-	$(CC) $(FLAGS) $(INCLUDE) $(OBJECTS) $(LIBS) -o $(EXE) 
+	@$(CC) $(FLAGS) $(INCLUDE) $(OBJECTS) $(LIBS) -o $(EXE) 
 
 %.o: ../$(SRC)/%.c
 	@$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@

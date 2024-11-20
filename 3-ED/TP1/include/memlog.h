@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <time.h>
 
+#include "../include/msg_assert.h"
+
 typedef struct memlog {
   FILE *log;
   clockid_t clk_id;

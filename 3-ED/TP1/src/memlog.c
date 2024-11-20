@@ -1,7 +1,4 @@
 #include "../include/memlog.h"
-#include "../include/msgassert.h"
-
-#include <bits/types/clockid_t.h>
 
 void clkDifMemLog(struct timespec t1, struct timespec t2, struct timespec *res)
 // Descricao: calcula a diferenca entre t2 e t1, que e armazenada em res

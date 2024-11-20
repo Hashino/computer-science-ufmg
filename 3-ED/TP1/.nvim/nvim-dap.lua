@@ -14,10 +14,11 @@ dap.configurations.c = {
     request = "launch",
     program = function()
       os.execute("make")
-      return vim.fn.getcwd() .. "/bin/" .. "bin"
+      return vim.fn.getcwd() .. "/bin/" .. "order"
     end,
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
     runInTerminal = true,
+    args = { '-d', '-f', '/home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/test.xcsv' },
   },
 }

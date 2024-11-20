@@ -1,0 +1,22 @@
+#ifndef PARSE_FILES
+#define PARSE_FILES
+
+#include "../include/msg_assert.h"
+
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct xCSV {
+  int n_fields;
+  int n_lines;
+  char **data;
+} xCSV;
+
+xCSV read_file(char *);
+
+void close_file();
+
+#endif

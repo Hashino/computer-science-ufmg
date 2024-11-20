@@ -135,6 +135,7 @@ void _radixSortInt(OrderStruct order, cmpFn cmp, bool asc) {
   int maxElement = *(int *)getMax(order, cmp);
 
   // Apply counting sort to sort elements based on place value
+  // INFO: place must match number memory size
   for (int place = 1; maxElement / place > 0; place *= 10) {
     int count[10] = {0};
 
@@ -169,10 +170,55 @@ void _radixSortInt(OrderStruct order, cmpFn cmp, bool asc) {
   free(output);
 }
 
+void _radixSortLng(OrderStruct order, cmpFn cmp, bool asc) {
+  void *output = malloc(order.data_len * order.data_entry_size);
+
+  // Get maximum element
+  long maxElement = *(long *)getMax(order, cmp);
+
+  // Apply counting sort to sort elements based on place value
+  // INFO: place must match number memory size
+  for (long place = 1; maxElement / place > 0; place *= 10) {
+    int count[10] = {0};
+
+    for (int i = 0; i < order.data_len; i++) {
+      long curr_key = *(long *)nthKEY(order, i);
+      int index = (curr_key / place) % 10;
+      count[index]++;
+    }
+
+    for (int i = 1; i < 10; i++) {
+      count[i] += count[i - 1];
+    }
+
+    for (int i = order.data_len - 1; i >= 0; i--) {
+      long curr_key = *(long *)nthKEY(order, i);
+      int index = (curr_key / place) % 10;
+
+      int target = (count[index] - 1) * order.data_entry_size;
+
+      memcpy(output + target, nthENTRY(order, i), order.data_entry_size);
+
+      count[index]--;
+    }
+
+    for (int i = 0; i < order.data_len; i++) {
+      // decides if ascending or descending
+      int target = asc ? i : order.data_len - 1 - i;
+      memcpy(nthENTRY(order, target), output + (i * order.data_entry_size),
+             order.data_entry_size);
+    }
+  }
+  free(output);
+}
+
 void radixSort(OrderStruct order, char type, bool asc) {
   switch (type) {
   case 'i': // integer
     _radixSortInt(order, gtINT, asc);
+    break;
+  case 'l':
+    _radixSortLng(order, gtLNG, asc);
     break;
   case 's': // string (char*)
     if (asc) {
