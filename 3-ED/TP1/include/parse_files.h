@@ -2,6 +2,7 @@
 #define PARSE_FILES
 
 #include "../include/msg_assert.h"
+#include "../include/stats.h"
 
 #include <stdbool.h>
 #include <stddef.h>

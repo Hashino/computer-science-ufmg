@@ -37,6 +37,7 @@ xCSV *read_file(char *path) {
 
   for (int i = 0; i < csv.n_lines; i++) {
     csv.data[i] = malloc(MAX_LEN * sizeof(char));
+    // memLog(csv.data[i]);
 
     size_t s = 0;
     getline(&line, &s, f);
@@ -57,8 +58,10 @@ void close_file(xCSV *file) {
   }
 
   for (int i = 0; i < file->n_lines; i++) {
+    // memLog(file->data[i]);
     free(file->data[i]);
     file->data[i] = NULL;
   }
+  // memLog(file->data);
   free(file->data);
 }

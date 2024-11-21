@@ -4,22 +4,26 @@
 #include "../include/stats.h"
 #include "../include/tests.h"
 
+#include <stdio.h>
 #include <sys/resource.h>
 #include <time.h>
 
 opt_t opts;
-struct timespec inittp;
 
 xCSV *file;
 Cadastro *arr;
 
+// WARN: remove
+int n = 0;
+
 void initialize() {
-  clock_gettime(CLOCK_MONOTONIC, &inittp);
 
   file = read_file(opts.file_path);
 
   size_t s = file->n_lines * sizeof(Cadastro);
   arr = malloc(s);
+
+  n = file->n_lines;
 
   fromXCSV(file, MAX_LEN, arr);
   close_file(file);
@@ -44,8 +48,14 @@ void choose_sort_alg() {
           quickSortInd(makeORDER_DYN(arr, cpf, file->n_lines), gtLNG);
         }
         break;
+      case 'o':
+        if (opts.asc) {
+          quickSortInd(makeORDER_DYN(arr, other, file->n_lines), ltSTR);
+        } else {
+          quickSortInd(makeORDER_DYN(arr, other, file->n_lines), gtSTR);
+        }
+        break;
       }
-      break;
       break;
     case 'b':
       switch (opts.alg[1]) {
@@ -67,6 +77,15 @@ void choose_sort_alg() {
                      makePRFX_LNG_DES());
         }
         break;
+      case 'o':
+        if (opts.asc) {
+          bucketSort(makeORDER_DYN(arr, other, file->n_lines),
+                     makePRFX_STR_ASC());
+        } else {
+          bucketSort(makeORDER_DYN(arr, other, file->n_lines),
+                     makePRFX_STR_DES());
+        }
+        break;
       }
       break;
     case 'r':
@@ -76,6 +95,9 @@ void choose_sort_alg() {
         break;
       case 'c':
         radixSort(makeORDER_DYN(arr, cpf, file->n_lines), 'l', opts.asc);
+        break;
+      case 'o':
+        radixSort(makeORDER_DYN(arr, other, file->n_lines), 's', opts.asc);
         break;
       }
       break;
@@ -89,10 +111,15 @@ void choose_sort_alg() {
         selectionSort(makeORDER_DYN(arr, cpf, file->n_lines),
                       opts.asc ? ltSTR : gtSTR);
         break;
+      case 'o':
+        selectionSort(makeORDER_DYN(arr, other, file->n_lines),
+                      opts.asc ? ltSTR : gtSTR);
+        break;
       }
       break;
     default:
       warnAssert(opts.alg, "invalid algorithm");
+      break;
     }
   } else {
     warnAssert(!opts.alg, "no sorting algorithm specified");
@@ -102,21 +129,17 @@ void choose_sort_alg() {
 void finish() {
   if (opts.debug) {
     for (int i = 0; i < file->n_lines; i++) {
-      fprintf(stdout, "%s\n", toString(arr[i]));
+      // memLog(arr + i);
+      fprintf(stdout, "%s\t\t%lu\n", arr[i].nome, arr[i].cpf);
     }
+    fprintf(stdout, "\n");
   }
 
-  struct timespec endtp;
-  clock_gettime(CLOCK_MONOTONIC, &endtp);
-  struct timespec t_end = clkDiff(inittp, endtp);
-
-  // system and user usage time
-  struct rusage usage;
-  getrusage(RUSAGE_SELF, &usage);
-
-  printf("%ld.%.9ld\t", t_end.tv_sec, t_end.tv_nsec);
-  printf("%ld.%.9ld\t", usage.ru_stime.tv_sec, usage.ru_stime.tv_usec);
-  printf("%ld.%.9ld\n", usage.ru_utime.tv_sec, usage.ru_utime.tv_usec);
+  // WARN: remove
+  FILE *f = fopen("./mem_log_results/perf_reversed", "a");
+  fprintf(f, "%s\t%d\t", opts.alg, n);
+  printStats(f);
+  fclose(f);
 
   free(arr);
 }
@@ -125,10 +148,13 @@ int main(int argc, char **argv) {
   parse_args(argc, argv, &opts);
 
   if (opts.file_path) {
+    startStats();
 
     initialize();
+    timeInit();
 
     choose_sort_alg();
+    timeEnd();
 
     finish();
   } else {

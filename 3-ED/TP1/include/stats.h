@@ -1,14 +1,22 @@
 #ifndef STATS
 #define STATS
+#include "../include/msg_assert.h"
+
+#include <bits/time.h>
+#include <stdbool.h>
+#include <stdio.h>
 #include <sys/resource.h>
 #include <time.h>
+#include <inttypes.h>
 
-typedef struct Stats {
-  struct timespec t_start;
-  struct timespec t1;
-  struct timespec t2;
-  struct timespec tend;
-} Stats;
+void startStats();
 
-struct timespec clkDiff(struct timespec t1, struct timespec t2);
+void timeInit();
+
+void timeEnd();
+
+void printStats(FILE *f);
+
+void memLog(void* address);
+
 #endif

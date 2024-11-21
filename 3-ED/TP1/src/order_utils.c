@@ -1,23 +1,64 @@
 #include "../include/order.h"
+#include <string.h>
 
 bool eqANY(void *bin1, void *bin2, int byte_size) {
+  memLog(bin1);
+  memLog(bin2);
   return memcmp(bin1, bin2, byte_size) == 0;
 }
 
-bool ltBIN_STR(void *bin1, void *bin2) { return strcmp(bin1, bin2) < 0; }
-bool gtBIN_STR(void *bin1, void *bin2) { return strcmp(bin1, bin2) > 0; }
+bool ltBIN_STR(void *bin1, void *bin2) {
+  memLog(bin1);
+  memLog(bin2);
+  return strcmp(bin1, bin2) < 0;
+}
+bool gtBIN_STR(void *bin1, void *bin2) {
+  memLog(bin1);
+  memLog(bin2);
+  return strcmp(bin1, bin2) > 0;
+}
 
-bool gtINT(void *int1, void *int2) { return *(int *)int1 > *(int *)int2; }
-bool ltINT(void *int1, void *int2) { return *(int *)int1 < *(int *)int2; }
-bool eqINT(void *int1, void *int2) { return *(int *)int1 == *(int *)int2; }
+bool gtINT(void *int1, void *int2) {
+  memLog(int1);
+  memLog(int2);
+  return *(int *)int1 > *(int *)int2;
+}
+bool ltINT(void *int1, void *int2) {
+  memLog(int1);
+  memLog(int2);
+  return *(int *)int1 < *(int *)int2;
+}
+bool eqINT(void *int1, void *int2) {
+  memLog(int1);
+  memLog(int2);
+  return *(int *)int1 == *(int *)int2;
+}
 
-bool gtLNG(void *int1, void *int2) { return *(long *)int1 > *(long *)int2; }
-bool ltLNG(void *int1, void *int2) { return *(long *)int1 < *(long *)int2; }
-bool eqLNG(void *int1, void *int2) { return *(long *)int1 == *(long *)int2; }
+bool gtLNG(void *int1, void *int2) {
+  memLog(int1);
+  memLog(int2);
+  return *(long *)int1 > *(long *)int2;
+}
+bool ltLNG(void *int1, void *int2) {
+  memLog(int1);
+  memLog(int2);
+  return *(long *)int1 < *(long *)int2;
+}
+bool eqLNG(void *int1, void *int2) {
+  memLog(int1);
+  memLog(int2);
+  return *(long *)int1 == *(long *)int2;
+}
 
-bool eqSTR(void *str1, void *str2) { return strcmp(str1, str2) == 0; }
+bool eqSTR(void *str1, void *str2) {
+  memLog(str1);
+  memLog(str2);
+  return strcmp(str1, str2) == 0;
+}
 
 bool ltSTR(void *str1, void *str2) {
+  memLog(str1);
+  memLog(str2);
   char *_str1 = (char *)str1;
   char *_str2 = (char *)str2;
 
@@ -37,6 +78,8 @@ bool ltSTR(void *str1, void *str2) {
 
 /* @return true if str1 > str2 (as char* with internal lexographical order) */
 bool gtSTR(void *str1, void *str2) {
+  memLog(str1);
+  memLog(str2);
   char *_str1 = (char *)str1;
   char *_str2 = (char *)str2;
 
@@ -56,9 +99,11 @@ bool gtSTR(void *str1, void *str2) {
 
 /// nth functions
 void *nthKEY(OrderStruct order, int n) {
+  memLog(order.data + (n * order.data_entry_size) + order.key_mem_offset);
   return order.data + (n * order.data_entry_size) + order.key_mem_offset;
 }
 void *nthENTRY(OrderStruct order, int n) {
+  memLog(order.data + (n * order.data_entry_size));
   return order.data + (n * order.data_entry_size);
 }
 
@@ -74,7 +119,6 @@ void *getMax(OrderStruct order, cmpFn cmp) {
 
 void swap(OrderStruct order, int dest, int source) {
   void *tmp = malloc(order.data_entry_size);
-
   void *s = nthENTRY(order, source);
   void *d = nthENTRY(order, dest);
 
@@ -99,10 +143,14 @@ void swap_ind(OrderStruct order, int dest, int source) {
 }
 
 void prefixSTR(void *bucket, void *res) {
+  memLog(bucket);
+  memLog(res);
   sprintf(res, "%c", ((char *)bucket)[0]);
 }
 
 void prefixINT(void *bucket, void *res) {
+  memLog(bucket);
+  memLog(res);
   int number_int = *(int *)bucket;
 
   char number_str[8];
@@ -114,6 +162,8 @@ void prefixINT(void *bucket, void *res) {
 }
 
 void prefixLNG(void *bucket, void *res) {
+  memLog(bucket);
+  memLog(res);
   long number_lng = *(long *)bucket;
 
   char number_str[19];

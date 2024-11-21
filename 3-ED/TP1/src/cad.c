@@ -26,6 +26,12 @@ void fromXCSV(xCSV *csv, int max_len, Cadastro *res) {
   char *curr_line;
   char *curr_token;
   for (int i = 0; i < csv->n_lines; i++) {
+
+    // memLog(&res[i]);
+    // memLog(csv->data[i]);
+    // memLog(curr_line);
+    // memLog(curr_token);
+
     curr_token = strtok_r(csv->data[i], ",", &curr_line);
     snprintf(res[i].nome, MAX_LEN, "%s", curr_token);
 

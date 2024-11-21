@@ -1,6 +1,5 @@
 #include "../include/order.h"
 
-
 void _selectionSort(OrderStruct order, cmpFn cmp) {
   for (int i = 0; i < order.data_len - 1; i++) {
     int min_idx = i;
@@ -234,6 +233,7 @@ int partitionInd(OrderStruct order, cmpFn cmp, int left, int right) {
 
   for (int j = left; j < right; j++) {
     void *curr_key = nthKEY(order, j);
+
     if (cmp(curr_key, pivot) || eqANY(curr_key, pivot, order.key_size)) {
       i++;
       swap_ind(order, i, j);

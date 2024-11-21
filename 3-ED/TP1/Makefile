@@ -26,13 +26,26 @@ CC := gcc
 ### TARGETS ###
 
 TEST_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/test.xcsv
-REAL_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/cad.r5000.p5000.xcsv
+MINI_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/cad.r100.p100.xcsv
+REAL_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/cad.r1000.p1000.xcsv
 
-ALG := 'rn'
+ALG := 'qn'
+
+REAL_FILE0 := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/perf_reversed/reverse.1000.xcsv
+REAL_FILE1 := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/perf_reversed/reverse.2000.xcsv
+REAL_FILE2 := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/perf_reversed/reverse.3000.xcsv
+REAL_FILE3 := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/perf_reversed/reverse.4000.xcsv
+REAL_FILE4 := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/perf_reversed/reverse.5000.xcsv
+
+memlog: all
+	$(EXE) -f $(REAL_FILE0) -a $(ALG) -o a
+	$(EXE) -f $(REAL_FILE1) -a $(ALG) -o a
+	$(EXE) -f $(REAL_FILE2) -a $(ALG) -o a
+	$(EXE) -f $(REAL_FILE3) -a $(ALG) -o a
+	$(EXE) -f $(REAL_FILE4) -a $(ALG) -o a
 
 run: all
-	# @$(EXE) -d -f $(REAL_FILE) -a $(ALG) -o a
-	@$(EXE) -d -f $(TEST_FILE) -a $(ALG) -o a
+	$(EXE) -f $(MINI_FILE) -a $(ALG) -o a
 
 real: all
 	@$(EXE) -d -f $(REAL_FILE) -a $(ALG) -o a > out
@@ -62,3 +75,6 @@ all: $(OBJECTS)
 clean:
 	@rm -rfv $(OBJ)/*
 	@rm -rfv $(BIN)/*
+	@rm -fv memlog
+	@rm -fv res
+	@rm -fv out

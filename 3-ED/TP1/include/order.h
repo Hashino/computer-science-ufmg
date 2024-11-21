@@ -34,6 +34,7 @@
  */
 #ifndef ORDERSTRUCT
 #define ORDERSTRUCT
+#include "../include/stats.h"
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -73,7 +74,7 @@ typedef void (*prefixFn)(void *, void *);
 
 // creates ordering structure with just a dynamic array, the name of the value
 // to sort by and the number of elements in the array
-#define makeORDER_DYN(entries, value, n_entries)                           \
+#define makeORDER_DYN(entries, value, n_entries)                               \
   (OrderStruct) {                                                              \
     .key_mem_offset = offsetof(typeof(entries[0]), value),                     \
     .key_size = sizeof(entries[0]), .data = entries,                           \
@@ -86,9 +87,9 @@ typedef void (*prefixFn)(void *, void *);
 #define INT_P_N_ENTRIES 10
 #define INT_P_ENTRY_SIZE sizeof(int)
 
-#define makePRFX_INT_ASC()                                                 \
+#define makePRFX_INT_ASC()                                                     \
   eqINT, prefixINT, INT_PRFX_ASC, INT_P_N_ENTRIES, INT_P_ENTRY_SIZE, ltINT
-#define makePRFX_INT_DES()                                                 \
+#define makePRFX_INT_DES()                                                     \
   eqINT, prefixINT, INT_PRFX_DES, INT_P_N_ENTRIES, INT_P_ENTRY_SIZE, gtINT
 
 /// LONG
@@ -97,25 +98,25 @@ typedef void (*prefixFn)(void *, void *);
 #define LNG_P_N_ENTRIES 10
 #define LNG_P_ENTRY_SIZE sizeof(long)
 
-#define makePRFX_LNG_ASC()                                                 \
+#define makePRFX_LNG_ASC()                                                     \
   eqINT, prefixLNG, LNG_PRFX_ASC, LNG_P_N_ENTRIES, LNG_P_ENTRY_SIZE, ltLNG
-#define makePRFX_LNG_DES()                                                 \
+#define makePRFX_LNG_DES()                                                     \
   eqINT, prefixLNG, LNG_PRFX_DES, LNG_P_N_ENTRIES, LNG_P_ENTRY_SIZE, gtLNG
 
 /// STRING
-#define STR_PRFX_ASC                                                       \
+#define STR_PRFX_ASC                                                           \
   " !\"#$%&'()*+,-./"                                                          \
   "0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`"                         \
   "abcdefghijklmnopqrstuvwxyz{|}~"
-#define STR_PRFX_DES                                                       \
+#define STR_PRFX_DES                                                           \
   "~}|{zyxwvutsrqponmlkjihgfedcba`_^]\\[ZYXWVUTSRQPONMLKJIHGFEDCBA@?>=<;:"     \
   "9876543210/.-,+*)('&%$#\"!"
 #define STR_B_N_ENTRIES 128
 #define STR_B_ENTRY_SIZE sizeof(char)
 
-#define makePRFX_STR_ASC()                                                 \
+#define makePRFX_STR_ASC()                                                     \
   eqSTR, prefixSTR, STR_PRFX_ASC, STR_B_N_ENTRIES, STR_B_ENTRY_SIZE, ltSTR
-#define makePRFX_STR_DES()                                                 \
+#define makePRFX_STR_DES()                                                     \
   eqSTR, prefixSTR, STR_PRFX_DES, STR_B_N_ENTRIES, STR_B_ENTRY_SIZE, gtSTR
 
 /// nth functions
