@@ -1,0 +1,15 @@
+==1317433== Memcheck, a memory error detector
+==1317433== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==1317433== Using Valgrind-3.24.0 and LibVEX; rerun with -h for copyright info
+==1317433== Command: bin/order -d -f /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/cad.r1000.p1000.xcsv -a rc
+==1317433== Parent PID: 1317385
+==1317433== 
+==1317433== 
+==1317433== HEAP SUMMARY:
+==1317433==     in use at exit: 0 bytes in 0 blocks
+==1317433==   total heap usage: 3,440 allocs, 3,440 frees, 4,825,931 bytes allocated
+==1317433== 
+==1317433== All heap blocks were freed -- no leaks are possible
+==1317433== 
+==1317433== For lists of detected and suppressed errors, rerun with: -s
+==1317433== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -135,11 +135,7 @@ void finish() {
     fprintf(stdout, "\n");
   }
 
-  // WARN: remove
-  FILE *f = fopen("./mem_log_results/perf_reversed", "a");
-  fprintf(f, "%s\t%d\t", opts.alg, n);
-  printStats(f);
-  fclose(f);
+  printStats();
 
   free(arr);
 }

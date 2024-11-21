@@ -48,10 +48,10 @@ void timeEnd() {
   s.t_end = clkDiff(s.t_init, s.t_end);
 }
 
-void printStats(FILE *f) {
-  // FILE *f = fopen("./mem_log_results/memlog", "w");
-  fprintf(f, "%ld.%.9ld\t", s.t_init.tv_sec, s.t_init.tv_nsec);
-  fprintf(f, "%ld.%.9ld\n", s.t_end.tv_sec, s.t_end.tv_nsec);
+void printStats() {
+  fprintf(stdout, "%ld.%.9ld\t", s.t_init.tv_sec, s.t_init.tv_nsec);
+  fprintf(stdout, "%ld.%.9ld\n", s.t_end.tv_sec, s.t_end.tv_nsec);
+  fclose(f_stats);
 }
 
 void memLog(void *address) {

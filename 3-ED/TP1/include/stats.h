@@ -15,7 +15,7 @@ void timeInit();
 
 void timeEnd();
 
-void printStats(FILE *f);
+void printStats();
 
 void memLog(void* address);
 
