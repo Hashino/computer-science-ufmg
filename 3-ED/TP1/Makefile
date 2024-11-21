@@ -18,8 +18,7 @@ SOURCES := $(wildcard $(SRC)/*.c)
 OBJECTS := $(patsubst $(SRC)%,$(OBJ)%, $(patsubst %.c,%.o,$(SOURCES)))
 
 INCLUDE := -I.
-FLAGS := -g -lm 
-# -Wall
+FLAGS := -g -lm -Wall
 # -fsso-struct=big-endian
 
 CC := gcc

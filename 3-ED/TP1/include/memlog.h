@@ -2,7 +2,6 @@
 #define MEMLOG
 
 #include <bits/types/clockid_t.h>
-#include <stdio.h>
 #include <time.h>
 
 #include "../include/msg_assert.h"

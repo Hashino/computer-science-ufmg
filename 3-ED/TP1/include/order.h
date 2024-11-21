@@ -73,7 +73,7 @@ typedef void (*prefixFn)(void *, void *);
 
 // creates ordering structure with just a dynamic array, the name of the value
 // to sort by and the number of elements in the array
-#define makeORDER_DYNAMIC(entries, value, n_entries)                           \
+#define makeORDER_DYN(entries, value, n_entries)                           \
   (OrderStruct) {                                                              \
     .key_mem_offset = offsetof(typeof(entries[0]), value),                     \
     .key_size = sizeof(entries[0]), .data = entries,                           \
@@ -81,42 +81,42 @@ typedef void (*prefixFn)(void *, void *);
   }
 
 /// INT
-#define INT_PREFIXES_ASC (void *)(int[10]){0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-#define INT_PREFIXES_DES (void *)(int[10]){9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
+#define INT_PRFX_ASC (void *)(int[10]){0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+#define INT_PRFX_DES (void *)(int[10]){9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
 #define INT_P_N_ENTRIES 10
 #define INT_P_ENTRY_SIZE sizeof(int)
 
-#define makePREFIXES_INT_ASC()                                                 \
-  eqINT, prefixINT, INT_PREFIXES_ASC, INT_P_N_ENTRIES, INT_P_ENTRY_SIZE, ltINT
-#define makePREFIXES_INT_DES()                                                 \
-  eqINT, prefixINT, INT_PREFIXES_DES, INT_P_N_ENTRIES, INT_P_ENTRY_SIZE, gtINT
+#define makePRFX_INT_ASC()                                                 \
+  eqINT, prefixINT, INT_PRFX_ASC, INT_P_N_ENTRIES, INT_P_ENTRY_SIZE, ltINT
+#define makePRFX_INT_DES()                                                 \
+  eqINT, prefixINT, INT_PRFX_DES, INT_P_N_ENTRIES, INT_P_ENTRY_SIZE, gtINT
 
 /// LONG
-#define LNG_PREFIXES_ASC (void *)(long[10]){0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-#define LNG_PREFIXES_DES (void *)(long[10]){9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
+#define LNG_PRFX_ASC (void *)(long[10]){0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+#define LNG_PRFX_DES (void *)(long[10]){9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
 #define LNG_P_N_ENTRIES 10
 #define LNG_P_ENTRY_SIZE sizeof(long)
 
-#define makePREFIXES_LNG_ASC()                                                 \
-  eqINT, prefixLNG, LNG_PREFIXES_ASC, LNG_P_N_ENTRIES, LNG_P_ENTRY_SIZE, ltLNG
-#define makePREFIXES_LNG_DES()                                                 \
-  eqINT, prefixLNG, LNG_PREFIXES_DES, LNG_P_N_ENTRIES, LNG_P_ENTRY_SIZE, gtLNG
+#define makePRFX_LNG_ASC()                                                 \
+  eqINT, prefixLNG, LNG_PRFX_ASC, LNG_P_N_ENTRIES, LNG_P_ENTRY_SIZE, ltLNG
+#define makePRFX_LNG_DES()                                                 \
+  eqINT, prefixLNG, LNG_PRFX_DES, LNG_P_N_ENTRIES, LNG_P_ENTRY_SIZE, gtLNG
 
 /// STRING
-#define STR_PREFIXES_ASC                                                       \
+#define STR_PRFX_ASC                                                       \
   " !\"#$%&'()*+,-./"                                                          \
   "0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`"                         \
   "abcdefghijklmnopqrstuvwxyz{|}~"
-#define STR_PREFIXES_DES                                                       \
+#define STR_PRFX_DES                                                       \
   "~}|{zyxwvutsrqponmlkjihgfedcba`_^]\\[ZYXWVUTSRQPONMLKJIHGFEDCBA@?>=<;:"     \
   "9876543210/.-,+*)('&%$#\"!"
 #define STR_B_N_ENTRIES 128
 #define STR_B_ENTRY_SIZE sizeof(char)
 
-#define makePREFIXES_STR_ASC()                                                 \
-  eqSTR, prefixSTR, STR_PREFIXES_ASC, STR_B_N_ENTRIES, STR_B_ENTRY_SIZE, ltSTR
-#define makePREFIXES_STR_DES()                                                 \
-  eqSTR, prefixSTR, STR_PREFIXES_DES, STR_B_N_ENTRIES, STR_B_ENTRY_SIZE, gtSTR
+#define makePRFX_STR_ASC()                                                 \
+  eqSTR, prefixSTR, STR_PRFX_ASC, STR_B_N_ENTRIES, STR_B_ENTRY_SIZE, ltSTR
+#define makePRFX_STR_DES()                                                 \
+  eqSTR, prefixSTR, STR_PRFX_DES, STR_B_N_ENTRIES, STR_B_ENTRY_SIZE, gtSTR
 
 /// nth functions
 void *nthKEY(OrderStruct order, int n);
@@ -193,7 +193,7 @@ void quickSortInd(OrderStruct order, cmpFn cmp);
  *  @brief orders by bucket sort algorithm with selection sort for sorting
  *  buckets.
  *  recommended to use makeORDER and makeBUCKET_TYPE for building function call:
- *  > bucketSort(makeORDER(pairs, key), makePREFIXES_INT_ASC(), ltINT);
+ *  > bucketSort(makeORDER(pairs, key), makePRFX_INT_ASC(), ltINT);
  *
  *  @param order use macro makeORDER for building
  *  @param eq function to compare data inside order.data (with key offset)

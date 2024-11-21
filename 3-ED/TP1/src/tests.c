@@ -95,22 +95,22 @@ void testBucketSort() {
   Cadastro data[7] = UNORDERED_DATA;
   bool res = false;
 
-  bucketSort(makeORDER(data, nome), makePREFIXES_STR_ASC());
+  bucketSort(makeORDER(data, nome), makePRFX_STR_ASC());
   res = eqCAD_ARR(data, ORDERED_NOME_ASC, 7);
   printResult("bucketSort\t\tby Name\tAscending", res);
   n_tests_made++;
 
-  bucketSort(makeORDER(data, nome), makePREFIXES_STR_DES());
+  bucketSort(makeORDER(data, nome), makePRFX_STR_DES());
   res = eqCAD_ARR(data, ORDERED_NOME_DES, 7);
   printResult("bucketSort\t\tby Name\tDescending", res);
   n_tests_made++;
 
-  bucketSort(makeORDER(data, cpf), makePREFIXES_INT_ASC());
+  bucketSort(makeORDER(data, cpf), makePRFX_INT_ASC());
   res = eqCAD_ARR(data, ORDERED_CPF_ASC, 7);
   printResult("bucketSort\t\tby CPF\tAscending", res);
   n_tests_made++;
 
-  bucketSort(makeORDER(data, cpf), makePREFIXES_INT_DES());
+  bucketSort(makeORDER(data, cpf), makePRFX_INT_DES());
   res = eqCAD_ARR(data, ORDERED_CPF_DES, 7);
   printResult("bucketSort\t\tby CPF\tDescending", res);
   n_tests_made++;

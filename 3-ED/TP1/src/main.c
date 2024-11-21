@@ -11,7 +11,7 @@ opt_t opts;
 struct timespec inittp;
 
 xCSV *file;
-Cadastro *cadastros;
+Cadastro *arr;
 
 void initialize() {
   clock_gettime(CLOCK_MONOTONIC, &inittp);
@@ -19,32 +19,29 @@ void initialize() {
   file = read_file(opts.file_path);
 
   size_t s = file->n_lines * sizeof(Cadastro);
-  cadastros = malloc(s);
+  arr = malloc(s);
 
-  fromXCSV(file, MAX_LEN, cadastros);
+  fromXCSV(file, MAX_LEN, arr);
   close_file(file);
 }
 
 void choose_sort_alg() {
-
   if (opts.alg) {
     switch (opts.alg[0]) {
     case 'q':
       switch (opts.alg[1]) {
       case 'n':
         if (opts.asc) {
-          quickSortInd(makeORDER_DYNAMIC(cadastros, nome, file->n_lines),
-                       ltSTR);
+          quickSortInd(makeORDER_DYN(arr, nome, file->n_lines), ltSTR);
         } else {
-          quickSortInd(makeORDER_DYNAMIC(cadastros, nome, file->n_lines),
-                       gtSTR);
+          quickSortInd(makeORDER_DYN(arr, nome, file->n_lines), gtSTR);
         }
         break;
       case 'c':
         if (opts.asc) {
-          quickSortInd(makeORDER_DYNAMIC(cadastros, cpf, file->n_lines), ltLNG);
+          quickSortInd(makeORDER_DYN(arr, cpf, file->n_lines), ltLNG);
         } else {
-          quickSortInd(makeORDER_DYNAMIC(cadastros, cpf, file->n_lines), gtLNG);
+          quickSortInd(makeORDER_DYN(arr, cpf, file->n_lines), gtLNG);
         }
         break;
       }
@@ -54,20 +51,20 @@ void choose_sort_alg() {
       switch (opts.alg[1]) {
       case 'n':
         if (opts.asc) {
-          bucketSort(makeORDER_DYNAMIC(cadastros, nome, file->n_lines),
-                     makePREFIXES_STR_ASC());
+          bucketSort(makeORDER_DYN(arr, nome, file->n_lines),
+                     makePRFX_STR_ASC());
         } else {
-          bucketSort(makeORDER_DYNAMIC(cadastros, nome, file->n_lines),
-                     makePREFIXES_STR_DES());
+          bucketSort(makeORDER_DYN(arr, nome, file->n_lines),
+                     makePRFX_STR_DES());
         }
         break;
       case 'c':
         if (opts.asc) {
-          bucketSort(makeORDER_DYNAMIC(cadastros, cpf, file->n_lines),
-                     makePREFIXES_LNG_ASC());
+          bucketSort(makeORDER_DYN(arr, cpf, file->n_lines),
+                     makePRFX_LNG_ASC());
         } else {
-          bucketSort(makeORDER_DYNAMIC(cadastros, cpf, file->n_lines),
-                     makePREFIXES_LNG_DES());
+          bucketSort(makeORDER_DYN(arr, cpf, file->n_lines),
+                     makePRFX_LNG_DES());
         }
         break;
       }
@@ -75,12 +72,22 @@ void choose_sort_alg() {
     case 'r':
       switch (opts.alg[1]) {
       case 'n':
-        radixSort(makeORDER_DYNAMIC(cadastros, nome, file->n_lines), 's',
-                  opts.asc);
+        radixSort(makeORDER_DYN(arr, nome, file->n_lines), 's', opts.asc);
         break;
       case 'c':
-        radixSort(makeORDER_DYNAMIC(cadastros, cpf, file->n_lines), 'l',
-                  opts.asc);
+        radixSort(makeORDER_DYN(arr, cpf, file->n_lines), 'l', opts.asc);
+        break;
+      }
+      break;
+    case 's':
+      switch (opts.alg[1]) {
+      case 'n':
+        selectionSort(makeORDER_DYN(arr, nome, file->n_lines),
+                      opts.asc ? ltSTR : gtSTR);
+        break;
+      case 'c':
+        selectionSort(makeORDER_DYN(arr, cpf, file->n_lines),
+                      opts.asc ? ltSTR : gtSTR);
         break;
       }
       break;
@@ -95,7 +102,7 @@ void choose_sort_alg() {
 void finish() {
   if (opts.debug) {
     for (int i = 0; i < file->n_lines; i++) {
-      fprintf(stdout, "%s\n", toString(cadastros[i]));
+      fprintf(stdout, "%s\n", toString(arr[i]));
     }
   }
 
@@ -104,17 +111,14 @@ void finish() {
   struct timespec t_end = clkDiff(inittp, endtp);
 
   // system and user usage time
-  int who = RUSAGE_SELF;
-  int ret;
-
   struct rusage usage;
-  ret = getrusage(who, &usage);
+  getrusage(RUSAGE_SELF, &usage);
 
   printf("%ld.%.9ld\t", t_end.tv_sec, t_end.tv_nsec);
   printf("%ld.%.9ld\t", usage.ru_stime.tv_sec, usage.ru_stime.tv_usec);
   printf("%ld.%.9ld\n", usage.ru_utime.tv_sec, usage.ru_utime.tv_usec);
 
-  free(cadastros);
+  free(arr);
 }
 
 int main(int argc, char **argv) {
