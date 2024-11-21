@@ -1,9 +1,5 @@
 #include "../include/order.h"
 
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
 
 void _selectionSort(OrderStruct order, cmpFn cmp) {
   for (int i = 0; i < order.data_len - 1; i++) {

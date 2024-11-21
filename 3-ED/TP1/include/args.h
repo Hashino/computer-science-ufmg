@@ -2,6 +2,10 @@
 #define ARGS
 
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
 typedef struct opt {
   char *file_path;

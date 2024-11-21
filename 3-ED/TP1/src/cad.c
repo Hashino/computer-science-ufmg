@@ -1,5 +1,4 @@
 #include "../include/cad.h"
-#include <string.h>
 
 char buf[2000];
 

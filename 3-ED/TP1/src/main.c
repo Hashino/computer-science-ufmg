@@ -7,51 +7,11 @@
 #include <sys/resource.h>
 #include <time.h>
 
-void testing() {
-  // char *path =
-  //     "/home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/cad.r5000.p5000.xcsv";
-  char *path = "/home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/test.xcsv";
-  xCSV *file = read_file(path);
-
-  size_t s = file->n_lines * sizeof(Cadastro);
-  Cadastro *arr = malloc(s);
-
-  fromXCSV(file, MAX_LEN, arr);
-  close_file(file);
-
-  // selectionSort(makeORDER_DYNAMIC(arr, cpf, file.n_lines), ltLNG);
-  //
-  // quickSort(makeORDER_DYNAMIC(arr, cpf, file.n_lines), ltLNG);
-  //
-  // quickSortInd(makeORDER_DYNAMIC(arr, cpf, file.n_lines), ltLNG);
-  //
-  // bucketSort(makeORDER_DYNAMIC(arr, cpf, file.n_lines),
-  // makePREFIXES_LNG_ASC());
-  //
-  // radixSort(makeORDER_DYNAMIC(arr, cpf, file.n_lines), 'l', true);
-  //
-  // selectionSort(makeORDER_DYNAMIC(arr, nome, file.n_lines), ltSTR);
-  //
-  // quickSort(makeORDER_DYNAMIC(arr, nome, file.n_lines), ltSTR);
-  //
-  // quickSortInd(makeORDER_DYNAMIC(arr, nome, file.n_lines), ltSTR);
-  //
-  // bucketSort(makeORDER_DYNAMIC(arr, nome, file.n_lines),
-  // makePREFIXES_STR_ASC());
-  //
-  // radixSort(makeORDER_DYNAMIC(arr, nome, file.n_lines), 's', true);
-
-  for (int i = 0; i < file->n_lines; i++) {
-    fprintf(stdout, "%s\n", toString(arr[i]));
-  }
-
-  free(arr);
-}
-
 opt_t opts;
-Cadastro *cadastros;
-xCSV *file;
 struct timespec inittp;
+
+xCSV *file;
+Cadastro *cadastros;
 
 void initialize() {
   clock_gettime(CLOCK_MONOTONIC, &inittp);
@@ -73,9 +33,11 @@ void choose_sort_alg() {
       switch (opts.alg[1]) {
       case 'n':
         if (opts.asc) {
-          quickSortInd(makeORDER_DYNAMIC(cadastros, nome, file->n_lines), ltSTR);
+          quickSortInd(makeORDER_DYNAMIC(cadastros, nome, file->n_lines),
+                       ltSTR);
         } else {
-          quickSortInd(makeORDER_DYNAMIC(cadastros, nome, file->n_lines), gtSTR);
+          quickSortInd(makeORDER_DYNAMIC(cadastros, nome, file->n_lines),
+                       gtSTR);
         }
         break;
       case 'c':
@@ -135,21 +97,22 @@ void finish() {
     for (int i = 0; i < file->n_lines; i++) {
       fprintf(stdout, "%s\n", toString(cadastros[i]));
     }
-    struct timespec endtp;
-    clock_gettime(CLOCK_MONOTONIC, &endtp);
-    struct timespec t_end = clkDiff(inittp, endtp);
-
-    // system and user usage time
-    int who = RUSAGE_SELF;
-    int ret;
-
-    struct rusage usage;
-    ret = getrusage(who, &usage);
-
-    printf("\n%ld.%.9ld\t", t_end.tv_sec, t_end.tv_nsec);
-    printf("%ld.%.9ld\t", usage.ru_stime.tv_sec, usage.ru_stime.tv_usec);
-    printf("%ld.%.9ld\n\n", usage.ru_utime.tv_sec, usage.ru_utime.tv_usec);
   }
+
+  struct timespec endtp;
+  clock_gettime(CLOCK_MONOTONIC, &endtp);
+  struct timespec t_end = clkDiff(inittp, endtp);
+
+  // system and user usage time
+  int who = RUSAGE_SELF;
+  int ret;
+
+  struct rusage usage;
+  ret = getrusage(who, &usage);
+
+  printf("%ld.%.9ld\t", t_end.tv_sec, t_end.tv_nsec);
+  printf("%ld.%.9ld\t", usage.ru_stime.tv_sec, usage.ru_stime.tv_usec);
+  printf("%ld.%.9ld\n", usage.ru_utime.tv_sec, usage.ru_utime.tv_usec);
 
   free(cadastros);
 }

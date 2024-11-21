@@ -1,8 +1,5 @@
 #include "../include/tests.h"
 
-#include <stdbool.h>
-#include <stdio.h>
-
 int n_tests_made = 0;
 int n_tests_passed = 0;
 

@@ -1,9 +1,5 @@
 #include "../include/order.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 bool eqANY(void *bin1, void *bin2, int byte_size) {
   return memcmp(bin1, bin2, byte_size) == 0;
 }

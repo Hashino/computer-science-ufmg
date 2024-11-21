@@ -1,4 +1,3 @@
-
 #include "../include/stats.h"
 
 struct timespec clkDiff(struct timespec t1, struct timespec t2)
