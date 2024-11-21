@@ -1,4 +1,5 @@
 #include "../include/cad.h"
+#include <string.h>
 
 char buf[2000];
 
@@ -23,12 +24,13 @@ bool eqCAD_ARR(Cadastro *arr1, Cadastro *arr2, size_t len) {
 }
 
 void fromXCSV(xCSV *csv, int max_len, Cadastro *res) {
+  char *curr_line;
   char *curr_token;
   for (int i = 0; i < csv->n_lines; i++) {
-    curr_token = strsep(&csv->data[i], ",");
+    curr_token = strtok_r(csv->data[i], ",", &curr_line);
     snprintf(res[i].nome, MAX_LEN, "%s", curr_token);
 
-    curr_token = strsep(&csv->data[i], ",");
+    curr_token = strtok_r(NULL, ",", &curr_line);
     if (curr_token != NULL && isdigit(*curr_token)) {
       // safer than atoi
       res[i].cpf = strtol(curr_token, NULL, 10);
@@ -36,10 +38,10 @@ void fromXCSV(xCSV *csv, int max_len, Cadastro *res) {
       res[i].cpf = 0;
     }
 
-    curr_token = strsep(&csv->data[i], ",");
+    curr_token = strtok_r(NULL, ",", &curr_line);
     snprintf(res[i].end, MAX_LEN, "%s", curr_token);
 
-    curr_token = strsep(&csv->data[i], ",");
+    curr_token = strtok_r(NULL, ",", &curr_line);
     snprintf(res[i].other, MAX_LEN, "%s", curr_token);
   }
 }

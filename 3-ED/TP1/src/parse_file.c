@@ -30,13 +30,12 @@ void read_header(char *path) {
 xCSV *read_file(char *path) {
   read_header(path);
 
-  csv.data = malloc(csv.n_lines * sizeof(char *));
-
   // INFO: first allocs a block of pointers to strings
   // after that allocs the strings
   // [**s1,**s2,**s3][*s1,*s2,*s3,*s4]
+  csv.data = malloc(csv.n_lines * sizeof(char *));
+
   for (int i = 0; i < csv.n_lines; i++) {
-    // FIX: leaking
     csv.data[i] = malloc(MAX_LEN * sizeof(char));
 
     size_t s = 0;
@@ -57,8 +56,9 @@ void close_file(xCSV *file) {
     fclose(f);
   }
 
-  for (int i = 0; i < csv.n_lines; i++) {
+  for (int i = 0; i < file->n_lines; i++) {
     free(file->data[i]);
+    file->data[i] = NULL;
   }
   free(file->data);
 }

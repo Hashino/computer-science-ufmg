@@ -27,10 +27,11 @@ CC := gcc
 ### TARGETS ###
 
 TEST_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/test.xcsv
-ALG := 'rc'
+ALG := 'rn'
 
 run: all
-	@$(EXE) -d -f $(REAL_FILE) -a $(ALG) -o a
+	# @$(EXE) -d -f $(REAL_FILE) -a $(ALG) -o a
+	@$(EXE) -d -f $(TEST_FILE) -a $(ALG) -o d
 
 REAL_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/cad.r1000.p1000.xcsv
 real: all
