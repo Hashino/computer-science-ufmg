@@ -1,3 +1,6 @@
+#ifndef MEMLOG
+#define MEMLOG
+
 #include <bits/types/clockid_t.h>
 #include <stdio.h>
 #include <time.h>
@@ -31,3 +34,4 @@ int defineFaseMemLog(int f);
 int leMemLog(long int pos, long int tam, int id);
 int escreveMemLog(long int pos, long int tam, int id);
 int finalizaMemLog();
+#endif

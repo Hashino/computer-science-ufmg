@@ -1,4 +1,3 @@
-
 local dap = require("dap")
 
 dap.adapters.lldb = {
@@ -19,6 +18,6 @@ dap.configurations.c = {
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
     runInTerminal = true,
-    args = { '-d', '-f', '/home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/test.xcsv' },
+    args = { '-d', '-a', 'rn', '-o', 'd', '-f', '/home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/test.xcsv' },
   },
 }

@@ -6,7 +6,7 @@
 char buf[211];
 
 char *toString(Cadastro cad) {
-  sprintf(buf, "nome:%s,\tcpf:%lu,\tend:%s", cad.nome, cad.cpf, cad.end);
+  sprintf(buf, "nome:%s,\tcpf:%lu,\tend:%s\tother:%s", cad.nome, cad.cpf, cad.end, cad.other);
   return buf;
 }
 
@@ -24,25 +24,25 @@ bool eqCAD_ARR(Cadastro *arr1, Cadastro *arr2, size_t len) {
   return true;
 }
 
-void fromXCSV(xCSV csv, Cadastro *res) {
-  char *curr;
+void fromXCSV(xCSV csv, int max_len, Cadastro *res) {
+  char *curr_token;
   for (int i = 0; i < csv.n_lines; i++) {
-    curr = strsep(&csv.data[i], ",");
-    sprintf(res[i].nome, "%s", curr);
+    curr_token = strsep(&csv.data[i], ",");
+    sprintf(res[i].nome, "%s", curr_token);
 
-    curr = strsep(&csv.data[i], ",");
-    if (curr != NULL && isdigit(*curr)) {
+    curr_token = strsep(&csv.data[i], ",");
+    if (curr_token != NULL && isdigit(*curr_token)) {
       // safer than atoi
-      res[i].cpf = strtol(curr, NULL, 10);
+      res[i].cpf = strtol(curr_token, NULL, 10);
     } else {
       res[i].cpf = 0;
     }
 
-    curr = strsep(&csv.data[i], ",");
-    sprintf(res[i].end, "%s", curr);
+    curr_token = strsep(&csv.data[i], ",");
+    sprintf(res[i].end, "%s", curr_token);
 
-    curr = strsep(&csv.data[i], ",");
-    sprintf(res[i].other, "%s", curr);
+    curr_token = strsep(&csv.data[i], ",");
+    sprintf(res[i].other, "%s", curr_token);
   }
 }
 

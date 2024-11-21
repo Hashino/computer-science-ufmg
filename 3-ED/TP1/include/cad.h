@@ -21,7 +21,7 @@ char *toString(Cadastro cad);
 bool eqCAD(Cadastro c1, Cadastro c2);
 bool eqCAD_ARR(Cadastro *arr1, Cadastro *arr2, size_t len);
 
-void fromXCSV(xCSV csv, Cadastro* res);
+void fromXCSV(xCSV csv, int max_len, Cadastro* res);
 
 void exemploCadastro();
 #endif

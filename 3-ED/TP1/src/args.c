@@ -38,6 +38,7 @@ void parse_args(int argc, char **argv, opt_t *opts)
 {
   // inicializacao variaveis globais para opcoes
   opts->debug = false;
+  opts->asc = true;
 
   // variaveis externas do getopt
   extern char *optarg;
@@ -48,13 +49,18 @@ void parse_args(int argc, char **argv, opt_t *opts)
 
   // getopt - letra indica a opcao, : junto a letra indica parametro
   // no caso de escolher mais de uma operacao, vale a ultima
-  while ((c = getopt(argc, argv, "f:a:d")) != EOF) {
+  while ((c = getopt(argc, argv, "f:a:o:d")) != EOF) {
     switch (c) {
     case 'f':
       opts->file_path = optarg;
       break;
     case 'a':
       opts->alg = optarg;
+      break;
+    case 'o':
+      if (optarg[0] == 'd') {
+        opts->asc = false;
+      }
       break;
     case 'd':
       opts->debug = true;

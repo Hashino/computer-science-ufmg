@@ -9,11 +9,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAX_LEN 500
+
 typedef struct xCSV {
   int n_fields;
   int n_lines;
   char **data;
 } xCSV;
+
 
 xCSV read_file(char *);
 
