@@ -83,7 +83,6 @@ typedef void (*prefixFn)(void *, void *);
 #define INT_P_N_ENTRIES 10
 #define INT_P_ENTRY_SIZE sizeof(int)
 
-// TODO: simplify by including cmpFn
 #define makePREFIXES_INT_ASC()                                                 \
   eqINT, prefixINT, INT_PREFIXES_ASC, INT_P_N_ENTRIES, INT_P_ENTRY_SIZE, ltINT
 #define makePREFIXES_INT_DES()                                                 \
@@ -95,7 +94,6 @@ typedef void (*prefixFn)(void *, void *);
 #define LNG_P_N_ENTRIES 10
 #define LNG_P_ENTRY_SIZE sizeof(long)
 
-// TODO: simplify by including cmpFn
 #define makePREFIXES_LNG_ASC()                                                 \
   eqINT, prefixLNG, LNG_PREFIXES_ASC, LNG_P_N_ENTRIES, LNG_P_ENTRY_SIZE, ltLNG
 #define makePREFIXES_LNG_DES()                                                 \

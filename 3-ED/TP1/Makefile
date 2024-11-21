@@ -27,15 +27,20 @@ CC := gcc
 ### TARGETS ###
 
 TEST_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/test.xcsv
-ALG := 'bn'
+ALG := 'rc'
 
 run: all
-	@$(EXE) -d -f $(TEST_FILE) -a $(ALG) -o a
+	@$(EXE) -d -f $(REAL_FILE) -a $(ALG) -o a
 
-VALGRIND_ARGS := --leak-check=full --show-leak-kinds=all 
+REAL_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/cad.r1000.p1000.xcsv
+real: all
+	@$(EXE) -d -f $(REAL_FILE) -a $(ALG) -o a > out
+
+
+VALGRIND_ARGS := --leak-check=full --show-leak-kinds=all --log-file=res	
 
 tests: all
-	valgrind $(VALGRIND_ARGS) $(EXE) -d -f $(TEST_FILE) -a $(ALG)
+	valgrind $(VALGRIND_ARGS) $(EXE) -d -f $(REAL_FILE) -a $(ALG)
 
 ### general targets
 

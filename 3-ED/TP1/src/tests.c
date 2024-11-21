@@ -149,23 +149,27 @@ void printResultsTotal() {
   char total_results[100];
   sprintf(total_results, "[%d/%d] TESTS PASSED", n_tests_passed, n_tests_made);
 
-  bool result = n_tests_made == n_tests_passed;
+  bool result = (n_tests_made == n_tests_passed);
 
   char *res_color = result ? ANSI_COLOR_GREEN : ANSI_COLOR_RED;
   char *res_end = ANSI_COLOR_RESET;
+
+  if (!result) {
+    fprintf(stdout, "-------------------------------------------\n");
+  }
 
   fprintf(stdout, "[%s%d/%d%s] %sTESTS_PASSED%s\n", res_color, n_tests_passed,
           n_tests_made, res_end, res_color, res_end);
 }
 
 void runTests() {
+  fprintf(stdout, "-------------------------------------------\n");
   testSelectionSort();
   testQuickSort();
   testQuickSortInd();
   testBucketSort();
   testRadixSort();
 
-  fprintf(stdout, "-------------------------------------------\n");
   printResultsTotal();
   fprintf(stdout, "-------------------------------------------\n");
 }

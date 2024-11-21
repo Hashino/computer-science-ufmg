@@ -17,9 +17,8 @@ typedef struct xCSV {
   char **data;
 } xCSV;
 
+xCSV *read_file(char *);
 
-xCSV read_file(char *);
-
-void close_file();
+void close_file(xCSV *file);
 
 #endif

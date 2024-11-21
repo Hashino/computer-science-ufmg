@@ -1,10 +1,7 @@
 #include "../include/parse_files.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-FILE *f;
-char *line;
+FILE *f = NULL;
+char *line = "";
 int curr_len = 0;
 
 xCSV csv;
@@ -14,50 +11,54 @@ bool open_file(char *path) {
   return f == NULL;
 }
 
-xCSV read_file(char *path) {
+void read_header(char *path) {
+  line = malloc(MAX_LEN * sizeof(char));
   erroAssert(open_file(path), "Couldn't open file");
 
-  size_t s = 0;
-
-  line = malloc(MAX_LEN * sizeof(char));
-
-  // getline(&line, &s, f);
   fgets(line, MAX_LEN, f);
-  int n_fields = strtol(line, NULL, 10);
+  csv.n_fields = strtol(line, NULL, 10);
 
-  for (int i = 0; i < n_fields; i++) {
-    // getline(&line, &s, f);
+  for (int i = 0; i < csv.n_fields; i++) {
     fgets(line, MAX_LEN, f);
   }
 
-  // getline(&line, &s, f);
   fgets(line, MAX_LEN, f);
-  int n_lines = strtol(line, NULL, 10);
+  csv.n_lines = strtol(line, NULL, 10);
+  free(line);
+}
 
-  csv = (xCSV){n_fields, n_lines};
+xCSV *read_file(char *path) {
+  read_header(path);
 
   csv.data = malloc(csv.n_lines * sizeof(char *));
 
+  // INFO: first allocs a block of pointers to strings
+  // after that allocs the strings
+  // [**s1,**s2,**s3][*s1,*s2,*s3,*s4]
   for (int i = 0; i < csv.n_lines; i++) {
-    // getline(&csv.data[i], &s, f);
-    // getline(&csv.data + (i * MAX_LEN * sizeof(char)), &s, f);
+    // FIX: leaking
     csv.data[i] = malloc(MAX_LEN * sizeof(char));
 
-    fgets(csv.data[i], MAX_LEN, f);
+    size_t s = 0;
+    getline(&line, &s, f);
+
+    snprintf(csv.data[i], MAX_LEN, "%s", line);
     csv.data[i][strcspn(csv.data[i], "\n")] = 0;
 
-    char* final = csv.data[i];
-    int i = 0;
+    free(line);
+    line = NULL;
   }
 
-  return csv;
+  return &csv;
 }
 
-void close_file() {
+void close_file(xCSV *file) {
   if (f) {
     fclose(f);
   }
-  // for (int i =0; i < csv.n_lines; i++) {
-  //   free(csv.data[i]);
-  // }
+
+  for (int i = 0; i < csv.n_lines; i++) {
+    free(file->data[i]);
+  }
+  free(file->data);
 }
