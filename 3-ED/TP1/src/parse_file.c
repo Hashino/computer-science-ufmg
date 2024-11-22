@@ -11,23 +11,41 @@ bool open_file(char *path) {
   return f == NULL;
 }
 
+void read_and_check_line() {
+  if (fgets(line, MAX_LEN, f) == NULL) {
+    erroAssert(line, "Couldn't read file line");
+    exit(EXIT_FAILURE);
+  }
+}
+
 void read_header(char *path) {
   line = malloc(MAX_LEN * sizeof(char));
   erroAssert(open_file(path), "Couldn't open file");
 
-  fgets(line, MAX_LEN, f);
+  read_and_check_line();
   csv.n_fields = strtol(line, NULL, 10);
 
-  for (int i = 0; i < csv.n_fields; i++) {
-    fgets(line, MAX_LEN, f);
+  if (csv.n_fields == 0) {
+    erroAssert(!csv.n_fields, "Couldn't read file header: number of fields");
+    exit(EXIT_FAILURE);
   }
 
-  fgets(line, MAX_LEN, f);
+  for (int i = 0; i < csv.n_fields; i++) {
+    read_and_check_line();
+  }
+
+  read_and_check_line();
   csv.n_lines = strtol(line, NULL, 10);
+
+  if (csv.n_lines == 0) {
+    erroAssert(!csv.n_lines, "Couldn't read file header: number of lines");
+    exit(EXIT_FAILURE);
+  }
+
   free(line);
 }
 
-xCSV *read_file(char *path) {
+xCSV *readFile(char *path) {
   read_header(path);
 
   // INFO: first allocs a block of pointers to strings
@@ -41,6 +59,9 @@ xCSV *read_file(char *path) {
 
     size_t s = 0;
     getline(&line, &s, f);
+    if (s == 0) {
+      erroAssert(i, "Couldn't read data entry");
+    }
 
     snprintf(csv.data[i], MAX_LEN, "%s", line);
     csv.data[i][strcspn(csv.data[i], "\n")] = 0;
@@ -52,7 +73,7 @@ xCSV *read_file(char *path) {
   return &csv;
 }
 
-void close_file(xCSV *file) {
+void closeFile(xCSV *file) {
   if (f) {
     fclose(f);
   }

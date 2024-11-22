@@ -14,7 +14,10 @@ typedef struct opt {
   bool debug;
 } opt_t;
 
+// parse arguments to opt
 void parse_args(int argc, char **argv, opt_t *opt);
+
+// displays correct application use
 void uso();
 
 #endif

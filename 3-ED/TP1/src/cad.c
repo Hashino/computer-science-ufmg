@@ -33,20 +33,29 @@ void fromXCSV(xCSV *csv, int max_len, Cadastro *res) {
     // memLog(curr_token);
 
     curr_token = strtok_r(csv->data[i], ",", &curr_line);
+    if (curr_token == NULL) {
+      warnAssert(curr_line, "Couldn't read Name");
+    }
     snprintf(res[i].nome, MAX_LEN, "%s", curr_token);
 
     curr_token = strtok_r(NULL, ",", &curr_line);
     if (curr_token != NULL && isdigit(*curr_token)) {
-      // safer than atoi
       res[i].cpf = strtol(curr_token, NULL, 10);
     } else {
+      warnAssert(curr_line, "Couldn't read CPF");
       res[i].cpf = 0;
     }
 
     curr_token = strtok_r(NULL, ",", &curr_line);
+    if (curr_token == NULL) {
+      warnAssert(curr_line, "Couldn't read End");
+    }
     snprintf(res[i].end, MAX_LEN, "%s", curr_token);
 
     curr_token = strtok_r(NULL, ",", &curr_line);
+    if (curr_token == NULL) {
+      warnAssert(curr_line, "Couldn't read Other");
+    }
     snprintf(res[i].other, MAX_LEN, "%s", curr_token);
   }
 }

@@ -18,8 +18,16 @@ typedef struct xCSV {
   char **data;
 } xCSV;
 
-xCSV *read_file(char *);
+/**
+ * @return a xCSV header with parameters neeeded for parsing file 
+ */
+xCSV *readFile(char *);
 
-void close_file(xCSV *file);
+/**
+ * @brief closes file and frees all memory allocated while parsing
+ *
+ * @param file the file returned by read_file()
+ */
+void closeFile(xCSV *file);
 
 #endif

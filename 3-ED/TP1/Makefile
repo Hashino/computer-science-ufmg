@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := all
 
-TARGET := order
+TARGET := tp3.out
 
 SRC := src
 BIN := bin
@@ -19,7 +19,6 @@ OBJECTS := $(patsubst $(SRC)%,$(OBJ)%, $(patsubst %.c,%.o,$(SOURCES)))
 
 INCLUDE := -I.
 FLAGS := -g -lm -Wall
-# -fsso-struct=big-endian
 
 CC := gcc
 
@@ -32,12 +31,12 @@ REAL_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/cad.r1000.p1000.xcsv
 ALG := 'rc'
 
 run: all
-	$(EXE) -d -f $(MINI_FILE) -a $(ALG) -o a
+	$(EXE) -d -f $(TEST_FILE) -a $(ALG) -o a
 
 VALGRIND_ARGS := --leak-check=full --show-leak-kinds=all --log-file=res	
 
 valgrind: all
-	valgrind $(VALGRIND_ARGS) $(EXE) -d -f $(REAL_FILE) -a $(ALG)
+	valgrind $(VALGRIND_ARGS) $(EXE) -f $(REAL_FILE) -a $(ALG)
 
 ### general targets
 

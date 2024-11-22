@@ -13,20 +13,15 @@ opt_t opts;
 xCSV *file;
 Cadastro *arr;
 
-// WARN: remove
-int n = 0;
-
 void initialize() {
 
-  file = read_file(opts.file_path);
+  file = readFile(opts.file_path);
 
   size_t s = file->n_lines * sizeof(Cadastro);
   arr = malloc(s);
 
-  n = file->n_lines;
-
   fromXCSV(file, MAX_LEN, arr);
-  close_file(file);
+  closeFile(file);
 }
 
 void choose_sort_alg() {
@@ -119,10 +114,12 @@ void choose_sort_alg() {
       break;
     default:
       warnAssert(opts.alg, "invalid algorithm");
+      uso();
       break;
     }
   } else {
     warnAssert(!opts.alg, "no sorting algorithm specified");
+    uso();
   }
 }
 
@@ -155,6 +152,7 @@ int main(int argc, char **argv) {
     finish();
   } else {
     warnAssert(!opts.file_path, "no file");
+    uso();
   }
 
   if (opts.debug) {

@@ -9,14 +9,19 @@
 #include <time.h>
 #include <inttypes.h>
 
+// initlize internal values
 void startStats();
 
+// call after initial setup is done
 void timeInit();
 
+// call after main loop ends
 void timeEnd();
 
+// call at end of execution to display times
 void printStats();
 
+// writes memory addres and relative time to file
 void memLog(void* address);
 
 #endif

@@ -5,25 +5,23 @@ void uso()
 // Entrada: nao tem
 // Saida: impressao das opcoes de linha de comando
 {
-  fprintf(stderr, "\t-n <int>\t(input number)\n");
-  fprintf(stderr, "\t-a <fib|fac>\t(algorithm)\n");
-  fprintf(stderr, "\t    fib \t fibonacci\n");
-  fprintf(stderr, "\t    fac \t factorial\n");
-  fprintf(stderr, "\t-r \t(recursive implementation)\n");
-  fprintf(stderr, "\t-i \t(iteractive implementation)\n");
+  fprintf(stderr, "\t-f <path>\t(caminho absoluto para o arquivo xcsv)\n");
+  fprintf(stderr, "\t-a <string>\t(algoritimo)\n");
+  fprintf(stderr, "\t    qual algoritimo usar e por qual atributo ordernar\n");
+  fprintf(stderr, "\t    {s|r|b|q}{n|c|o}\n");
+  fprintf(stderr, "\t    exemplos:\n");
+  fprintf(stderr, "\t    sn \t selection sort por nome\n");
+  fprintf(stderr, "\t    rc \t radix sort por cpf\n");
+  fprintf(stderr, "\t    bo \t bucket sort por other\n");
+  fprintf(stderr, "\t    qn \t quick sort por nome\n");
+  fprintf(stderr, "\t-o <char>\t(ordernar por ordem ascendente/descendente)\n");
+  fprintf(stderr, "\t    {a|d}\n");
+  fprintf(stderr, "\t-d     \t(flag de debug)\n");
+  fprintf(stderr, "\t    executa testes e mostra resultado da ordenação\n");
   fprintf(stderr, "\n");
-  fprintf(stderr, "output: {clock_time} {system_time} {user_time}\n");
+  fprintf(stderr, "output: {tempo para recuperar dados} {tempo para ordenar dados}\n");
 }
 
-// bool in(char **arr, int len, char *target) {
-//   int i;
-//   for (i = 0; i < len; i++) {
-//     if (strncmp(arr[i], target, strlen(target)) == 0) {
-//       return true;
-//     }
-//   }
-//   return false;
-// }
 
 void parse_args(int argc, char **argv, opt_t *opts)
 // Descricao: le as opcoes da linha de comando e inicializa variaveis
