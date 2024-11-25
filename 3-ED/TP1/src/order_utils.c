@@ -1,5 +1,4 @@
 #include "../include/order.h"
-#include <string.h>
 
 bool eqANY(void *bin1, void *bin2, int byte_size) {
   return memcmp(bin1, bin2, byte_size) == 0;
@@ -16,6 +15,11 @@ bool gtBIN_STR(void *bin1, void *bin2) {
   return strcmp(bin1, bin2) > 0;
 }
 
+bool eqINT(void *int1, void *int2) {
+  // memLog(int1);
+  // memLog(int2);
+  return *(int *)int1 == *(int *)int2;
+}
 bool gtINT(void *int1, void *int2) {
   // memLog(int1);
   // memLog(int2);
@@ -26,26 +30,21 @@ bool ltINT(void *int1, void *int2) {
   // memLog(int2);
   return *(int *)int1 < *(int *)int2;
 }
-bool eqINT(void *int1, void *int2) {
-  // memLog(int1);
-  // memLog(int2);
-  return *(int *)int1 == *(int *)int2;
-}
 
-bool gtLNG(void *int1, void *int2) {
-  // memLog(int1);
-  // memLog(int2);
-  return *(long *)int1 > *(long *)int2;
+bool eqLNG(void *lng1, void *lng2) {
+  // memLog(lng1);
+  // memLog(lng2);
+  return *(long *)lng1 == *(long *)lng2;
 }
-bool ltLNG(void *int1, void *int2) {
-  // memLog(int1);
-  // memLog(int2);
-  return *(long *)int1 < *(long *)int2;
+bool gtLNG(void *lng1, void *lng2) {
+  // memLog(lng1);
+  // memLog(lng2);
+  return *(long *)lng1 > *(long *)lng2;
 }
-bool eqLNG(void *int1, void *int2) {
-  // memLog(int1);
-  // memLog(int2);
-  return *(long *)int1 == *(long *)int2;
+bool ltLNG(void *lng1, void *lng2) {
+  // memLog(lng1);
+  // memLog(lng2);
+  return *(long *)lng1 < *(long *)lng2;
 }
 
 bool eqSTR(void *str1, void *str2) {
@@ -74,7 +73,6 @@ bool ltSTR(void *str1, void *str2) {
   return strlen(_str1) < strlen(_str2);
 }
 
-/* @return true if str1 > str2 (as char* with internal lexographical order) */
 bool gtSTR(void *str1, void *str2) {
   // memLog(str1);
   // memLog(str2);
@@ -95,7 +93,6 @@ bool gtSTR(void *str1, void *str2) {
   return strlen(_str1) > strlen(_str2);
 }
 
-/// nth functions
 void *nthKEY(OrderStruct order, int n) {
   // memLog(order.data + (n * order.data_entry_size) + order.key_mem_offset);
   return order.data + (n * order.data_entry_size) + order.key_mem_offset;
@@ -127,17 +124,15 @@ void swap(OrderStruct order, int dest, int source) {
   free(tmp);
 }
 
-void swap_ind(OrderStruct order, int dest, int source) {
-  void *a = nthENTRY(order, dest);
-  void *b = nthENTRY(order, source);
+void swap_ptr(OrderStruct order, int dest, int source) {
+  int dest_offset = dest * order.data_entry_size;
+  int source_offset = source * order.data_entry_size;
 
-  unsigned char *p = a, *q = b, tmp;
-
-  for (size_t i = 0; i != order.data_entry_size; ++i) {
-    tmp = p[i];
-    p[i] = q[i];
-    q[i] = tmp;
-  }
+  // either god doesn't exist os hes not good.
+  // because if he was, he wouldn't allow this to exist
+  void *tmp = (&order.data)[dest_offset];
+  (&order.data)[dest_offset] = (&order.data)[source_offset];
+  (&order.data)[source_offset] = tmp;
 }
 
 void prefixSTR(void *bucket, void *res) {

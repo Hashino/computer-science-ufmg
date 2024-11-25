@@ -25,12 +25,11 @@
 
     // ... populates entries
 
-    // orders entries by values, descending with radixsort
-    radixSort(makeORDER_DYNAMIC(entries, value, 6), gtStr);
+    // orders entries by values, descending with quickSort
+    quickSort(makeORDER_DYNAMIC(entries, value, 6), gtStr);
 
   specialized sorting algorithms need more arguments. macros are provided for
-  ease of use. examples on how to use these macros are given in order.c in
-  code region 'examples'
+  ease of use
  */
 #ifndef ORDERSTRUCT
 #define ORDERSTRUCT
@@ -123,7 +122,7 @@ typedef void (*prefixFn)(void *, void *);
 void *nthKEY(OrderStruct order, int n);
 void *nthENTRY(OrderStruct order, int n);
 void swap(OrderStruct order, int dest, int source);
-void swap_ind(OrderStruct order, int dest, int source);
+void swap_ptr(OrderStruct order, int dest, int source);
 
 /** @brief returns true if any1 == any2 by memcmp */
 bool eqANY(void *any1, void *any2, int byte_size);
@@ -135,9 +134,12 @@ bool gtINT(void *int1, void *int2);
 /** @brief returns true if int1 < int2 */
 bool ltINT(void *int1, void *int2);
 
-bool gtLNG(void *int1, void *int2);
-bool ltLNG(void *int1, void *int2);
-bool eqLNG(void *int1, void *int2);
+/** @brief returns true if lng1 == lng2 */
+bool eqLNG(void *lng1, void *lng2);
+/** @brief returns true if lng1 > lng2 */
+bool gtLNG(void *lng1, void *lng2);
+/** @brief returns true if lng1 < lng2 */
+bool ltLNG(void *lng1, void *lng2);
 
 /** @brief returns true if str1 == str2 (by strcmp) */
 bool eqSTR(void *str1, void *str2);

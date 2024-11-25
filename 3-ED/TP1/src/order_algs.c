@@ -256,12 +256,12 @@ int partitionInd(OrderStruct order, cmpFn cmp, int left, int right) {
     if (cmp(curr_key, pivot) || eqANY(curr_key, pivot, order.key_size)) {
       // finds correct place of pivot
       i++;
-      swap_ind(order, i, j);
+      swap_ptr(order, i, j);
     }
   }
 
   // puts pivot in correct place
-  swap_ind(order, i + 1, right);
+  swap_ptr(order, i + 1, right);
   return (i + 1);
 }
 

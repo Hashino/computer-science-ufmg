@@ -61,36 +61,42 @@ void fromXCSV(xCSV *csv, int max_len, Cadastro *res) {
 }
 
 void exemploCadastro() {
-  Cadastro cad[7] = {
+  typedef struct cad {
+    char nome[300];
+    int cpf;
+    char end[500];
+    char other[500];
+  } cad;
+
+  cad cads[6] = {
       {.nome = "Iam", .cpf = 666, .end = "Ravara"},
       {.nome = "Gabriel", .cpf = 567, .end = "Coelho"},
       {.nome = "Samuel", .cpf = 294, .end = "Brum"},
       {.nome = "Gileade", .cpf = 361, .end = "Valente"},
       {.nome = "Inaue", .cpf = 879, .end = "NaoSei"},
       {.nome = "Marcos", .cpf = 193, .end = "NaoLembro"},
-      {.nome = "Fernando", .cpf = 772, .end = "NaoLembro"},
   };
 
-  for (int i = 0; i < 7; i++) {
-    fprintf(stdout, "%s\n", toString(cad[i]));
+  for (int i = 0; i < 6; i++) {
+    fprintf(stdout, "%s\t\t%d\n", cads[i].nome, cads[i].cpf);
   }
 
-  // fprintf(stdout, "\nSELECTION SORT BY name ASCENDING\n");
-  // selectionSort(makeORDER(cad, nome), ltSTR);
+  fprintf(stdout, "\nSELECTION SORT BY name ASCENDING\n");
+  selectionSort(makeORDER(cads, nome), ltSTR);
 
-  // fprintf(stdout, "\nBUCKET SORT BY cpf DESCENDING\n");
-  // bucketSort(makeORDER(cad, cpf), makePREFIXES_INT_ASC(), gtINT);
+  fprintf(stdout, "\nBUCKET SORT BY cpf DESCENDING\n");
+  bucketSort(makeORDER(cads, cpf), makePRFX_INT_DES());
 
-  // fprintf(stdout, "\nQUICK SORT BY name ASCENDING\n");
-  // quickSort(makeORDER(cad, nome), ltSTR);
+  fprintf(stdout, "\nQUICK SORT BY name ASCENDING\n");
+  quickSort(makeORDER(cads, nome), ltSTR);
 
   fprintf(stdout, "\nQUICK SORT IND BY name ASCENDING\n");
-  quickSortInd(makeORDER(cad, nome), ltSTR);
+  quickSortInd(makeORDER(cads, nome), ltBIN_STR);
 
-  // fprintf(stdout, "\nRADIX SORT BY nome ASCENDING\n");
-  // radixSort(makeORDER(cad, nome), 's', true);
+  fprintf(stdout, "\nRADIX SORT BY nome ASCENDING\n");
+  radixSort(makeORDER(cads, nome), 's', true);
 
-  for (int i = 0; i < 7; i++) {
-    fprintf(stdout, "%s\n", toString(cad[i]));
+  for (int i = 0; i < 6; i++) {
+    fprintf(stdout, "%s\t\t%d\n", cads[i].nome, cads[i].cpf);
   }
 }

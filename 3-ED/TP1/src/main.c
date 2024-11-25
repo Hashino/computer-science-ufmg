@@ -127,7 +127,15 @@ void finish() {
   if (opts.debug) {
     for (int i = 0; i < file->n_lines; i++) {
       // memLog(arr + i);
-      fprintf(stdout, "%s\t\t%lu\n", arr[i].nome, arr[i].cpf);
+      char cpf[12];
+      snprintf(cpf, 12, "%11lu", arr[i].cpf);
+      for (int i = 0; i < 12; i++) {
+        if (cpf[i] == ' ') {
+          cpf[i] = '0';
+        }
+      }
+
+      fprintf(stdout, "%-30s\t%s\n", arr[i].nome, cpf);
     }
     fprintf(stdout, "\n");
   }
@@ -138,6 +146,7 @@ void finish() {
 }
 
 int main(int argc, char **argv) {
+
   parse_args(argc, argv, &opts);
 
   if (opts.file_path) {

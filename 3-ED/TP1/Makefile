@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := all
 
-TARGET := tp3.out
+TARGET := tp1.out
 
 SRC := src
 BIN := bin
@@ -28,7 +28,7 @@ TEST_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/test.xcsv
 MINI_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/cad.r100.p100.xcsv
 REAL_FILE := /home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/cad.r1000.p1000.xcsv
 
-ALG := 'rc'
+ALG := 'qc'
 
 run: all
 	$(EXE) -d -f $(TEST_FILE) -a $(ALG) -o a

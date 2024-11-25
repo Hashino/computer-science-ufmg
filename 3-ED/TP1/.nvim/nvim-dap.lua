@@ -13,7 +13,7 @@ dap.configurations.c = {
     request = "launch",
     program = function()
       os.execute("make")
-      return vim.fn.getcwd() .. "/bin/" .. "tp3.out"
+      return vim.fn.getcwd() .. "/bin/" .. "tp1.out"
     end,
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
