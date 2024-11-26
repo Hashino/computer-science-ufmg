@@ -27,6 +27,22 @@ void initialize() {
 void choose_sort_alg() {
   if (opts.alg) {
     switch (opts.alg[0]) {
+    case 's':
+      switch (opts.alg[1]) {
+      case 'n':
+        selectionSort(makeORDER_DYN(arr, nome, file->n_lines),
+                      opts.asc ? ltSTR : gtSTR);
+        break;
+      case 'c':
+        selectionSort(makeORDER_DYN(arr, cpf, file->n_lines),
+                      opts.asc ? ltSTR : gtSTR);
+        break;
+      case 'o':
+        selectionSort(makeORDER_DYN(arr, other, file->n_lines),
+                      opts.asc ? ltSTR : gtSTR);
+        break;
+      }
+      break;
     case 'q':
       switch (opts.alg[1]) {
       case 'n':
@@ -48,6 +64,31 @@ void choose_sort_alg() {
           quickSortInd(makeORDER_DYN(arr, other, file->n_lines), ltSTR);
         } else {
           quickSortInd(makeORDER_DYN(arr, other, file->n_lines), gtSTR);
+        }
+        break;
+      }
+      break;
+    case 'Q':
+      switch (opts.alg[1]) {
+      case 'n':
+        if (opts.asc) {
+          quickSort(makeORDER_DYN(arr, nome, file->n_lines), ltSTR);
+        } else {
+          quickSort(makeORDER_DYN(arr, nome, file->n_lines), gtSTR);
+        }
+        break;
+      case 'c':
+        if (opts.asc) {
+          quickSort(makeORDER_DYN(arr, cpf, file->n_lines), ltLNG);
+        } else {
+          quickSort(makeORDER_DYN(arr, cpf, file->n_lines), gtLNG);
+        }
+        break;
+      case 'o':
+        if (opts.asc) {
+          quickSort(makeORDER_DYN(arr, other, file->n_lines), ltSTR);
+        } else {
+          quickSort(makeORDER_DYN(arr, other, file->n_lines), gtSTR);
         }
         break;
       }
@@ -93,22 +134,6 @@ void choose_sort_alg() {
         break;
       case 'o':
         radixSort(makeORDER_DYN(arr, other, file->n_lines), 's', opts.asc);
-        break;
-      }
-      break;
-    case 's':
-      switch (opts.alg[1]) {
-      case 'n':
-        selectionSort(makeORDER_DYN(arr, nome, file->n_lines),
-                      opts.asc ? ltSTR : gtSTR);
-        break;
-      case 'c':
-        selectionSort(makeORDER_DYN(arr, cpf, file->n_lines),
-                      opts.asc ? ltSTR : gtSTR);
-        break;
-      case 'o':
-        selectionSort(makeORDER_DYN(arr, other, file->n_lines),
-                      opts.asc ? ltSTR : gtSTR);
         break;
       }
       break;

@@ -1,14 +1,15 @@
 #include "../include/order.h"
+#include "../include/order_utils.h"
 
-// standar selection sort implementation with comparison changed to 
+// standar selection sort implementation with comparison changed to
 // use function passed as argument instead
 void _selectionSort(OrderStruct order, cmpFn cmp) {
   for (int i = 0; i < order.data_len - 1; i++) {
     int min_idx = i;
 
     for (int j = i + 1; j < order.data_len; j++) {
-      void *curr = nthKEY(order, j);
-      void *min = nthKEY(order, min_idx);
+      void *curr = nth_key(order, j);
+      void *min = nth_key(order, min_idx);
 
       if (cmp(curr, min)) {
         min_idx = j;
@@ -34,7 +35,7 @@ void _bucketSort(OrderStruct order, cmpFn eq, prefixFn prfx, void *prefixes,
   // getting count of buckets
   // first iterates through keys
   for (int i = 0; i < order.data_len; i++) {
-    prfx(nthKEY(order, i), curr_key_prefix);
+    prfx(nth_key(order, i), curr_key_prefix);
 
     // for each key, iterates through buckets
     for (int j = 0; j < n_prefixes; j++) {
@@ -61,7 +62,7 @@ void _bucketSort(OrderStruct order, cmpFn eq, prefixFn prfx, void *prefixes,
     while (buckets[i] > 0) {
       for (int k = 0; buckets[i] > 0; k++) {
         // gets prefix of current key
-        prfx(nthKEY(order, k), curr_key_prefix);
+        prfx(nth_key(order, k), curr_key_prefix);
 
         // checks if bucket and key have same prefix
         if (eq(curr_bucket_prefix, curr_key_prefix)) {
@@ -98,12 +99,12 @@ void bucketSort(OrderStruct order, cmpFn eq, prefixFn prfx, void *b_prefixes,
 
 int partition(OrderStruct order, cmpFn cmp, int left, int right) {
   // starts with pivot on the last entry
-  void *pivot = nthKEY(order, right);
+  void *pivot = nth_key(order, right);
   int i = (left - 1);
 
   for (int j = left; j < right; j++) {
     // iterates entries and compares keys
-    void *curr_key = nthKEY(order, j);
+    void *curr_key = nth_key(order, j);
     if (cmp(curr_key, pivot) || eqANY(curr_key, pivot, order.key_size)) {
       // finds correct place of pivot
       i++;
@@ -134,7 +135,7 @@ void _radixSortInt(OrderStruct order, cmpFn cmp, bool asc) {
   void *output = malloc(order.data_len * order.data_entry_size);
 
   // Get maximum element
-  int maxElement = *(int *)getMax(order, cmp);
+  int maxElement = *(int *)get_max(order, cmp);
 
   // Apply counting sort to sort elements based on place value
   // INFO: place must match number memory size
@@ -143,7 +144,7 @@ void _radixSortInt(OrderStruct order, cmpFn cmp, bool asc) {
 
     // Store count of occurrences in count[]
     for (int i = 0; i < order.data_len; i++) {
-      int curr_key = *(int *)nthKEY(order, i);
+      int curr_key = *(int *)nth_key(order, i);
       int index = (curr_key / place) % 10;
       count[index]++;
     }
@@ -156,12 +157,12 @@ void _radixSortInt(OrderStruct order, cmpFn cmp, bool asc) {
 
     // build the output array
     for (int i = order.data_len - 1; i >= 0; i--) {
-      int curr_key = *(int *)nthKEY(order, i);
+      int curr_key = *(int *)nth_key(order, i);
       int index = (curr_key / place) % 10;
 
       int target = (count[index] - 1) * order.data_entry_size;
 
-      memcpy(output + target, nthENTRY(order, i), order.data_entry_size);
+      memcpy(output + target, nth_entry(order, i), order.data_entry_size);
 
       count[index]--;
     }
@@ -170,7 +171,7 @@ void _radixSortInt(OrderStruct order, cmpFn cmp, bool asc) {
     for (int i = 0; i < order.data_len; i++) {
       // decides if ascending or descending
       int target = asc ? i : order.data_len - 1 - i;
-      memcpy(nthENTRY(order, target), output + (i * order.data_entry_size),
+      memcpy(nth_entry(order, target), output + (i * order.data_entry_size),
              order.data_entry_size);
     }
   }
@@ -181,7 +182,7 @@ void _radixSortLng(OrderStruct order, cmpFn cmp, bool asc) {
   void *output = malloc(order.data_len * order.data_entry_size);
 
   // Get maximum element
-  long maxElement = *(long *)getMax(order, cmp);
+  long maxElement = *(long *)get_max(order, cmp);
 
   // Apply counting sort to sort elements based on place value
   // INFO: place must match number memory size
@@ -190,7 +191,7 @@ void _radixSortLng(OrderStruct order, cmpFn cmp, bool asc) {
 
     // Store count of occurrences in count[]
     for (int i = 0; i < order.data_len; i++) {
-      long curr_key = *(long *)nthKEY(order, i);
+      long curr_key = *(long *)nth_key(order, i);
       int index = (curr_key / place) % 10;
       count[index]++;
     }
@@ -203,12 +204,12 @@ void _radixSortLng(OrderStruct order, cmpFn cmp, bool asc) {
 
     // build the output array
     for (int i = order.data_len - 1; i >= 0; i--) {
-      long curr_key = *(long *)nthKEY(order, i);
+      long curr_key = *(long *)nth_key(order, i);
       int index = (curr_key / place) % 10;
 
       int target = (count[index] - 1) * order.data_entry_size;
 
-      memcpy(output + target, nthENTRY(order, i), order.data_entry_size);
+      memcpy(output + target, nth_entry(order, i), order.data_entry_size);
 
       count[index]--;
     }
@@ -217,7 +218,7 @@ void _radixSortLng(OrderStruct order, cmpFn cmp, bool asc) {
     for (int i = 0; i < order.data_len; i++) {
       // decides if ascending or descending
       int target = asc ? i : order.data_len - 1 - i;
-      memcpy(nthENTRY(order, target), output + (i * order.data_entry_size),
+      memcpy(nth_entry(order, target), output + (i * order.data_entry_size),
              order.data_entry_size);
     }
   }
@@ -244,37 +245,49 @@ void radixSort(OrderStruct order, char type, bool asc) {
   }
 }
 
-int partitionInd(OrderStruct order, cmpFn cmp, int left, int right) {
+int partitionInd(OrderStruct order, int data_index[], cmpFn cmp, int left,
+                 int right) {
   // starts with pivot on the last entry
-  void *pivot = nthKEY(order, right);
+  void *pivot = nth_key(order, data_index[right]);
   int i = (left - 1);
 
   for (int j = left; j < right; j++) {
     // iterates entries and compares keys
-    void *curr_key = nthKEY(order, j);
+    void *curr_key = nth_key(order, data_index[j]);
 
     if (cmp(curr_key, pivot) || eqANY(curr_key, pivot, order.key_size)) {
       // finds correct place of pivot
       i++;
-      swap_ptr(order, i, j);
+      swap_index(data_index, i, j);
+      // swap(order, data_index[i], data_index[j]);
     }
   }
 
   // puts pivot in correct place
-  swap_ptr(order, i + 1, right);
+  swap_index(data_index, i + 1, right);
+  // swap(order, data_index[i + 1], data_index[right]);
   return (i + 1);
 }
 
-void _quickSortInd(OrderStruct order, cmpFn cmp, int left, int right) {
+void _quickSortInd(OrderStruct order, int data_index[], cmpFn cmp, int left,
+                   int right) {
   // recusively splits data in partitions
   if (left < right) {
-    int part = partition(order, cmp, left, right);
+    int part = partitionInd(order, data_index, cmp, left, right);
 
-    _quickSortInd(order, cmp, left, part - 1);
-    _quickSortInd(order, cmp, part + 1, right);
+    _quickSortInd(order, data_index, cmp, left, part - 1);
+    _quickSortInd(order, data_index, cmp, part + 1, right);
   }
 }
 
 void quickSortInd(OrderStruct order, cmpFn cmp) {
-  _quickSortInd(order, cmp, 0, order.data_len - 1);
+  int data_index[order.data_len];
+
+  for (int i = 0; i < order.data_len; i++) {
+    data_index[i] = i;
+  }
+
+  _quickSortInd(order, data_index, cmp, 0, order.data_len - 1);
+
+  reorder_index(order, data_index);
 }

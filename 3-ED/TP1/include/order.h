@@ -33,6 +33,8 @@
  */
 #ifndef ORDERSTRUCT
 #define ORDERSTRUCT
+#include "../include/order_cmps.h"
+
 #include "../include/stats.h"
 
 #include <stdbool.h>
@@ -58,7 +60,9 @@ typedef struct Order {
   int data_len;        // number of entries in array
 } OrderStruct;
 
+// TODO: document
 typedef bool (*cmpFn)(void *, void *);
+// TODO: document
 typedef void (*prefixFn)(void *, void *);
 
 // creates ordering structure with just a static array and the name of the value
@@ -66,8 +70,8 @@ typedef void (*prefixFn)(void *, void *);
 #define makeORDER(entries, value)                                              \
   (OrderStruct) {                                                              \
     .key_mem_offset = offsetof(typeof(entries[0]), value),                     \
-    .key_size = sizeof(typeof(entries[0].value)), .data = entries,             \
-    .data_entry_size = sizeof(typeof(entries[0])),                             \
+    .key_size = sizeof(entries[0].value), .data = entries,                     \
+    .data_entry_size = sizeof(entries[0]),                                     \
     .data_len = sizeof(entries) / sizeof(entries[0]),                          \
   }
 
@@ -80,88 +84,20 @@ typedef void (*prefixFn)(void *, void *);
     .data_entry_size = sizeof(entries[0]), .data_len = n_entries,              \
   }
 
-/// INT
-#define INT_PRFX_ASC (void *)(int[10]){0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-#define INT_PRFX_DES (void *)(int[10]){9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
-#define INT_P_N_ENTRIES 10
-#define INT_P_ENTRY_SIZE sizeof(int)
-
 #define makePRFX_INT_ASC()                                                     \
   eqINT, prefixINT, INT_PRFX_ASC, INT_P_N_ENTRIES, INT_P_ENTRY_SIZE, ltINT
 #define makePRFX_INT_DES()                                                     \
   eqINT, prefixINT, INT_PRFX_DES, INT_P_N_ENTRIES, INT_P_ENTRY_SIZE, gtINT
-
-/// LONG
-#define LNG_PRFX_ASC (void *)(long[10]){0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-#define LNG_PRFX_DES (void *)(long[10]){9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
-#define LNG_P_N_ENTRIES 10
-#define LNG_P_ENTRY_SIZE sizeof(long)
 
 #define makePRFX_LNG_ASC()                                                     \
   eqINT, prefixLNG, LNG_PRFX_ASC, LNG_P_N_ENTRIES, LNG_P_ENTRY_SIZE, ltLNG
 #define makePRFX_LNG_DES()                                                     \
   eqINT, prefixLNG, LNG_PRFX_DES, LNG_P_N_ENTRIES, LNG_P_ENTRY_SIZE, gtLNG
 
-/// STRING
-#define STR_PRFX_ASC                                                           \
-  " !\"#$%&'()*+,-./"                                                          \
-  "0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`"                         \
-  "abcdefghijklmnopqrstuvwxyz{|}~"
-#define STR_PRFX_DES                                                           \
-  "~}|{zyxwvutsrqponmlkjihgfedcba`_^]\\[ZYXWVUTSRQPONMLKJIHGFEDCBA@?>=<;:"     \
-  "9876543210/.-,+*)('&%$#\"!"
-#define STR_B_N_ENTRIES 128
-#define STR_B_ENTRY_SIZE sizeof(char)
-
 #define makePRFX_STR_ASC()                                                     \
   eqSTR, prefixSTR, STR_PRFX_ASC, STR_B_N_ENTRIES, STR_B_ENTRY_SIZE, ltSTR
 #define makePRFX_STR_DES()                                                     \
   eqSTR, prefixSTR, STR_PRFX_DES, STR_B_N_ENTRIES, STR_B_ENTRY_SIZE, gtSTR
-
-/// nth functions
-void *nthKEY(OrderStruct order, int n);
-void *nthENTRY(OrderStruct order, int n);
-void swap(OrderStruct order, int dest, int source);
-void swap_ptr(OrderStruct order, int dest, int source);
-
-/** @brief returns true if any1 == any2 by memcmp */
-bool eqANY(void *any1, void *any2, int byte_size);
-
-/** @brief returns true if int1 == int2 */
-bool eqINT(void *int1, void *int2);
-/** @brief returns true if int1 > int2 */
-bool gtINT(void *int1, void *int2);
-/** @brief returns true if int1 < int2 */
-bool ltINT(void *int1, void *int2);
-
-/** @brief returns true if lng1 == lng2 */
-bool eqLNG(void *lng1, void *lng2);
-/** @brief returns true if lng1 > lng2 */
-bool gtLNG(void *lng1, void *lng2);
-/** @brief returns true if lng1 < lng2 */
-bool ltLNG(void *lng1, void *lng2);
-
-/** @brief returns true if str1 == str2 (by strcmp) */
-bool eqSTR(void *str1, void *str2);
-/** @brief returns true if str1 > str2 (by strlen) */
-bool gtSTR(void *str1, void *str2);
-/** @brief returns true if str1 < str2 (by strlen) */
-bool ltSTR(void *str1, void *str2);
-
-/** @brief uses strcmp to compare string */
-bool ltBIN_STR(void *bin1, void *bin2);
-/** @brief uses strcmp to compare string */
-bool gtBIN_STR(void *bin1, void *bin2);
-
-/** @brief returns the biggest (by cmp) key */
-void *getMax(OrderStruct order, cmpFn cmp);
-
-/** @brief res = first char of string */
-void prefixSTR(void *bucket, void *res);
-/** @brief res = first digit of integer */
-void prefixINT(void *bucket, void *res);
-/** @brief res = first digit of integer */
-void prefixLNG(void *bucket, void *res);
 
 /**
  * @brief orders by selection sort algorithm by cmp function.

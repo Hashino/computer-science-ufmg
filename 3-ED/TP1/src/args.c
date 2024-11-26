@@ -1,5 +1,6 @@
 #include "../include/args.h"
 
+//TODO: add indirect/direct docs
 void uso()
 // Descricao: imprime as opcoes de uso
 // Entrada: nao tem
