@@ -1,7 +1,7 @@
 #ifndef TESTSLIB
 #define TESTSLIB
 
-#include "../include/cad.h"
+#include "../include/cadastro.h"
 #include "../include/order.h"
 
 #include <stdbool.h>
@@ -13,57 +13,57 @@
 
 #define UNORDERED_DATA                                                         \
   {                                                                            \
-      {.nome = "Iam", .cpf = 666, .end = "Ravara"},                            \
-      {.nome = "Gabriel", .cpf = 567, .end = "Coelho"},                        \
-      {.nome = "Samuel", .cpf = 294, .end = "Brum"},                           \
-      {.nome = "Gileade", .cpf = 361, .end = "Valente"},                       \
-      {.nome = "Inaue", .cpf = 879, .end = "NaoSei"},                          \
-      {.nome = "Marcos", .cpf = 193, .end = "NaoLembro"},                      \
-      {.nome = "Fernando", .cpf = 772, .end = "NaoLembro"},                    \
+      {.name = "Iam", .cpf = 666, .address = "Ravara"},                        \
+      {.name = "Gabriel", .cpf = 567, .address = "Coelho"},                    \
+      {.name = "Samuel", .cpf = 294, .address = "Brum"},                       \
+      {.name = "Gileade", .cpf = 361, .address = "Valente"},                   \
+      {.name = "Inaue", .cpf = 879, .address = "NaoSei"},                      \
+      {.name = "Marcos", .cpf = 193, .address = "NaoLembro"},                  \
+      {.name = "Fernando", .cpf = 772, .address = "NaoLembro"},                \
   }
 
-#define ORDERED_NOME_ASC                                                       \
+#define ORDERED_name_ASC                                                       \
   (Cadastro[7]) {                                                              \
-    {.nome = "Fernando", .cpf = 772, .end = "NaoLembro"},                      \
-        {.nome = "Gabriel", .cpf = 567, .end = "Coelho"},                      \
-        {.nome = "Gileade", .cpf = 361, .end = "Valente"},                     \
-        {.nome = "Iam", .cpf = 666, .end = "Ravara"},                          \
-        {.nome = "Inaue", .cpf = 879, .end = "NaoSei"},                        \
-        {.nome = "Marcos", .cpf = 193, .end = "NaoLembro"},                    \
-        {.nome = "Samuel", .cpf = 294, .end = "Brum"},                         \
+    {.name = "Fernando", .cpf = 772, .address = "NaoLembro"},                  \
+        {.name = "Gabriel", .cpf = 567, .address = "Coelho"},                  \
+        {.name = "Gileade", .cpf = 361, .address = "Valente"},                 \
+        {.name = "Iam", .cpf = 666, .address = "Ravara"},                      \
+        {.name = "Inaue", .cpf = 879, .address = "NaoSei"},                    \
+        {.name = "Marcos", .cpf = 193, .address = "NaoLembro"},                \
+        {.name = "Samuel", .cpf = 294, .address = "Brum"},                     \
   }
 
-#define ORDERED_NOME_DES                                                       \
+#define ORDERED_name_DES                                                       \
   (Cadastro[7]) {                                                              \
-    {.nome = "Samuel", .cpf = 294, .end = "Brum"},                             \
-        {.nome = "Marcos", .cpf = 193, .end = "NaoLembro"},                    \
-        {.nome = "Inaue", .cpf = 879, .end = "NaoSei"},                        \
-        {.nome = "Iam", .cpf = 666, .end = "Ravara"},                          \
-        {.nome = "Gileade", .cpf = 361, .end = "Valente"},                     \
-        {.nome = "Gabriel", .cpf = 567, .end = "Coelho"},                      \
-        {.nome = "Fernando", .cpf = 772, .end = "NaoLembro"},                  \
+    {.name = "Samuel", .cpf = 294, .address = "Brum"},                         \
+        {.name = "Marcos", .cpf = 193, .address = "NaoLembro"},                \
+        {.name = "Inaue", .cpf = 879, .address = "NaoSei"},                    \
+        {.name = "Iam", .cpf = 666, .address = "Ravara"},                      \
+        {.name = "Gileade", .cpf = 361, .address = "Valente"},                 \
+        {.name = "Gabriel", .cpf = 567, .address = "Coelho"},                  \
+        {.name = "Fernando", .cpf = 772, .address = "NaoLembro"},              \
   }
 
 #define ORDERED_CPF_ASC                                                        \
   (Cadastro[7]) {                                                              \
-    {.nome = "Marcos", .cpf = 193, .end = "NaoLembro"},                        \
-        {.nome = "Samuel", .cpf = 294, .end = "Brum"},                         \
-        {.nome = "Gileade", .cpf = 361, .end = "Valente"},                     \
-        {.nome = "Gabriel", .cpf = 567, .end = "Coelho"},                      \
-        {.nome = "Iam", .cpf = 666, .end = "Ravara"},                          \
-        {.nome = "Fernando", .cpf = 772, .end = "NaoLembro"},                  \
-        {.nome = "Inaue", .cpf = 879, .end = "NaoSei"},                        \
+    {.name = "Marcos", .cpf = 193, .address = "NaoLembro"},                    \
+        {.name = "Samuel", .cpf = 294, .address = "Brum"},                     \
+        {.name = "Gileade", .cpf = 361, .address = "Valente"},                 \
+        {.name = "Gabriel", .cpf = 567, .address = "Coelho"},                  \
+        {.name = "Iam", .cpf = 666, .address = "Ravara"},                      \
+        {.name = "Fernando", .cpf = 772, .address = "NaoLembro"},              \
+        {.name = "Inaue", .cpf = 879, .address = "NaoSei"},                    \
   }
 
 #define ORDERED_CPF_DES                                                        \
   (Cadastro[7]) {                                                              \
-    {.nome = "Inaue", .cpf = 879, .end = "NaoSei"},                            \
-        {.nome = "Fernando", .cpf = 772, .end = "NaoLembro"},                  \
-        {.nome = "Iam", .cpf = 666, .end = "Ravara"},                          \
-        {.nome = "Gabriel", .cpf = 567, .end = "Coelho"},                      \
-        {.nome = "Gileade", .cpf = 361, .end = "Valente"},                     \
-        {.nome = "Samuel", .cpf = 294, .end = "Brum"},                         \
-        {.nome = "Marcos", .cpf = 193, .end = "NaoLembro"},                    \
+    {.name = "Inaue", .cpf = 879, .address = "NaoSei"},                        \
+        {.name = "Fernando", .cpf = 772, .address = "NaoLembro"},              \
+        {.name = "Iam", .cpf = 666, .address = "Ravara"},                      \
+        {.name = "Gabriel", .cpf = 567, .address = "Coelho"},                  \
+        {.name = "Gileade", .cpf = 361, .address = "Valente"},                 \
+        {.name = "Samuel", .cpf = 294, .address = "Brum"},                     \
+        {.name = "Marcos", .cpf = 193, .address = "NaoLembro"},                \
   }
 
 void runTests();

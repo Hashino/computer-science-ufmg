@@ -1,6 +1,6 @@
 #include "../include/args.h"
 
-//TODO: add indirect/direct docs
+// TODO: add indirect/direct docs
 void uso()
 // Descricao: imprime as opcoes de uso
 // Entrada: nao tem
@@ -20,9 +20,9 @@ void uso()
   fprintf(stderr, "\t-d     \t(flag de debug)\n");
   fprintf(stderr, "\t    executa testes e mostra resultado da ordenação\n");
   fprintf(stderr, "\n");
-  fprintf(stderr, "output: {tempo para recuperar dados} {tempo para ordenar dados}\n");
+  fprintf(stderr,
+          "output: {tempo para recuperar dados} {tempo para ordenar dados}\n");
 }
-
 
 void parse_args(int argc, char **argv, opt_t *opts)
 // Descricao: le as opcoes da linha de comando e inicializa variaveis
@@ -32,6 +32,7 @@ void parse_args(int argc, char **argv, opt_t *opts)
   // inicializacao variaveis globais para opcoes
   opts->debug = false;
   opts->asc = true;
+  opts->memlog_file = NULL;
 
   // variaveis externas do getopt
   extern char *optarg;
@@ -42,7 +43,7 @@ void parse_args(int argc, char **argv, opt_t *opts)
 
   // getopt - letra indica a opcao, : junto a letra indica parametro
   // no caso de escolher mais de uma operacao, vale a ultima
-  while ((c = getopt(argc, argv, "f:a:o:d")) != EOF) {
+  while ((c = getopt(argc, argv, "f:a:o:m:d")) != EOF) {
     switch (c) {
     case 'f':
       opts->file_path = optarg;
@@ -54,6 +55,9 @@ void parse_args(int argc, char **argv, opt_t *opts)
       if (optarg[0] == 'd') {
         opts->asc = false;
       }
+      break;
+    case 'm':
+      opts->memlog_file = optarg;
       break;
     case 'd':
       opts->debug = true;

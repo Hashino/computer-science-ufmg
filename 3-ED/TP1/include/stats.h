@@ -10,7 +10,7 @@
 #include <inttypes.h>
 
 // initlize internal values
-void startStats();
+void startStats(char* path);
 
 // call after initial setup is done
 void timeInit();

@@ -18,6 +18,6 @@ dap.configurations.c = {
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
     runInTerminal = true,
-    args = { '-d', '-a', 'rn', '-o', 'd', '-f', '/home/hashino/Documents/cs-ufmg/3-ED/TP1/cad/test.xcsv' },
+    args = { '-d', '-a', 'Qc', '-o', 'd', '-f', './cad/test.xcsv' },
   },
 }

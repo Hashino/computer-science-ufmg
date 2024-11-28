@@ -10,6 +10,7 @@
 typedef struct opt {
   char *file_path;
   char *alg;
+  char *memlog_file;
   bool asc;
   bool debug;
 } opt_t;

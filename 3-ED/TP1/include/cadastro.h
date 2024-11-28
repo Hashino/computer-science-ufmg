@@ -12,9 +12,9 @@
 #include "../include/parse_files.h"
 
 typedef struct Cadastro {
-  char nome[300];
+  char name[300];
   uint64_t cpf;
-  char end[500];
+  char address[500];
   char other[500];
   
 } Cadastro;

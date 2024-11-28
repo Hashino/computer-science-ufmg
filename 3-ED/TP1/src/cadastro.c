@@ -1,16 +1,16 @@
-#include "../include/cad.h"
+#include "../include/cadastro.h"
 
 char buf[2000];
 
 char *toString(Cadastro cad) {
-  sprintf(buf, "nome:%s,\tcpf:%lu,\tend:%s\tother:%s", cad.nome, cad.cpf,
-          cad.end, cad.other);
+  sprintf(buf, "name:%s,\tcpf:%lu,\tend:%s\tother:%s", cad.name, cad.cpf,
+          cad.address, cad.other);
   return buf;
 }
 
 bool eqCAD(Cadastro c1, Cadastro c2) {
-  return strcmp(c1.nome, c2.nome) == 0 && c1.cpf == c2.cpf &&
-         strcmp(c1.end, c2.end) == 0;
+  return strcmp(c1.name, c2.name) == 0 && c1.cpf == c2.cpf &&
+         strcmp(c1.address, c2.address) == 0;
 }
 
 bool eqCAD_ARR(Cadastro *arr1, Cadastro *arr2, size_t len) {
@@ -36,7 +36,7 @@ void fromXCSV(xCSV *csv, int max_len, Cadastro *res) {
     if (curr_token == NULL) {
       warnAssert(curr_line, "Couldn't read Name");
     }
-    snprintf(res[i].nome, MAX_LEN, "%s", curr_token);
+    snprintf(res[i].name, MAX_LEN, "%s", curr_token);
 
     curr_token = strtok_r(NULL, ",", &curr_line);
     if (curr_token != NULL && isdigit(*curr_token)) {
@@ -50,7 +50,7 @@ void fromXCSV(xCSV *csv, int max_len, Cadastro *res) {
     if (curr_token == NULL) {
       warnAssert(curr_line, "Couldn't read End");
     }
-    snprintf(res[i].end, MAX_LEN, "%s", curr_token);
+    snprintf(res[i].address, MAX_LEN, "%s", curr_token);
 
     curr_token = strtok_r(NULL, ",", &curr_line);
     if (curr_token == NULL) {
@@ -62,41 +62,41 @@ void fromXCSV(xCSV *csv, int max_len, Cadastro *res) {
 
 void exemploCadastro() {
   typedef struct cad {
-    char nome[300];
+    char name[300];
     int cpf;
-    char end[500];
+    char address[500];
     char other[500];
   } cad;
 
   cad cads[6] = {
-      {.nome = "Iam", .cpf = 666, .end = "Ravara"},
-      {.nome = "Gabriel", .cpf = 567, .end = "Coelho"},
-      {.nome = "Samuel", .cpf = 294, .end = "Brum"},
-      {.nome = "Gileade", .cpf = 361, .end = "Valente"},
-      {.nome = "Inaue", .cpf = 879, .end = "NaoSei"},
-      {.nome = "Marcos", .cpf = 193, .end = "NaoLembro"},
+      {.name = "Iam", .cpf = 666, .address = "Ravara"},
+      {.name = "Gabriel", .cpf = 567, .address = "Coelho"},
+      {.name = "Samuel", .cpf = 294, .address = "Brum"},
+      {.name = "Gileade", .cpf = 361, .address = "Valente"},
+      {.name = "Inaue", .cpf = 879, .address = "NaoSei"},
+      {.name = "Marcos", .cpf = 193, .address = "NaoLembro"},
   };
 
   for (int i = 0; i < 6; i++) {
-    fprintf(stdout, "%s\t\t%d\n", cads[i].nome, cads[i].cpf);
+    fprintf(stdout, "%s\t\t%d\n", cads[i].name, cads[i].cpf);
   }
 
   fprintf(stdout, "\nSELECTION SORT BY name ASCENDING\n");
-  selectionSort(makeORDER(cads, nome), ltSTR);
+  selectionSort(makeORDER(cads, name), ltSTR);
 
   fprintf(stdout, "\nBUCKET SORT BY cpf DESCENDING\n");
   bucketSort(makeORDER(cads, cpf), makePRFX_INT_DES());
 
   fprintf(stdout, "\nQUICK SORT BY name ASCENDING\n");
-  quickSort(makeORDER(cads, nome), ltSTR);
+  quickSort(makeORDER(cads, name), ltSTR);
 
   fprintf(stdout, "\nQUICK SORT IND BY name ASCENDING\n");
-  quickSortInd(makeORDER(cads, nome), ltBIN_STR);
+  quickSortInd(makeORDER(cads, name), ltBIN_STR);
 
-  fprintf(stdout, "\nRADIX SORT BY nome ASCENDING\n");
-  radixSort(makeORDER(cads, nome), 's', true);
+  fprintf(stdout, "\nRADIX SORT BY name ASCENDING\n");
+  radixSort(makeORDER(cads, name), 's', true);
 
   for (int i = 0; i < 6; i++) {
-    fprintf(stdout, "%s\t\t%d\n", cads[i].nome, cads[i].cpf);
+    fprintf(stdout, "%s\t\t%d\n", cads[i].name, cads[i].cpf);
   }
 }

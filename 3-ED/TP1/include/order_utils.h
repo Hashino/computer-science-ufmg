@@ -1,6 +1,10 @@
 #ifndef ORDER_UTILS
 #define ORDER_UTILS
-#include "order.h"
+#include "../include/order.h"
+
+#define makeDATA_INDEX(order) \
+  int data_index[order.data_len]; \
+  for (int i = 0; i < order.data_len; i++) { data_index[i] = i; }
 
 /// nth functions
 void *nth_key(OrderStruct order, int n);

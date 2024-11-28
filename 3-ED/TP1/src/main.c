@@ -1,5 +1,5 @@
 #include "../include/args.h"
-#include "../include/cad.h"
+#include "../include/cadastro.h"
 #include "../include/parse_files.h"
 #include "../include/stats.h"
 #include "../include/tests.h"
@@ -30,12 +30,12 @@ void choose_sort_alg() {
     case 's':
       switch (opts.alg[1]) {
       case 'n':
-        selectionSort(makeORDER_DYN(arr, nome, file->n_lines),
+        selectionSort(makeORDER_DYN(arr, name, file->n_lines),
                       opts.asc ? ltSTR : gtSTR);
         break;
       case 'c':
         selectionSort(makeORDER_DYN(arr, cpf, file->n_lines),
-                      opts.asc ? ltSTR : gtSTR);
+                      opts.asc ? ltLNG : gtLNG);
         break;
       case 'o':
         selectionSort(makeORDER_DYN(arr, other, file->n_lines),
@@ -43,38 +43,29 @@ void choose_sort_alg() {
         break;
       }
       break;
+    case 'S':
+      switch (opts.alg[1]) {
+      case 'n':
+        selectionSortInd(makeORDER_DYN(arr, name, file->n_lines),
+                         opts.asc ? ltSTR : gtSTR);
+        break;
+      case 'c':
+        selectionSortInd(makeORDER_DYN(arr, cpf, file->n_lines),
+                         opts.asc ? ltLNG : gtLNG);
+        break;
+      case 'o':
+        selectionSortInd(makeORDER_DYN(arr, other, file->n_lines),
+                         opts.asc ? ltSTR : gtSTR);
+        break;
+      }
+      break;
     case 'q':
       switch (opts.alg[1]) {
       case 'n':
         if (opts.asc) {
-          quickSortInd(makeORDER_DYN(arr, nome, file->n_lines), ltSTR);
+          quickSort(makeORDER_DYN(arr, name, file->n_lines), ltSTR);
         } else {
-          quickSortInd(makeORDER_DYN(arr, nome, file->n_lines), gtSTR);
-        }
-        break;
-      case 'c':
-        if (opts.asc) {
-          quickSortInd(makeORDER_DYN(arr, cpf, file->n_lines), ltLNG);
-        } else {
-          quickSortInd(makeORDER_DYN(arr, cpf, file->n_lines), gtLNG);
-        }
-        break;
-      case 'o':
-        if (opts.asc) {
-          quickSortInd(makeORDER_DYN(arr, other, file->n_lines), ltSTR);
-        } else {
-          quickSortInd(makeORDER_DYN(arr, other, file->n_lines), gtSTR);
-        }
-        break;
-      }
-      break;
-    case 'Q':
-      switch (opts.alg[1]) {
-      case 'n':
-        if (opts.asc) {
-          quickSort(makeORDER_DYN(arr, nome, file->n_lines), ltSTR);
-        } else {
-          quickSort(makeORDER_DYN(arr, nome, file->n_lines), gtSTR);
+          quickSort(makeORDER_DYN(arr, name, file->n_lines), gtSTR);
         }
         break;
       case 'c':
@@ -93,14 +84,39 @@ void choose_sort_alg() {
         break;
       }
       break;
+    case 'Q':
+      switch (opts.alg[1]) {
+      case 'n':
+        if (opts.asc) {
+          quickSortInd(makeORDER_DYN(arr, name, file->n_lines), ltSTR);
+        } else {
+          quickSortInd(makeORDER_DYN(arr, name, file->n_lines), gtSTR);
+        }
+        break;
+      case 'c':
+        if (opts.asc) {
+          quickSortInd(makeORDER_DYN(arr, cpf, file->n_lines), ltLNG);
+        } else {
+          quickSortInd(makeORDER_DYN(arr, cpf, file->n_lines), gtLNG);
+        }
+        break;
+      case 'o':
+        if (opts.asc) {
+          quickSortInd(makeORDER_DYN(arr, other, file->n_lines), ltSTR);
+        } else {
+          quickSortInd(makeORDER_DYN(arr, other, file->n_lines), gtSTR);
+        }
+        break;
+      }
+      break;
     case 'b':
       switch (opts.alg[1]) {
       case 'n':
         if (opts.asc) {
-          bucketSort(makeORDER_DYN(arr, nome, file->n_lines),
+          bucketSort(makeORDER_DYN(arr, name, file->n_lines),
                      makePRFX_STR_ASC());
         } else {
-          bucketSort(makeORDER_DYN(arr, nome, file->n_lines),
+          bucketSort(makeORDER_DYN(arr, name, file->n_lines),
                      makePRFX_STR_DES());
         }
         break;
@@ -127,7 +143,7 @@ void choose_sort_alg() {
     case 'r':
       switch (opts.alg[1]) {
       case 'n':
-        radixSort(makeORDER_DYN(arr, nome, file->n_lines), 's', opts.asc);
+        radixSort(makeORDER_DYN(arr, name, file->n_lines), 's', opts.asc);
         break;
       case 'c':
         radixSort(makeORDER_DYN(arr, cpf, file->n_lines), 'l', opts.asc);
@@ -160,7 +176,7 @@ void finish() {
         }
       }
 
-      fprintf(stdout, "%-30s\t%s\n", arr[i].nome, cpf);
+      fprintf(stdout, "%-30s\t%s\n", arr[i].name, cpf);
     }
     fprintf(stdout, "\n");
   }
@@ -175,7 +191,7 @@ int main(int argc, char **argv) {
   parse_args(argc, argv, &opts);
 
   if (opts.file_path) {
-    startStats();
+    startStats(opts.memlog_file);
 
     initialize();
     timeInit();

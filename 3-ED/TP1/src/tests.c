@@ -20,13 +20,13 @@ void testSelectionSort() {
   Cadastro data[7] = UNORDERED_DATA;
   bool res = false;
 
-  selectionSort(makeORDER(data, nome), ltSTR);
-  res = eqCAD_ARR(data, ORDERED_NOME_ASC, 7);
+  selectionSort(makeORDER(data, name), ltSTR);
+  res = eqCAD_ARR(data, ORDERED_name_ASC, 7);
   printResult("selectionSort\tby Name\tAscending", res);
   n_tests_made++;
 
-  selectionSort(makeORDER(data, nome), gtSTR);
-  res = eqCAD_ARR(data, ORDERED_NOME_DES, 7);
+  selectionSort(makeORDER(data, name), gtSTR);
+  res = eqCAD_ARR(data, ORDERED_name_DES, 7);
   printResult("selectionSort\tby Name\tDescending", res);
   n_tests_made++;
 
@@ -45,13 +45,13 @@ void testQuickSort() {
   Cadastro data[7] = UNORDERED_DATA;
   bool res = false;
 
-  quickSort(makeORDER(data, nome), ltSTR);
-  res = eqCAD_ARR(data, ORDERED_NOME_ASC, 7);
+  quickSort(makeORDER(data, name), ltSTR);
+  res = eqCAD_ARR(data, ORDERED_name_ASC, 7);
   printResult("quickSort\t\tby Name\tAscending", res);
   n_tests_made++;
 
-  quickSort(makeORDER(data, nome), gtSTR);
-  res = eqCAD_ARR(data, ORDERED_NOME_DES, 7);
+  quickSort(makeORDER(data, name), gtSTR);
+  res = eqCAD_ARR(data, ORDERED_name_DES, 7);
   printResult("quickSort\t\tby Name\tDescending", res);
   n_tests_made++;
 
@@ -70,13 +70,13 @@ void testQuickSortInd() {
   Cadastro data[7] = UNORDERED_DATA;
   bool res = false;
 
-  quickSortInd(makeORDER(data, nome), ltSTR);
-  res = eqCAD_ARR(data, ORDERED_NOME_ASC, 7);
+  quickSortInd(makeORDER(data, name), ltSTR);
+  res = eqCAD_ARR(data, ORDERED_name_ASC, 7);
   printResult("quickSortInd\tby Name\tAscending", res);
   n_tests_made++;
 
-  quickSortInd(makeORDER(data, nome), gtSTR);
-  res = eqCAD_ARR(data, ORDERED_NOME_DES, 7);
+  quickSortInd(makeORDER(data, name), gtSTR);
+  res = eqCAD_ARR(data, ORDERED_name_DES, 7);
   printResult("quickSortInd\tby Name\tDescending", res);
   n_tests_made++;
 
@@ -95,13 +95,13 @@ void testBucketSort() {
   Cadastro data[7] = UNORDERED_DATA;
   bool res = false;
 
-  bucketSort(makeORDER(data, nome), makePRFX_STR_ASC());
-  res = eqCAD_ARR(data, ORDERED_NOME_ASC, 7);
+  bucketSort(makeORDER(data, name), makePRFX_STR_ASC());
+  res = eqCAD_ARR(data, ORDERED_name_ASC, 7);
   printResult("bucketSort\t\tby Name\tAscending", res);
   n_tests_made++;
 
-  bucketSort(makeORDER(data, nome), makePRFX_STR_DES());
-  res = eqCAD_ARR(data, ORDERED_NOME_DES, 7);
+  bucketSort(makeORDER(data, name), makePRFX_STR_DES());
+  res = eqCAD_ARR(data, ORDERED_name_DES, 7);
   printResult("bucketSort\t\tby Name\tDescending", res);
   n_tests_made++;
 
@@ -121,13 +121,13 @@ void testRadixSort() {
   Cadastro data[7] = UNORDERED_DATA;
   bool res = false;
 
-  radixSort(makeORDER(data, nome), 's', true);
-  res = eqCAD_ARR(data, ORDERED_NOME_ASC, 7);
+  radixSort(makeORDER(data, name), 's', true);
+  res = eqCAD_ARR(data, ORDERED_name_ASC, 7);
   printResult("radixSort\t\tby Name\tAscending", res);
   n_tests_made++;
 
-  radixSort(makeORDER(data, nome), 's', false);
-  res = eqCAD_ARR(data, ORDERED_NOME_DES, 7);
+  radixSort(makeORDER(data, name), 's', false);
+  res = eqCAD_ARR(data, ORDERED_name_DES, 7);
   printResult("radixSort\t\tby Name\tDescending", res);
   n_tests_made++;
 

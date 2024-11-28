@@ -35,8 +35,6 @@
 #define ORDERSTRUCT
 #include "../include/order_cmps.h"
 
-#include "../include/stats.h"
-
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -109,6 +107,17 @@ typedef void (*prefixFn)(void *, void *);
 void selectionSort(OrderStruct order, cmpFn cmp);
 
 /**
+ * @brief orders by selection sort algorithm by cmp function.
+ * orders data indirectly by swaping indexes in internal array of ints the, at
+ * the end, changes original array accordingly
+ *  recommended to use makeORDER for building function call:
+ * > selectionSortInd(makeORDER(pairs, value), ltSTR);
+ * @param order use macro makeORDER for building
+ * @param cmp function to use for ordering data
+ */
+void selectionSortInd(OrderStruct order, cmpFn cmp);
+
+/**
  * @brief orders by quick sort algorithm by cmp function.
  *  recommended to use makeORDER for building function call:
  * > quickSort(makeORDER(cad, cpf), ltINT, eqINT);
@@ -119,10 +128,10 @@ void quickSort(OrderStruct order, cmpFn cmp);
 
 /**
  * @brief orders by quick sort algorithm by cmp function.
- * orders data indirectly by just changing the pointers of the
- * array instead of the data itself
+ * orders data indirectly by swaping indexes in internal array of ints the, at
+ * the end, changes original array accordingly
  *  recommended to use makeORDER for building function call:
- * > quickSort(makeORDER(cad, cpf), ltINT, eqINT);
+ * > quickSortInd(makeORDER(cad, cpf), ltINT, eqINT);
  * @param order use macro makeORDER for building
  * @param cmp return true if arg1 > arg2
  */

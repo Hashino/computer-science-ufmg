@@ -4,6 +4,7 @@ typedef struct Stats {
   struct timespec t0;
   struct timespec t_init;
   struct timespec t_end;
+  bool memlog_enabled;
 } Stats;
 
 Stats s;
@@ -32,9 +33,16 @@ bool open_stats_file(char *path) {
   return f_stats == NULL;
 }
 
-void startStats() {
+void startStats(char *path) {
   clock_gettime(CLOCK_MONOTONIC, &s.t0);
-  erroAssert(open_stats_file("./memlog"), "Couldn't open file");
+
+  if (path != NULL) {
+
+    s.memlog_enabled = true;
+    erroAssert(open_stats_file(path), "Couldn't open file");
+  } else {
+    s.memlog_enabled = false;
+  }
 }
 
 void timeInit() {
@@ -51,11 +59,12 @@ void timeEnd() {
 void printStats() {
   fprintf(stdout, "%ld.%.9ld\t", s.t_init.tv_sec, s.t_init.tv_nsec);
   fprintf(stdout, "%ld.%.9ld\n", s.t_end.tv_sec, s.t_end.tv_nsec);
-  fclose(f_stats);
+  if (f_stats)
+    fclose(f_stats);
 }
 
 void memLog(void *address) {
-  if (address != NULL) {
+  if (address != NULL && s.memlog_enabled) {
     struct timespec curr;
     clock_gettime(CLOCK_MONOTONIC, &curr);
     curr = clkDiff(s.t0, curr);

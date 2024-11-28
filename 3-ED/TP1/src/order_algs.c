@@ -24,6 +24,111 @@ void selectionSort(OrderStruct order, cmpFn cmp) {
   _selectionSort(order, cmp); //
 }
 
+// standar selection sort implementation with comparison changed to
+// use function passed as argument instead
+void _selectionSortInd(OrderStruct order, int data_index[], cmpFn cmp) {
+  for (int i = 0; i < order.data_len - 1; i++) {
+    int min_idx = i;
+
+    for (int j = i + 1; j < order.data_len; j++) {
+      void *curr = nth_key(order, data_index[j]);
+      void *min = nth_key(order, data_index[min_idx]);
+
+      if (cmp(curr, min)) {
+        min_idx = j;
+      }
+    }
+
+    if (i != min_idx)
+      swap_index(data_index, i, min_idx);
+    // swap(order, i, min_idx);
+  }
+}
+void selectionSortInd(OrderStruct order, cmpFn cmp) {
+  makeDATA_INDEX(order);
+
+  _selectionSortInd(order, data_index, cmp);
+
+  reorder_index(order, data_index);
+}
+
+int partition(OrderStruct order, cmpFn cmp, int left, int right) {
+  // starts with pivot on the last entry
+  void *pivot = nth_key(order, right);
+  int i = (left - 1);
+
+  for (int j = left; j < right; j++) {
+    // iterates entries and compares keys
+    void *curr_key = nth_key(order, j);
+    if (cmp(curr_key, pivot) || eqANY(curr_key, pivot, order.key_size)) {
+      // finds correct place of pivot
+      i++;
+      swap(order, i, j);
+    }
+  }
+
+  // puts pivot in correct place
+  swap(order, i + 1, right);
+  return (i + 1);
+}
+
+void _quickSort(OrderStruct order, cmpFn cmp, int left, int right) {
+  // recusively splits data in partitions
+  if (left < right) {
+    int part = partition(order, cmp, left, right);
+
+    _quickSort(order, cmp, left, part - 1);
+    _quickSort(order, cmp, part + 1, right);
+  }
+}
+
+void quickSort(OrderStruct order, cmpFn cmp) {
+  _quickSort(order, cmp, 0, order.data_len - 1);
+}
+
+int partitionInd(OrderStruct order, int data_index[], cmpFn cmp, int left,
+                 int right) {
+  // starts with pivot on the last entry
+  void *pivot = nth_key(order, data_index[right]);
+  int i = (left - 1);
+
+  for (int j = left; j < right; j++) {
+    // iterates entries and compares keys
+    void *curr_key = nth_key(order, data_index[j]);
+
+    if (cmp(curr_key, pivot) || eqANY(curr_key, pivot, order.key_size)) {
+      // finds correct place of pivot
+      i++;
+      swap_index(data_index, i, j);
+      // swap(order, data_index[i], data_index[j]);
+    }
+  }
+
+  // puts pivot in correct place
+  swap_index(data_index, i + 1, right);
+  // swap(order, data_index[i + 1], data_index[right]);
+  return (i + 1);
+}
+
+void _quickSortInd(OrderStruct order, int data_index[], cmpFn cmp, int left,
+                   int right) {
+  // recusively splits data in partitions
+  if (left < right) {
+    int part = partitionInd(order, data_index, cmp, left, right);
+
+    _quickSortInd(order, data_index, cmp, left, part - 1);
+    _quickSortInd(order, data_index, cmp, part + 1, right);
+  }
+}
+
+void quickSortInd(OrderStruct order, cmpFn cmp) {
+  makeDATA_INDEX(order);
+
+  _quickSortInd(order, data_index, cmp, 0, order.data_len - 1);
+
+  reorder_index(order, data_index);
+}
+
 void _bucketSort(OrderStruct order, cmpFn eq, prefixFn prfx, void *prefixes,
                  int n_prefixes, int prefix_size, cmpFn cmp) {
   int *buckets = (int *)calloc(n_prefixes, sizeof(int));
@@ -95,40 +200,6 @@ void _bucketSort(OrderStruct order, cmpFn eq, prefixFn prfx, void *prefixes,
 void bucketSort(OrderStruct order, cmpFn eq, prefixFn prfx, void *b_prefixes,
                 int n_prefixes, int prefix_size, cmpFn cmp) {
   _bucketSort(order, eq, prfx, b_prefixes, n_prefixes, prefix_size, cmp);
-}
-
-int partition(OrderStruct order, cmpFn cmp, int left, int right) {
-  // starts with pivot on the last entry
-  void *pivot = nth_key(order, right);
-  int i = (left - 1);
-
-  for (int j = left; j < right; j++) {
-    // iterates entries and compares keys
-    void *curr_key = nth_key(order, j);
-    if (cmp(curr_key, pivot) || eqANY(curr_key, pivot, order.key_size)) {
-      // finds correct place of pivot
-      i++;
-      swap(order, i, j);
-    }
-  }
-
-  // puts pivot in correct place
-  swap(order, i + 1, right);
-  return (i + 1);
-}
-
-void _quickSort(OrderStruct order, cmpFn cmp, int left, int right) {
-  // recusively splits data in partitions
-  if (left < right) {
-    int part = partition(order, cmp, left, right);
-
-    _quickSort(order, cmp, left, part - 1);
-    _quickSort(order, cmp, part + 1, right);
-  }
-}
-
-void quickSort(OrderStruct order, cmpFn cmp) {
-  _quickSort(order, cmp, 0, order.data_len - 1);
 }
 
 void _radixSortInt(OrderStruct order, cmpFn cmp, bool asc) {
@@ -243,51 +314,4 @@ void radixSort(OrderStruct order, char type, bool asc) {
   default:
     break;
   }
-}
-
-int partitionInd(OrderStruct order, int data_index[], cmpFn cmp, int left,
-                 int right) {
-  // starts with pivot on the last entry
-  void *pivot = nth_key(order, data_index[right]);
-  int i = (left - 1);
-
-  for (int j = left; j < right; j++) {
-    // iterates entries and compares keys
-    void *curr_key = nth_key(order, data_index[j]);
-
-    if (cmp(curr_key, pivot) || eqANY(curr_key, pivot, order.key_size)) {
-      // finds correct place of pivot
-      i++;
-      swap_index(data_index, i, j);
-      // swap(order, data_index[i], data_index[j]);
-    }
-  }
-
-  // puts pivot in correct place
-  swap_index(data_index, i + 1, right);
-  // swap(order, data_index[i + 1], data_index[right]);
-  return (i + 1);
-}
-
-void _quickSortInd(OrderStruct order, int data_index[], cmpFn cmp, int left,
-                   int right) {
-  // recusively splits data in partitions
-  if (left < right) {
-    int part = partitionInd(order, data_index, cmp, left, right);
-
-    _quickSortInd(order, data_index, cmp, left, part - 1);
-    _quickSortInd(order, data_index, cmp, part + 1, right);
-  }
-}
-
-void quickSortInd(OrderStruct order, cmpFn cmp) {
-  int data_index[order.data_len];
-
-  for (int i = 0; i < order.data_len; i++) {
-    data_index[i] = i;
-  }
-
-  _quickSortInd(order, data_index, cmp, 0, order.data_len - 1);
-
-  reorder_index(order, data_index);
 }
